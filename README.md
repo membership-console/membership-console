@@ -1,5 +1,6 @@
 # Membership Console
 
+![CI](https://github.com/averak/membership-console/workflows/CI/badge.svg)
 ![version](https://img.shields.io/badge/version-1.0.0__SNAPSHOT-blue.svg)
 
 ## 概要
@@ -10,7 +11,7 @@
 
 ### 開発環境
 
-- Node.js 16
+- Node.js 18
 - Angular 14
 
 
@@ -25,13 +26,13 @@ $ npm install
 ビルドに成功すると、`dist`直下に静的 HTML ファイルが生成されます。
 
 ```shell
-# local build
+# build for local
 $ npm run build
 
-# dev build
+# build for dev
 $ npm run build:dev
 
-# prod build
+# build for prod
 $ npm run build:prod
 ```
 
