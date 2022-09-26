@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/colors.scss";
+
+body {
+    @include font-color-black;
+    word-wrap: break-word;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    overflow: hidden;
+    margin: 0;
+}

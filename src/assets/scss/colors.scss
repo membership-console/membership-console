@@ -1,0 +1,53 @@
+// フォント色（白）
+$font-color-white: #ffffff;
+@mixin font-color-white {
+    color: $font-color-white !important;
+}
+
+// フォント色（黒）
+$font-color-black: #373737;
+@mixin font-color-black {
+    color: $font-color-black !important;
+}
+
+// フォント色（灰色）
+$font-color-gray: #575757;
+@mixin font-color-gray {
+    color: $font-color-gray !important;
+}
+
+// フォント色（明るい灰色）
+$font-color-light-gray: #6b788c;
+@mixin font-color-light-gray {
+    color: $font-color-light-gray !important;
+}
+
+// フォント色（リンク）
+$font-color-link: #3367d6;
+@mixin font-color-link {
+    color: $font-color-link !important;
+}
+
+// フォント色（暗い白）
+$font-color-dark-white: #cbcbcb;
+@mixin font-color-dark-white {
+    color: $font-color-dark-white !important;
+}
+
+// 背景色（白）
+$background-color-white: #ffffff;
+@mixin background-color-white {
+    background-color: $background-color-white !important;
+}
+
+// 背景色（暗い白）
+$background-color-dark-white: #edf1f4;
+@mixin background-color-dark-white {
+    background-color: $background-color-dark-white !important;
+}
+
+// 背景色（黒）
+$background-color-black: #2a2a2a;
+@mixin background-color-black {
+    background-color: $background-color-black !important;
+}
