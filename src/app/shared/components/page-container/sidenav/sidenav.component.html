@@ -1,0 +1,28 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sidenav-container__nav" mode="side" opened>
+        <mat-nav-list>
+            <!-- カテゴリーリスト  -->
+            <mat-expansion-panel
+                *ngFor="let element of categories"
+                class="mat-elevation-z0 sidenav-container__category"
+            >
+                <mat-expansion-panel-header>
+                    <mat-icon class="sidenav-container__category__icon">{{
+                        element.icon
+                    }}</mat-icon>
+                    <span class="sidenav-container__category__label">{{ element.label }}</span>
+                </mat-expansion-panel-header>
+                <a
+                    *ngFor="let link of element.links"
+                    [routerLink]="link.path"
+                    mat-list-item
+                    queryParamsHandling="merge"
+                >
+                    <span class="sidenav-container__category__link">{{ link.label }}</span>
+                </a>
+            </mat-expansion-panel>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <ng-content></ng-content>
+</mat-sidenav-container>
