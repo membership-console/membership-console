@@ -1,0 +1,22 @@
+$container-background-color: #edf1f4;
+$nav-background-color: #2a2a2a;
+$nav-font-color: #cbcbcb;
+
+.sidenav-container {
+    // ヘッダーの高さ（64px）分引く
+    height: calc(100vh - 64px);
+    background-color: $container-background-color;
+}
+
+.sidenav-container__nav {
+    width: 280px;
+    background-color: $nav-background-color;
+}
+
+.sidenav-container__category,
+.sidenav-container__category__icon,
+.sidenav-container__category__label,
+.sidenav-container__category__link {
+    background-color: $nav-background-color;
+    color: $nav-font-color;
+}

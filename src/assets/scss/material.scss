@@ -1,22 +1,22 @@
 @use "@angular/material" as material;
 @use "@angular/material/theming" as theming;
 
-@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "colors.scss";
 
 // -----------------------------------------------
 // カラーテーマ
 // -----------------------------------------------
-$primary-palette: material.define-palette(material.$indigo-palette);
+$primary-palette: material.define-palette(material.$deep-purple-palette);
 $accent-palette: material.define-palette(material.$pink-palette);
 $warn-palette: material.define-palette(material.$red-palette);
 
 $theme: material.define-light-theme(
     (
         color: (
-            primary: material.define-palette(material.$indigo-palette),
-            accent: material.define-palette(material.$pink-palette),
-            warn: material.define-palette(material.$red-palette),
+            primary: $primary-palette,
+            accent: $accent-palette,
+            warn: $warn-palette,
         ),
     )
 );
