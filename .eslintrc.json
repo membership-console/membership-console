@@ -1,0 +1,142 @@
+{
+  "root": true,
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.app.json",
+          "tsconfig.spec.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        // eslint-config-prettierの適用 (Prettierと競合するESLintのルールを無効化)
+        "prettier"
+      ],
+      "rules": {
+        "@typescript-eslint/no-empty-function": [
+          "error",
+          {
+            "allow": [
+              "constructors"
+            ]
+          }
+        ],
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              "./",
+              "../",
+              "src",
+              "@app/api",
+              "@app/shared",
+              "@api/models/*",
+              "@api/services/*"
+            ]
+          }
+        ],
+        "eqeqeq": [
+          "error",
+          "always"
+        ],
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              "parent",
+              "sibling",
+              "index",
+              "object",
+              "type"
+            ],
+            "pathGroups": [
+              {
+                "pattern": "@angular/**",
+                "group": "parent",
+                "position": "before"
+              },
+              {
+                "pattern": "@api/**",
+                "group": "parent",
+                "position": "before"
+              },
+              {
+                "pattern": "@app/**",
+                "group": "parent",
+                "position": "before"
+              },
+              {
+                "pattern": "@app/enums/**",
+                "group": "parent",
+                "position": "before"
+              },
+              {
+                "pattern": "@app/models/**",
+                "group": "parent",
+                "position": "before"
+              },
+              {
+                "pattern": "@shared/**",
+                "group": "parent",
+                "position": "before"
+              },
+              {
+                "pattern": "@environments/**",
+                "group": "parent",
+                "position": "before"
+              }
+            ],
+            "alphabetize": {
+              "order": "asc"
+            },
+            "newlines-between": "always"
+          }
+        ],
+        "import/no-deprecated": "off"
+      },
+      "settings": {
+        "import/parsers": {
+          "@typescript-eslint/parser": [
+            ".ts",
+            ".tsx"
+          ]
+        },
+        "import/resolver": {
+          "typescript": {}
+        }
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {
+        "@angular-eslint/template/eqeqeq": "off"
+      }
+    },
+    {
+      "files": [
+        "*.spec.ts",
+        "src/app/api/**/*.ts"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ]
+}
