@@ -12,13 +12,12 @@
 
 - Node.js 16
 - Angular 14
-- yarn
 
 
 ### インストール
 
 ```shell
-$ yarn
+$ npm install
 ```
 
 ### ビルド
@@ -27,13 +26,13 @@ $ yarn
 
 ```shell
 # local build
-$ yarn build
+$ npm run build
 
 # dev build
-$ yarn build:dev
+$ npm run build:dev
 
 # prod build
-$ yarn build:prod
+$ npm run build:prod
 ```
 
 ### ローカルサーバを起動
@@ -41,7 +40,7 @@ $ yarn build:prod
 起動に成功すると、[http://localhost:4200](http://localhost:4200)からアクセスできます。
 
 ```shell
-$ yarn start
+$ npm run start
 ```
 
 
@@ -49,13 +48,13 @@ $ yarn start
 
 ```shell
 # test
-$ yarn run test:ci
+$ npm run test:ci
 
 # code check
-$ yarn run check
+$ npm run check
 
 # code format
-$ yarn run format
+$ npm run format
 ```
 
 
@@ -63,8 +62,8 @@ $ yarn run format
 
 ```shell
 # check outdated dependencies
-$ yarn outdated
+$ npm outdated
 
 # update dependencies
-$ yarn upgrade-interactive --latest
+$ npx npm-check --update
 ```
