@@ -15,7 +15,7 @@
     "check:lint": "ng lint",
     "check:format": "prettier --check src",
     "format": "prettier --write src && ng lint --fix",
-    "upgrade-interactive": "npm-check --update"
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -54,12 +54,15 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.5.1",
     "eslint-plugin-import": "^2.26.0",
+    "husky": "^8.0.1",
     "jasmine-core": "~4.4.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "lint-staged": "^13.0.3",
+    "ng-lint-staged": "^12.0.4",
     "ng-openapi-gen": "^0.23.0",
     "npm-check": "^6.0.1",
     "npm-run-all": "^4.1.5",
