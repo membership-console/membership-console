@@ -1,0 +1,24 @@
+@import "src/assets/scss/colors";
+
+.user-menu__icon {
+    font-size: 80px;
+}
+
+.user-menu__name {
+    font-size: 0.9rem;
+}
+
+.user-menu__email {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.user-menu__privacy {
+    @include font-color-link;
+    font-size: 0.9rem;
+}
+
+.user-menu__final-login-date {
+    font-size: 0.8rem;
+    color: #666;
+}

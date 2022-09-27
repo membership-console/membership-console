@@ -20,6 +20,12 @@ $background-color-white: #ffffff;
     background-color: $background-color-white !important;
 }
 
+// フォント色【リンク】
+$font-color-link: #36c;
+@mixin font-color-link {
+    color: $font-color-link !important;
+}
+
 // 背景色【暗い白】
 $background-color-dark-white: #edf1f4;
 @mixin background-color-dark-white {

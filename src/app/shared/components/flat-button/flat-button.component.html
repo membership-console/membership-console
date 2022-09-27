@@ -1,0 +1,10 @@
+<button
+    [color]="color"
+    [disabled]="disabled"
+    [style.min-width]="minWidth"
+    [type]="type"
+    mat-flat-button
+>
+    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+    <span>{{ label }}</span>
+</button>
