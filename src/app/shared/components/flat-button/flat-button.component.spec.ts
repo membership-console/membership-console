@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { HeaderComponent } from "./header.component";
+import { FlatButtonComponent } from "./flat-button.component";
 
-describe("HeaderComponent", () => {
-    let component: HeaderComponent;
-    let fixture: ComponentFixture<HeaderComponent>;
+describe("FlatButtonComponent", () => {
+    let component: FlatButtonComponent;
+    let fixture: ComponentFixture<FlatButtonComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [HeaderComponent],
+            declarations: [FlatButtonComponent],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(HeaderComponent);
+        fixture = TestBed.createComponent(FlatButtonComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

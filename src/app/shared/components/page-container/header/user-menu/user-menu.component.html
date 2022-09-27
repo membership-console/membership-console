@@ -1,0 +1,44 @@
+<button [matMenuTriggerFor]="menu" mat-button>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon style="margin-right: 5px">account_circle</mat-icon>
+        <span>a_abe_tatsuya</span>
+        <mat-icon>arrow_drop_down</mat-icon>
+    </div>
+</button>
+
+<mat-menu #menu="matMenu">
+    <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        class="user-menu"
+        fxLayoutGap="10px"
+        style="margin: 0 20px 8px 10px"
+    >
+        <mat-icon class="user-menu__icon" inline="true">account_circle</mat-icon>
+        <div fxLayout="column">
+            <span class="user-menu__name">阿部 健太朗</span>
+            <span class="user-menu__email">email@example.com</span>
+            <span class="user-menu__privacy">プライバシー</span>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+    <div [routerLink]="'/mypage'" mat-menu-item queryParamsHandling="merge">
+        <span>アプリケーション設定</span>
+    </div>
+    <div [routerLink]="'/mypage'" mat-menu-item queryParamsHandling="merge">
+        <span>通知管理</span>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div
+        fxLayout="row"
+        fxLayoutAlign="space-between"
+        fxLayoutGap="20px"
+        style="margin: 0 20px 0 20px; padding-top: 8px"
+    >
+        <app-stroked-button minWidth="none" label="アカウント設定"></app-stroked-button>
+        <app-stroked-button minWidth="none" label="ログアウト"></app-stroked-button>
+    </div>
+</mat-menu>

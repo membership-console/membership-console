@@ -172,3 +172,7 @@ $theme: map-merge(
 .mat-form-field-outline {
     @include background-color-white;
 }
+
+.mat-menu-panel {
+    max-width: none !important;
+}
