@@ -1,0 +1,10 @@
+@import "src/styles.scss";
+
+.content {
+    @include font-color-black;
+    position: relative;
+    padding: 0 30px 10px 30px;
+    // パンくずリストの高さ分引く
+    min-height: calc(100% - 50px);
+    width: 100%;
+}

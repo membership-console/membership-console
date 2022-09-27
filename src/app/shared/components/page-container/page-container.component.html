@@ -3,6 +3,18 @@
     <app-sidenav>
         <app-breadcrumb></app-breadcrumb>
 
-        <router-outlet></router-outlet>
+        <div class="content" fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="30px">
+            <div>
+                <app-title></app-title>
+
+                <mat-card class="mat-elevation-z1">
+                    <mat-card-content fxLayout="column" fxLayoutGap="20px">
+                        <router-outlet></router-outlet>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <app-footer></app-footer>
+        </div>
     </app-sidenav>
 </div>
