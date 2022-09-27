@@ -15,6 +15,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { RouterTestingModule } from "@angular/router/testing";
 
 import { FlatButtonComponent } from "@shared/components/flat-button/flat-button.component";
+import { BreadcrumbComponent } from "@shared/components/page-container/breadcrumb/breadcrumb.component";
 import { HeaderComponent } from "@shared/components/page-container/header/header.component";
 import { NotificationMenuComponent } from "@shared/components/page-container/header/notification-menu/notification-menu.component";
 import { UserMenuComponent } from "@shared/components/page-container/header/user-menu/user-menu.component";
@@ -25,6 +26,7 @@ import { StrokedButtonComponent } from "@shared/components/stroked-button/stroke
 @NgModule({
     declarations: [
         FlatButtonComponent,
+        BreadcrumbComponent,
         HeaderComponent,
         NotificationMenuComponent,
         UserMenuComponent,

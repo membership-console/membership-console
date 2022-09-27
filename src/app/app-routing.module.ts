@@ -7,6 +7,7 @@ const routes: Routes = [
     {
         path: "dashboard",
         component: PageContainerComponent,
+        data: { breadcrumb: "ダッシュボード", title: "ダッシュボード" },
     },
     { path: "", redirectTo: "/dashboard", pathMatch: "full" },
     { path: "**", redirectTo: "/error/404", pathMatch: "full" },
