@@ -1,0 +1,21 @@
+.snack-bar {
+    color: #ffffff;
+    padding: 6px 4px 6px 20px;
+    font-size: 1rem;
+}
+
+.snack-bar--success {
+    background-color: #509b52;
+}
+
+.snack-bar--warn {
+    background-color: #f78c33;
+}
+
+.snack-bar--error {
+    background-color: #da4a48;
+}
+
+.snack-bar__close-button {
+    padding-left: 30px;
+}
