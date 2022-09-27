@@ -1,0 +1,16 @@
+<div
+    class="confirm-dialog"
+    fxLayout="column"
+    fxLayoutAlign="space-between start"
+    fxLayoutGap="20px"
+>
+    <h2 class="confirm-dialog__title" mat-dialog-title>{{ data.title }}</h2>
+    <mat-dialog-content class="confirm-dialog__description">
+        <p *ngFor="let line of data.message.split('\n')">{{ line }}</p>
+    </mat-dialog-content>
+
+    <mat-dialog-actions fxLayoutGap="10px">
+        <app-flat-button (click)="confirm(true)" label="確認"></app-flat-button>
+        <app-stroked-button (click)="confirm(false)" label="キャンセル"></app-stroked-button>
+    </mat-dialog-actions>
+</div>

@@ -42,7 +42,15 @@
         fxLayoutGap="20px"
         style="margin: 0 20px 0 20px; padding: 8px 0"
     >
-        <app-stroked-button minWidth="none" label="アカウント設定"></app-stroked-button>
-        <app-stroked-button minWidth="none" label="ログアウト"></app-stroked-button>
+        <app-stroked-button
+            minWidth="none"
+            label="アカウント設定"
+            [routerLink]="'/mypage'"
+        ></app-stroked-button>
+        <app-stroked-button
+            minWidth="none"
+            label="ログアウト"
+            (click)="onClickLogout()"
+        ></app-stroked-button>
     </div>
 </mat-menu>

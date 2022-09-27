@@ -1,0 +1,13 @@
+.confirm-dialog {
+    min-width: 400px;
+}
+
+.confirm-dialog__title {
+    font-weight: bold;
+}
+
+.confirm-dialog__description {
+    p {
+        margin: 0;
+    }
+}

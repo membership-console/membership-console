@@ -1,0 +1,21 @@
+<div
+    [class.snack-bar--error]="data.level === 'ERROR'"
+    [class.snack-bar--success]="data.level === 'SUCCESS'"
+    [class.snack-bar--warn]="data.level === 'WARN'"
+    class="snack-bar"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <mat-icon *ngIf="data.level === 'SUCCESS'">check_circle</mat-icon>
+        <mat-icon *ngIf="data.level === 'WARN'">warning</mat-icon>
+        <mat-icon *ngIf="data.level === 'ERROR'">error</mat-icon>
+        <span>{{ data.message }}</span>
+    </div>
+
+    <span class="snack-bar__close-button">
+        <button (click)="dismiss()" mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+    </span>
+</div>

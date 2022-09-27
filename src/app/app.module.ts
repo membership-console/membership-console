@@ -10,7 +10,12 @@ import { ErrorComponent } from "@app/components/error/error.component";
 import { SharedModule } from "@shared/shared.module";
 
 @NgModule({
-    declarations: [AppComponent, DashboardComponent, ErrorComponent],
+    declarations: [
+        // Components
+        AppComponent,
+        DashboardComponent,
+        ErrorComponent,
+    ],
     imports: [SharedModule, AppRoutingModule, BrowserModule, BrowserAnimationsModule],
     providers: [],
     bootstrap: [AppComponent],
