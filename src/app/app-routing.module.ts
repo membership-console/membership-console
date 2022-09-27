@@ -5,9 +5,11 @@ import { PageContainerComponent } from "@shared/components/page-container/page-c
 
 const routes: Routes = [
     {
-        path: "",
+        path: "dashboard",
         component: PageContainerComponent,
     },
+    { path: "", redirectTo: "/dashboard", pathMatch: "full" },
+    { path: "**", redirectTo: "/error/404", pathMatch: "full" },
 ];
 
 @NgModule({
