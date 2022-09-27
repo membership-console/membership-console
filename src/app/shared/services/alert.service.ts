@@ -36,7 +36,7 @@ export class AlertService {
      */
     public warn(message: string): void {
         this.snackBar.openFromComponent(SnackBarComponent, {
-            duration: 5000,
+            duration: 10000,
             data: { message: message, level: "WARN" },
         });
     }
