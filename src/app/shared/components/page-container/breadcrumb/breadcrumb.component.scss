@@ -1,0 +1,16 @@
+@import "src/styles.scss";
+
+.breadcrumb-container {
+    background-color: #ffffff;
+    height: 50px;
+
+    a,
+    .mat-icon {
+        @include font-color-black;
+    }
+
+    a {
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+}
