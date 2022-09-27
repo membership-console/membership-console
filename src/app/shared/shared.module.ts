@@ -15,6 +15,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { RouterTestingModule } from "@angular/router/testing";
 
+import { CardComponent } from "@shared/components/card/card.component";
 import { FlatButtonComponent } from "@shared/components/flat-button/flat-button.component";
 import { BreadcrumbComponent } from "@shared/components/page-container/breadcrumb/breadcrumb.component";
 import { FooterComponent } from "@shared/components/page-container/footer/footer.component";
@@ -28,6 +29,7 @@ import { StrokedButtonComponent } from "@shared/components/stroked-button/stroke
 
 @NgModule({
     declarations: [
+        CardComponent,
         FlatButtonComponent,
         BreadcrumbComponent,
         FooterComponent,
@@ -58,7 +60,13 @@ import { StrokedButtonComponent } from "@shared/components/stroked-button/stroke
         MatSidenavModule,
         MatToolbarModule,
     ],
-    exports: [],
+    exports: [
+        // UI Modules
+        FlexLayoutModule,
+
+        // Components
+        CardComponent,
+    ],
     providers: [{ provide: MAT_DATE_LOCALE, useValue: "ja-JP" }, DatePipe],
 })
 export class SharedModule {}

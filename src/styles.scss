@@ -7,3 +7,21 @@ body {
     overflow: hidden;
     margin: 0;
 }
+
+blockquote {
+    background: rgba(10, 133, 255, 0.14);
+    border-left: 4px solid #0066cc;
+    border-radius: 4px;
+    color: #666;
+    margin: 20px 0;
+    padding: 1px 20px;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
