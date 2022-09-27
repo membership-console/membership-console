@@ -1,9 +1,13 @@
-<button [matMenuTriggerFor]="menu" mat-button>
-    <div fxLayout="row" fxLayoutAlign="start center">
-        <mat-icon style="margin-right: 5px">account_circle</mat-icon>
-        <span>a_abe_tatsuya</span>
-        <mat-icon>arrow_drop_down</mat-icon>
-    </div>
+<button
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    [matMenuTriggerFor]="menu"
+    mat-button
+    style="padding: 0 8px"
+>
+    <mat-icon style="margin-right: 5px">account_circle</mat-icon>
+    <span>abe_tatsuya</span>
+    <mat-icon>arrow_drop_down</mat-icon>
 </button>
 
 <mat-menu #menu="matMenu">
@@ -12,7 +16,7 @@
         fxLayoutAlign="start center"
         class="user-menu"
         fxLayoutGap="10px"
-        style="margin: 0 20px 8px 10px"
+        style="margin: 5px 20px 5px 10px"
     >
         <mat-icon class="user-menu__icon" inline="true">account_circle</mat-icon>
         <div fxLayout="column">
@@ -23,10 +27,10 @@
     </div>
 
     <mat-divider></mat-divider>
-    <div [routerLink]="'/mypage'" mat-menu-item queryParamsHandling="merge">
+    <div [routerLink]="'/settings'" mat-menu-item queryParamsHandling="merge">
         <span>アプリケーション設定</span>
     </div>
-    <div [routerLink]="'/mypage'" mat-menu-item queryParamsHandling="merge">
+    <div [routerLink]="'/notifications'" mat-menu-item queryParamsHandling="merge">
         <span>通知管理</span>
     </div>
 
@@ -36,7 +40,7 @@
         fxLayout="row"
         fxLayoutAlign="space-between"
         fxLayoutGap="20px"
-        style="margin: 0 20px 0 20px; padding-top: 8px"
+        style="margin: 0 20px 0 20px; padding: 8px 0"
     >
         <app-stroked-button minWidth="none" label="アカウント設定"></app-stroked-button>
         <app-stroked-button minWidth="none" label="ログアウト"></app-stroked-button>

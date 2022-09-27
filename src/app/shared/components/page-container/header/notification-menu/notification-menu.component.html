@@ -1,0 +1,21 @@
+<button [matMenuTriggerFor]="menu" mat-icon-button>
+    <mat-icon [matBadge]="number_of_notifications" matBadgeColor="warn">notifications</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+    <div fxLayout="row" fxLayoutAlign="center" style="padding: 16px 0">
+        <span style="color: rgba(0, 0, 0, 0.54)">通知</span>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div style="width: 350px; padding: 16px 16px">
+        <span>通知はありません</span>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div [routerLink]="'/notifications'" mat-menu-item queryParamsHandling="merge">
+        <span class="show-all-notification">全ての通知を表示</span>
+    </div>
+</mat-menu>

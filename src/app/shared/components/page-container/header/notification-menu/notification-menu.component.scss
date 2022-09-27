@@ -1,0 +1,5 @@
+@import "src/assets/scss/colors";
+
+.show-all-notification {
+    @include font-color-link;
+}
