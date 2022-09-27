@@ -7,7 +7,7 @@
 // -----------------------------------------------
 // カラーテーマ
 // -----------------------------------------------
-$primary-palette: material.define-palette(material.$deep-purple-palette);
+$primary-palette: material.define-palette(material.$indigo-palette);
 $accent-palette: material.define-palette(material.$pink-palette);
 $warn-palette: material.define-palette(material.$red-palette);
 
@@ -179,4 +179,9 @@ $theme: map-merge(
 
 .mat-menu-content:not(:empty) {
     padding: 0 !important;
+}
+
+.mat-icon-button .mat-button-wrapper {
+    display: flex;
+    justify-content: center;
 }
