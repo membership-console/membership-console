@@ -1,6 +1,7 @@
 # Membership Console
 
 ![CI](https://github.com/averak/membership-console/workflows/CI/badge.svg)
+![deploy](https://github.com/averak/membership-console/workflows/deploy/badge.svg)
 ![version](https://img.shields.io/badge/version-1.0.0__SNAPSHOT-blue.svg)
 
 ## 概要
@@ -13,7 +14,6 @@
 
 - Node.js 18
 - Angular 14
-
 
 ### インストール
 
@@ -44,7 +44,6 @@ $ npm run build:prod
 $ npm run start
 ```
 
-
 ### テスト & コードチェック
 
 ```shell
@@ -57,7 +56,6 @@ $ npm run check
 # code format
 $ npm run format
 ```
-
 
 ### 依存関係のアップデート
 
