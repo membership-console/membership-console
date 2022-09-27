@@ -25,3 +25,10 @@ blockquote {
     -ms-user-select: none;
     user-select: none;
 }
+
+.app-loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

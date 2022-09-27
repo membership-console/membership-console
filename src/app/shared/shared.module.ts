@@ -1,5 +1,5 @@
 import { CommonModule, DatePipe } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -12,6 +12,7 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatMenuModule } from "@angular/material/menu";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -28,8 +29,11 @@ import { UserMenuComponent } from "@shared/components/page-container/header/user
 import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
 import { SidenavComponent } from "@shared/components/page-container/sidenav/sidenav.component";
 import { TitleComponent } from "@shared/components/page-container/title/title.component";
+import { ProgressSpinnerComponent } from "@shared/components/progress-spinner/progress-spinner.component";
 import { SnackBarComponent } from "@shared/components/snack-bar/snack-bar.component";
 import { StrokedButtonComponent } from "@shared/components/stroked-button/stroked-button.component";
+import { ErrorResponseInterceptor } from "@shared/interceptors/error-response.interceptor";
+import { LoadingInterceptor } from "@shared/interceptors/loading.interceptor";
 import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
 
 @NgModule({
@@ -45,9 +49,10 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
         UserMenuComponent,
         PageContainerComponent,
         SidenavComponent,
+        TitleComponent,
+        ProgressSpinnerComponent,
         SnackBarComponent,
         StrokedButtonComponent,
-        TitleComponent,
 
         // Pipes
         SafeHtmlPipe,
@@ -69,6 +74,7 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
         MatIconModule,
         MatListModule,
         MatMenuModule,
+        MatProgressSpinnerModule,
         MatSidenavModule,
         MatSnackBarModule,
         MatToolbarModule,
@@ -80,6 +86,11 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
         // Components
         CardComponent,
     ],
-    providers: [{ provide: MAT_DATE_LOCALE, useValue: "ja-JP" }, DatePipe],
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: "ja-JP" },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorResponseInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+        DatePipe,
+    ],
 })
 export class SharedModule {}
