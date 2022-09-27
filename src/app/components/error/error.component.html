@@ -1,1 +1,6 @@
-<p>error works!</p>
+<div *ngIf="getError()" fxLayout="column">
+    <div class="message">
+        <h2>{{ getError().title }}</h2>
+        <p *ngFor="let message of getError().messages">{{ message }}</p>
+    </div>
+</div>

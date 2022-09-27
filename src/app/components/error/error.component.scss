@@ -1,0 +1,11 @@
+@import "src/assets/scss/colors";
+
+.message {
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        @include font-color-gray;
+    }
+}
