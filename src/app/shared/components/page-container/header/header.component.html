@@ -4,5 +4,11 @@
         <span class="header-title">Membership Console</span>
     </div>
 
-    <app-user-menu></app-user-menu>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <app-notification-menu></app-notification-menu>
+        <button mat-icon-button>
+            <mat-icon>help</mat-icon>
+        </button>
+        <app-user-menu></app-user-menu>
+    </div>
 </mat-toolbar>

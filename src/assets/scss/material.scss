@@ -176,3 +176,7 @@ $theme: map-merge(
 .mat-menu-panel {
     max-width: none !important;
 }
+
+.mat-menu-content:not(:empty) {
+    padding: 0 !important;
+}

@@ -3,6 +3,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatBadgeModule } from "@angular/material/badge";
 import { MatButtonModule } from "@angular/material/button";
 import { MAT_DATE_LOCALE } from "@angular/material/core";
 import { MatExpansionModule } from "@angular/material/expansion";
@@ -15,6 +16,7 @@ import { RouterTestingModule } from "@angular/router/testing";
 
 import { FlatButtonComponent } from "@shared/components/flat-button/flat-button.component";
 import { HeaderComponent } from "@shared/components/page-container/header/header.component";
+import { NotificationMenuComponent } from "@shared/components/page-container/header/notification-menu/notification-menu.component";
 import { UserMenuComponent } from "@shared/components/page-container/header/user-menu/user-menu.component";
 import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
 import { SidenavComponent } from "@shared/components/page-container/sidenav/sidenav.component";
@@ -24,6 +26,7 @@ import { StrokedButtonComponent } from "@shared/components/stroked-button/stroke
     declarations: [
         FlatButtonComponent,
         HeaderComponent,
+        NotificationMenuComponent,
         UserMenuComponent,
         PageContainerComponent,
         SidenavComponent,
@@ -38,6 +41,7 @@ import { StrokedButtonComponent } from "@shared/components/stroked-button/stroke
 
         // UI Modules
         FlexLayoutModule,
+        MatBadgeModule,
         MatButtonModule,
         MatExpansionModule,
         MatIconModule,
