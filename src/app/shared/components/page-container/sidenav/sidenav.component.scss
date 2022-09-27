@@ -20,3 +20,40 @@ $nav-font-color: #cbcbcb;
     background-color: $nav-background-color;
     color: $nav-font-color;
 }
+
+.mat-divider {
+    border-top-color: #555555 !important;
+}
+
+.mat-nav-list .mat-list-item {
+    color: $nav-font-color;
+
+    span {
+        margin-left: 10px;
+        font-size: 1rem;
+    }
+
+    .right-align {
+        margin-right: 10px;
+        margin-left: auto;
+    }
+}
+
+.right-align {
+    margin-left: auto;
+}
+
+.page-detail {
+    color: $nav-font-color;
+    margin: 10px 20px;
+
+    h2 {
+        font-size: 1.3rem;
+        margin-block-end: 1em;
+    }
+
+    p {
+        font-size: 0.9rem;
+        margin-block-start: 0;
+    }
+}
