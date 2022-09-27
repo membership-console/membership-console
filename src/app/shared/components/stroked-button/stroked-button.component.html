@@ -1,0 +1,12 @@
+<button
+    [color]="color"
+    [disabled]="disabled"
+    [style.min-width]="minWidth"
+    [type]="type"
+    [class.gray-button]="color === undefined"
+    mat-stroked-button
+    style="border-radius: 0"
+>
+    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+    <span>{{ label }}</span>
+</button>

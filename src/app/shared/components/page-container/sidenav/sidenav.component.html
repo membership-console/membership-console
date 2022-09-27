@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sidenav-container__nav" mode="side" opened>
+        <div fxLayout="column" fxLayoutAlign="space-between" style="height: 100%">
+            <div>
+                <!-- ページ説明 -->
+                <div fxLayout="column" class="page-detail">
+                    <h2>ダッシュボード</h2>
+                    <p>Membership ConsoleはRCC内製のグループウェアです。</p>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <!-- 外部リンク -->
+                <mat-nav-list>
+                    <a
+                        mat-list-item
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://scrapbox.io/ritscc-private/"
+                    >
+                        <span>リファレンス</span>
+                        <mat-icon class="right-align">launch</mat-icon>
+                    </a>
+                    <a
+                        mat-list-item
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://github.com/averak/membership-console"
+                    >
+                        <span>GitHub</span>
+                        <mat-icon class="right-align">launch</mat-icon>
+                    </a>
+                </mat-nav-list>
+            </div>
+
+            <!-- HOMEへ戻るボタン -->
+            <mat-nav-list>
+                <mat-divider></mat-divider>
+                <a
+                    mat-list-item
+                    class="go-home-button project-top-border"
+                    [routerLink]="'/dashboard'"
+                >
+                    <mat-icon>keyboard_double_arrow_left</mat-icon>
+                    <span>HOME</span>
+                </a>
+            </mat-nav-list>
+        </div>
+    </mat-sidenav>
+
+    <ng-content></ng-content>
+</mat-sidenav-container>

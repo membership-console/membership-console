@@ -1,0 +1,187 @@
+@use "@angular/material" as material;
+@use "@angular/material/theming" as theming;
+
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "colors.scss";
+
+// -----------------------------------------------
+// カラーテーマ
+// -----------------------------------------------
+$primary-palette: material.define-palette(material.$deep-purple-palette);
+$accent-palette: material.define-palette(material.$pink-palette);
+$warn-palette: material.define-palette(material.$red-palette);
+
+$theme: material.define-light-theme(
+    (
+        color: (
+            primary: $primary-palette,
+            accent: $accent-palette,
+            warn: $warn-palette,
+        ),
+    )
+);
+
+// フォント色を上書き
+$default-color: map-get(
+    $map: $theme,
+    $key: color,
+);
+$default-foreground: map-get(
+    $map: $default-color,
+    $key: foreground,
+);
+$foreground: map-merge(
+    $default-foreground,
+    (
+        text: $font-color-black,
+    )
+);
+$color: map-merge(
+    $default-color,
+    (
+        foreground: $foreground,
+    )
+);
+$theme: map-merge(
+    $theme,
+    (
+        color: $color,
+    )
+);
+
+// Angular Materialのカスタムカラーテーマを有効化
+@include material.core();
+@include material.all-component-colors($theme);
+
+// -----------------------------------------------
+// コンポーネント
+// -----------------------------------------------
+.mat-table {
+    border: 1px solid #d9ddde;
+    border-bottom: 0;
+}
+
+.mat-cell {
+    border-bottom-style: none;
+}
+
+.mat-header-row {
+    height: 40px !important;
+}
+
+.mat-header-cell {
+    background-color: #f4f6f8 !important;
+}
+
+// 偶数列の背景色を変更できる
+// しかし、expandable tableを利用する場合にはうまく動かないのでコメントアウト
+// .mat-row:nth-child(even) {
+//     background-color: #f7fbfd;
+// }
+
+.mat-row:not(.expandable-detail-row):hover {
+    background: whitesmoke;
+}
+
+.mat-row.expandable-row td {
+    border-bottom-width: 0 !important;
+}
+
+.mat-row.expandable-detail-row {
+    height: 0;
+
+    .expandable-detail-row__wrapper {
+        overflow: hidden;
+        display: flex;
+        width: 100%;
+
+        .expandable-detail-row__wrapper__content {
+            width: 100%;
+            padding: 15px 0 15px 0;
+        }
+    }
+}
+
+.mat-menu-panel,
+.mat-select-panel,
+.mat-expansion-panel,
+.mat-card,
+.mat-flat-button,
+.mat-dialog-container,
+.mat-form-field-outline-start,
+.mat-form-field-outline-end {
+    border-radius: 1px !important;
+}
+
+.mat-card-title,
+.mat-card-content,
+.mat-cell {
+    @include font-color-black;
+}
+
+.mat-card {
+    padding-top: 0 !important;
+}
+
+.mat-card-title {
+    padding: 9px 0 0 0 !important;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.mat-card-content {
+    padding: 20px 5px 0 5px;
+    overflow-x: auto;
+}
+
+.mat-form-field {
+    font-size: 0.8rem;
+}
+
+.mat-snack-bar-container {
+    padding: 0 !important;
+    min-height: 50px !important;
+    max-width: 65vw !important;
+}
+
+.mat-button-toggle-checked {
+    background-color: theming.mat-color($accent-palette);
+    color: theming.mat-color($accent-palette, default-contrast) !important;
+}
+
+.cdk-drag-preview {
+    opacity: 0.4;
+    box-sizing: border-box;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.mat-expansion-panel-header-description,
+.mat-expansion-indicator::after {
+    @include font-color-dark-white;
+}
+
+.mat-form-field-outline {
+    @include background-color-white;
+}
+
+.mat-menu-panel {
+    max-width: none !important;
+}
+
+.mat-menu-content:not(:empty) {
+    padding: 0 !important;
+}
+
+.mat-icon-button .mat-button-wrapper {
+    display: flex;
+    justify-content: center;
+}

@@ -34,7 +34,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/scss/material.scss"
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
@@ -107,7 +108,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/scss/material.scss"
             ],
             "scripts": [
               "node_modules/marked/marked.min.js",

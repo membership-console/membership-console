@@ -1,7 +1,17 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-const routes: Routes = [];
+import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
+
+const routes: Routes = [
+    {
+        path: "dashboard",
+        component: PageContainerComponent,
+        data: { breadcrumb: "ダッシュボード", title: "プロダクト一覧" },
+    },
+    { path: "", redirectTo: "/dashboard", pathMatch: "full" },
+    { path: "**", redirectTo: "/error/404", pathMatch: "full" },
+];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

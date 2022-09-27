@@ -1,0 +1,15 @@
+<div class="breadcrumb-container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+    <a [routerLink]="'/'" queryParamsHandling="merge">
+        <mat-icon fxFlexOffset="30px">home</mat-icon>
+    </a>
+
+    <div
+        *ngFor="let breadcrumb of breadcrumbs"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="10px"
+    >
+        <mat-icon>navigate_next</mat-icon>
+        <a [routerLink]="breadcrumb.path" queryParamsHandling="merge">{{ breadcrumb.label }}</a>
+    </div>
+</div>

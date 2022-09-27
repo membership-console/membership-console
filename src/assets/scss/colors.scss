@@ -1,0 +1,39 @@
+// -----------------------------------------------
+// 共通のフォント/背景色を定義
+// -----------------------------------------------
+
+// フォント色【黒】
+$font-color-black: #373737;
+@mixin font-color-black {
+    color: $font-color-black !important;
+}
+
+// フォント色【暗い白】
+$font-color-dark-white: #cbcbcb;
+@mixin font-color-dark-white {
+    color: $font-color-dark-white !important;
+}
+
+// フォント色【白】
+$background-color-white: #ffffff;
+@mixin background-color-white {
+    background-color: $background-color-white !important;
+}
+
+// フォント色【灰色】
+$font-color-gray: #666;
+@mixin font-color-gray {
+    color: $font-color-gray !important;
+}
+
+// フォント色【リンク】
+$font-color-link: #36c;
+@mixin font-color-link {
+    color: $font-color-link !important;
+}
+
+// 背景色【暗い白】
+$background-color-dark-white: #edf1f4;
+@mixin background-color-dark-white {
+    background-color: $background-color-dark-white !important;
+}

@@ -1,0 +1,59 @@
+$container-background-color: #edf1f4;
+$nav-background-color: #2a2a2a;
+$nav-font-color: #cbcbcb;
+
+.sidenav-container {
+    // ヘッダーの高さ（64px）分引く
+    height: calc(100vh - 64px);
+    background-color: $container-background-color;
+}
+
+.sidenav-container__nav {
+    width: 280px;
+    background-color: $nav-background-color;
+}
+
+.sidenav-container__category,
+.sidenav-container__category__icon,
+.sidenav-container__category__label,
+.sidenav-container__category__link {
+    background-color: $nav-background-color;
+    color: $nav-font-color;
+}
+
+.mat-divider {
+    border-top-color: #555555 !important;
+}
+
+.mat-nav-list .mat-list-item {
+    color: $nav-font-color;
+
+    span {
+        margin-left: 10px;
+        font-size: 1rem;
+    }
+
+    .right-align {
+        margin-right: 10px;
+        margin-left: auto;
+    }
+}
+
+.right-align {
+    margin-left: auto;
+}
+
+.page-detail {
+    color: $nav-font-color;
+    margin: 10px 20px;
+
+    h2 {
+        font-size: 1.3rem;
+        margin-block-end: 1em;
+    }
+
+    p {
+        font-size: 0.9rem;
+        margin-block-start: 0;
+    }
+}
