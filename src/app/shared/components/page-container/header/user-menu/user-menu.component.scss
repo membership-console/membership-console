@@ -9,16 +9,11 @@
 }
 
 .user-menu__email {
+    @include font-color-gray;
     font-size: 0.9rem;
-    color: #666;
 }
 
 .user-menu__privacy {
     @include font-color-link;
     font-size: 0.9rem;
-}
-
-.user-menu__final-login-date {
-    font-size: 0.8rem;
-    color: #666;
 }

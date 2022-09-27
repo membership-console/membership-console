@@ -1,0 +1,6 @@
+@import "src/assets/scss/colors";
+
+footer {
+    @include font-color-gray;
+    font-size: 0.8rem;
+}
