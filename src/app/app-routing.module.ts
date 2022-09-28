@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { DashboardComponent } from "@app/components/dashboard/dashboard.component";
 import { ErrorComponent } from "@app/components/error/error.component";
+import { NotificationsComponent } from "@app/components/notifications/notifications.component";
 
 import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
 
@@ -16,6 +17,11 @@ const routes: Routes = [
                 path: "dashboard",
                 component: DashboardComponent,
                 data: { breadcrumb: "ダッシュボード", title: "プロダクト一覧" },
+            },
+            {
+                path: "notifications",
+                component: NotificationsComponent,
+                data: { breadcrumb: "運営のお知らせ", title: "運営のお知らせ" },
             },
             {
                 path: "error/:status",

@@ -1,0 +1,45 @@
+<div fxLayout="column" fxLayoutGap="30px">
+    <app-card title="受信トレイ">
+        <app-flat-button
+            icon="done"
+            label="既読にする"
+            (click)="readAllNotifications()"
+        ></app-flat-button>
+
+        <div fxFlex="100" fxLayout="column">
+            <table [dataSource]="dataSource" mat-table>
+                <ng-container matColumnDef="title">
+                    <th *matHeaderCellDef mat-header-cell>タイトル</th>
+                    <td *matCellDef="let element" mat-cell class="truncate-text">
+                        {{ element.title }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="body">
+                    <th *matHeaderCellDef mat-header-cell>本文</th>
+                    <td *matCellDef="let element" mat-cell class="truncate-text">
+                        {{ element.body }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="posted-date">
+                    <th *matHeaderCellDef mat-header-cell>投稿日</th>
+                    <td *matCellDef="let element" mat-cell>
+                        {{ element.posted_date | date: "yyyy年MM月dd日" }}
+                    </td>
+                </ng-container>
+
+                <tr *matHeaderRowDef="columns; sticky: true" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: columns" mat-row></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[20, 40, 60]" showFirstLastButtons></mat-paginator>
+        </div>
+    </app-card>
+
+    <app-card title="通知設定">
+        <blockquote>
+            <p>🔔 通知設定を行えるようにする</p>
+        </blockquote>
+    </app-card>
+</div>
