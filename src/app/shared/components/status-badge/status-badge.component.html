@@ -1,0 +1,9 @@
+<div
+    [class]="status ? 'status-badge--success' : 'status-badge--failure'"
+    class="status-badge"
+    fxLayoutAlign="center center"
+    fxLayoutGap="5px"
+>
+    <mat-icon *ngIf="icon" class="status-badge__icon">{{ icon }}</mat-icon>
+    <span>{{ label }}</span>
+</div>

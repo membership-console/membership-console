@@ -25,7 +25,7 @@ export class NotificationsComponent implements OnInit {
      */
     notifications: Notification[] = [
         {
-            title: "MFA設定を設定してください",
+            title: "MFAを設定してください",
             body: "セキュリティポリシーが更新され、MFAの有効化が必須になりました。\n年末までのご対応をお願いいたします。",
             status: 0,
             posted_date: new Date(),

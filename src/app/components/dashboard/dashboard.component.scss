@@ -1,0 +1,24 @@
+@import "src/assets/scss/colors";
+
+.product-card {
+    margin: 0 20px 20px 0;
+    // 1行あたり3つ表示する際、下記理由により46で引く必要がある
+    // ・カード間に20pxのマージン（20px * 2 = 40px）
+    // ・mat-cardは、おそらく影によって2px分多めにwidthが設定される（2px * 3 = 6px）
+    width: calc(100% / 3 - 46px);
+
+    &:hover {
+        background: whitesmoke;
+    }
+
+    .product-card__title {
+        color: #3a74ca;
+        font-size: 1.1rem;
+
+        text-decoration: none;
+    }
+}
+
+.product-card:nth-of-type(3n) {
+    margin-right: 0;
+}

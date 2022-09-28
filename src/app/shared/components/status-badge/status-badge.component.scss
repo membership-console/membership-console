@@ -1,0 +1,18 @@
+.status-badge {
+    font-size: 14px;
+    font-weight: normal;
+    border: solid 1px #3a74ca;
+    border-radius: 15px;
+    padding: 0 12px 0 12px;
+    height: 30px;
+}
+
+.status-badge--success {
+    color: #3a74ca;
+    border: solid 1px #3a74ca;
+}
+
+.status-badge--failure {
+    color: #575757;
+    border: solid 1px #575757;
+}
