@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
+import { MatChipsModule } from "@angular/material/chips";
 import { MAT_DATE_LOCALE } from "@angular/material/core";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatExpansionModule } from "@angular/material/expansion";
@@ -35,6 +36,7 @@ import { SidenavComponent } from "@shared/components/page-container/sidenav/side
 import { TitleComponent } from "@shared/components/page-container/title/title.component";
 import { ProgressSpinnerComponent } from "@shared/components/progress-spinner/progress-spinner.component";
 import { SnackBarComponent } from "@shared/components/snack-bar/snack-bar.component";
+import { StatusBadgeComponent } from "@shared/components/status-badge/status-badge.component";
 import { StrokedButtonComponent } from "@shared/components/stroked-button/stroked-button.component";
 import { ErrorResponseInterceptor } from "@shared/interceptors/error-response.interceptor";
 import { LoadingInterceptor } from "@shared/interceptors/loading.interceptor";
@@ -56,6 +58,7 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
         TitleComponent,
         ProgressSpinnerComponent,
         SnackBarComponent,
+        StatusBadgeComponent,
         StrokedButtonComponent,
 
         // Pipes
@@ -86,6 +89,8 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
     exports: [
         // UI Modules
         FlexLayoutModule,
+        MatCardModule,
+        MatChipsModule,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
@@ -95,6 +100,7 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
         // Components
         CardComponent,
         FlatButtonComponent,
+        StatusBadgeComponent,
     ],
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: "ja-JP" },

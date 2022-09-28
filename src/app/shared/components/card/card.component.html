@@ -1,7 +1,7 @@
 <mat-card class="mat-elevation-z1">
     <mat-card-title *ngIf="title">{{ title }}</mat-card-title>
 
-    <mat-divider></mat-divider>
+    <mat-divider *ngIf="title"></mat-divider>
 
     <mat-card-content fxLayout="column" fxLayoutGap="20px">
         <ng-content></ng-content>

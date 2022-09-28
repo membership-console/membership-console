@@ -1,0 +1,31 @@
+@import "src/assets/scss/colors";
+
+.product-card {
+    margin: 0 40px 20px 0;
+    // 細かいpxは、理屈は不明だが目視で調整したもの
+    padding-right: 12px;
+    width: calc(100% / 3 - 46px);
+    text-decoration: none;
+
+    .mat-card {
+        height: 108px;
+
+        &:hover {
+            background: whitesmoke;
+        }
+    }
+
+    .product-card__title {
+        color: #3a74ca;
+        font-size: 1.1rem;
+    }
+
+    .product-card__description {
+        height: 50px;
+        overflow-y: auto;
+    }
+}
+
+.product-card:nth-of-type(3n) {
+    margin-right: 0;
+}

@@ -1,5 +1,30 @@
-<app-card>
-    <blockquote>
-        <p>🔔 プロダクト一覧を表示予定</p>
-    </blockquote>
-</app-card>
+<div fxLayout="row wrap" fxLayoutAlign="start wrap">
+    <a
+        class="product-card"
+        *ngFor="let element of products"
+        [routerLink]="element.path"
+        queryParamsHandling="merge"
+    >
+        <mat-card class="mat-elevation-z2" style="width: 100%">
+            <mat-card-content fxLayout="column" fxLayoutAlign="start">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        fxLayoutGap="8px"
+                        class="product-card__title"
+                    >
+                        <mat-icon>{{ element.icon }}</mat-icon>
+                        <span>{{ element.name }}</span>
+                    </div>
+
+                    <mat-chip-list>
+                        <mat-chip>{{ element.version }}</mat-chip>
+                    </mat-chip-list>
+                </div>
+
+                <p class="product-card__description">{{ element.description }}</p>
+            </mat-card-content>
+        </mat-card>
+    </a>
+</div>
