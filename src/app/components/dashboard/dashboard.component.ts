@@ -20,8 +20,7 @@ export class DashboardComponent {
     products: Product[] = [
         {
             name: "IAM",
-            description:
-                "ロールベースアクセス制御システムです。プロダクトごとに権限を設定することができます。",
+            description: "RBAC（ロールベースアクセス制御）システムです。",
             icon: "admin_panel_settings",
             path: "/iam",
             version: "開発中",

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { UserGroupsComponent } from "@iam/components/user-groups/user-groups.component";
 
 const routes: Routes = [
+    // TODO: /iamは/iam/usersへリダイレクト
     {
         path: "",
         redirectTo: "user-groups",
