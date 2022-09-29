@@ -1,0 +1,41 @@
+<app-card>
+    <app-flat-button
+        icon="add"
+        label="新規作成"
+        [routerLink]="['new']"
+        queryParamsHandling="merge"
+    ></app-flat-button>
+
+    <div fxFlex="100" fxLayout="column">
+        <table [dataSource]="dataSource" mat-table>
+            <ng-container matColumnDef="name">
+                <th *matHeaderCellDef mat-header-cell>名前</th>
+                <td *matCellDef="let element" mat-cell class="truncate-text">
+                    {{ element.name }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="roles">
+                <th *matHeaderCellDef mat-header-cell>ロール数</th>
+                <td *matCellDef="let element" mat-cell>{{ element.roles.length }}個</td>
+            </ng-container>
+
+            <ng-container matColumnDef="control">
+                <th *matHeaderCellDef mat-header-cell>操作</th>
+                <td *matCellDef="let userGroup" mat-cell>
+                    <button (click)="onClickEdit(userGroup)" mat-icon-button>
+                        <mat-icon color="primary">edit</mat-icon>
+                    </button>
+                    <button (click)="onClickDelete(userGroup)" mat-icon-button>
+                        <mat-icon color="primary">delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr *matHeaderRowDef="columns; sticky: true" mat-header-row></tr>
+            <tr *matRowDef="let row; columns: columns" mat-row></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[20, 40, 60]" showFirstLastButtons></mat-paginator>
+    </div>
+</app-card>

@@ -39,6 +39,7 @@
               "../",
               "src",
               "@app/api",
+              "@app/iam",
               "@app/shared",
               "@api/models/*",
               "@api/services/*"
@@ -84,6 +85,11 @@
               },
               {
                 "pattern": "@app/models/**",
+                "group": "parent",
+                "position": "before"
+              },
+              {
+                "pattern": "@iam/**",
                 "group": "parent",
                 "position": "before"
               },

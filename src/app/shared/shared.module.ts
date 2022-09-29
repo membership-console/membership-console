@@ -66,6 +66,7 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
         SafeHtmlPipe,
     ],
     imports: [
+        // Modules
         CommonModule,
         HttpClientModule,
         FormsModule,
@@ -88,8 +89,12 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
         MatToolbarModule,
     ],
     exports: [
+        // Modules
+        RouterTestingModule,
+
         // UI Modules
         FlexLayoutModule,
+        MatButtonModule,
         MatCardModule,
         MatFormFieldModule,
         MatIconModule,
