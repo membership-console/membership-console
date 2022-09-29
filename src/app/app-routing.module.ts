@@ -28,6 +28,12 @@ const routes: Routes = [
                 component: ErrorComponent,
                 data: { breadcrumb: "エラー", title: null },
             },
+            {
+                path: "iam",
+                loadChildren: () =>
+                    import("@app/iam/iam-routing.module").then((m) => m.IamRoutingModule),
+                data: { breadcrumb: "IAM", title: null },
+            },
         ],
     },
     { path: "**", redirectTo: "/error/404", pathMatch: "full" },

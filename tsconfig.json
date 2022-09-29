@@ -22,6 +22,12 @@
       "dom"
     ],
     "paths": {
+      "@api/*": [
+        "src/app/api/*"
+      ],
+      "@iam/*": [
+        "src/app/iam/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ],

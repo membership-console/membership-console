@@ -8,6 +8,8 @@ import { DashboardComponent } from "@app/components/dashboard/dashboard.componen
 import { ErrorComponent } from "@app/components/error/error.component";
 import { NotificationsComponent } from "@app/components/notifications/notifications.component";
 
+import { IamModule } from "@iam/iam.module";
+
 import { SharedModule } from "@shared/shared.module";
 
 @NgModule({
@@ -18,7 +20,7 @@ import { SharedModule } from "@shared/shared.module";
         ErrorComponent,
         NotificationsComponent,
     ],
-    imports: [SharedModule, AppRoutingModule, BrowserModule, BrowserAnimationsModule],
+    imports: [SharedModule, IamModule, AppRoutingModule, BrowserModule, BrowserAnimationsModule],
     providers: [],
     bootstrap: [AppComponent],
 })
