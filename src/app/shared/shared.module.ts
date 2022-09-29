@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
-import { MatChipsModule } from "@angular/material/chips";
 import { MAT_DATE_LOCALE } from "@angular/material/core";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatExpansionModule } from "@angular/material/expansion";
@@ -90,7 +89,6 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
         // UI Modules
         FlexLayoutModule,
         MatCardModule,
-        MatChipsModule,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
