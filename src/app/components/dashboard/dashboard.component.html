@@ -18,9 +18,7 @@
                         <span>{{ element.name }}</span>
                     </div>
 
-                    <mat-chip-list>
-                        <mat-chip>{{ element.version }}</mat-chip>
-                    </mat-chip-list>
+                    <app-status-badge [status]="true" [label]="element.version"></app-status-badge>
                 </div>
 
                 <p class="product-card__description">{{ element.description }}</p>

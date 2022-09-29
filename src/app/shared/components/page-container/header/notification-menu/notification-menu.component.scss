@@ -1,5 +1,9 @@
 @import "src/assets/scss/colors";
 
+.menu-title {
+    @include font-color-gray;
+}
+
 .show-all-notification {
     @include font-color-link;
 }

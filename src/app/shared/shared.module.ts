@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
-import { MatChipsModule } from "@angular/material/chips";
 import { MAT_DATE_LOCALE } from "@angular/material/core";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatExpansionModule } from "@angular/material/expansion";
@@ -29,6 +28,7 @@ import { FlatButtonComponent } from "@shared/components/flat-button/flat-button.
 import { BreadcrumbComponent } from "@shared/components/page-container/breadcrumb/breadcrumb.component";
 import { FooterComponent } from "@shared/components/page-container/footer/footer.component";
 import { HeaderComponent } from "@shared/components/page-container/header/header.component";
+import { HelpMenuComponent } from "@shared/components/page-container/header/help-menu/help-menu.component";
 import { NotificationMenuComponent } from "@shared/components/page-container/header/notification-menu/notification-menu.component";
 import { UserMenuComponent } from "@shared/components/page-container/header/user-menu/user-menu.component";
 import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
@@ -51,6 +51,7 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
         BreadcrumbComponent,
         FooterComponent,
         HeaderComponent,
+        HelpMenuComponent,
         NotificationMenuComponent,
         UserMenuComponent,
         PageContainerComponent,
@@ -90,7 +91,6 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
         // UI Modules
         FlexLayoutModule,
         MatCardModule,
-        MatChipsModule,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
