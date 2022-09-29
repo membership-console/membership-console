@@ -5,6 +5,7 @@
     // 細かいpxは、理屈は不明だが目視で調整したもの
     padding-right: 12px;
     width: calc(100% / 3 - 46px);
+    min-width: 200px;
     text-decoration: none;
 
     .mat-card {
