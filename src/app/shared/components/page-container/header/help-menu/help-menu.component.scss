@@ -1,0 +1,11 @@
+@import "src/assets/scss/colors";
+
+.menu-title {
+    @include font-color-gray;
+}
+
+.launch-icon {
+    @include font-color-black;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}

@@ -21,7 +21,7 @@ $background-color-white: #ffffff;
 }
 
 // フォント色【灰色】
-$font-color-gray: #666;
+$font-color-gray: rgba(0, 0, 0, 0.54);
 @mixin font-color-gray {
     color: $font-color-gray !important;
 }

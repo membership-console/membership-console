@@ -1,0 +1,25 @@
+<button [matMenuTriggerFor]="menu" mat-icon-button>
+    <mat-icon>help</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+    <div fxLayout="row" fxLayoutAlign="center" style="width: 350px; padding: 16px 0">
+        <span class="menu-title">ヘルプ</span>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <a
+        mat-menu-item
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://scrapbox.io/ritscc-private/"
+    >
+        <span>ドキュメントを読む</span>
+        <mat-icon class="launch-icon" inline="true">launch</mat-icon>
+    </a>
+    <a mat-menu-item>
+        <span>フィードバックを送信</span>
+        <mat-icon class="launch-icon" inline="true">launch</mat-icon>
+    </a>
+</mat-menu>
