@@ -8,6 +8,7 @@ import { User } from "@iam/models/user";
 
 import { AlertService } from "@shared/services/alert.service";
 
+@UntilDestroy()
 @Component({
     selector: "app-users",
     templateUrl: "./users.component.html",
