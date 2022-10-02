@@ -12,7 +12,9 @@
 
     <!-- Markdown Viewer -->
     <ng-template #MarkdownViewer>
-        <app-markdown-viewer [source]="controlDir.control.value"></app-markdown-viewer>
+        <div class="markdown-preview">
+            <app-markdown-viewer [source]="controlDir.control.value"></app-markdown-viewer>
+        </div>
     </ng-template>
 
     <!-- Edit Guide -->
