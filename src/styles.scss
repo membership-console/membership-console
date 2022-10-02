@@ -54,7 +54,8 @@ blockquote {
     }
 
     app-shared-input,
-    app-shared-textarea {
+    app-shared-textarea,
+    app-shared-markdown-editor {
         min-width: 300px;
         width: calc((100% - 200px) / 2);
         margin-bottom: 10px;
@@ -71,7 +72,8 @@ blockquote {
     }
 
     app-shared-input,
-    app-shared-textarea {
+    app-shared-textarea,
+    app-shared-markdown-editor {
         min-width: 300px;
         width: 100%;
         margin-bottom: 10px;

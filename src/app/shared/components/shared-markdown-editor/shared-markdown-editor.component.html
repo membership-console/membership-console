@@ -1,0 +1,56 @@
+<div>
+    <!-- Markdown Editor -->
+    <ng-template #MarkdownEditor>
+        <app-shared-textarea
+            [autosize]="true"
+            [formControl]="controlDir.control"
+            [label]="label"
+            [rows]="10"
+            ngDefaultControl
+        ></app-shared-textarea>
+    </ng-template>
+
+    <!-- Markdown Viewer -->
+    <ng-template #MarkdownViewer>
+        <app-markdown-viewer [source]="controlDir.control.value"></app-markdown-viewer>
+    </ng-template>
+
+    <!-- Edit Guide -->
+    <ng-template #EditGuide>
+        <blockquote>
+            <p>🔔 EDIT GUIDEを表示予定</p>
+        </blockquote>
+    </ng-template>
+
+    <mat-tab-group headerPosition="below" mat-stretch-tabs>
+        <mat-tab>
+            <ng-template matTabLabel>
+                <mat-icon class="editor__tab-icon">edit</mat-icon>
+                Markdown
+            </ng-template>
+            <ng-template matTabContent>
+                <ng-container *ngTemplateOutlet="MarkdownEditor"></ng-container>
+            </ng-template>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template matTabLabel>
+                <mat-icon class="editor__tab-icon">preview</mat-icon>
+                Preview
+            </ng-template>
+            <ng-template matTabContent>
+                <ng-container *ngTemplateOutlet="MarkdownViewer"></ng-container>
+            </ng-template>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template matTabLabel>
+                <mat-icon class="editor__tab-icon">help</mat-icon>
+                EDIT GUIDE
+            </ng-template>
+            <ng-template matTabContent>
+                <ng-container *ngTemplateOutlet="EditGuide"></ng-container>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</div>
