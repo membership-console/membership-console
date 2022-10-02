@@ -8,12 +8,12 @@ export type User = {
     id: number;
 
     /**
-     * 苗字
+     * ラストネーム
      */
     lastName: string;
 
     /**
-     * 名前
+     * ファーストネーム
      */
     firstName: string;
 
