@@ -33,4 +33,19 @@ export type Request = {
      * 申請日
      */
     requested_date: Date;
+
+    /**
+     * 申請者
+     */
+    requested_by: string;
+
+    /**
+     * 承認済みか
+     */
+    is_approved: boolean;
+
+    /**
+     * 購入済みか
+     */
+    is_purchased: boolean;
 };

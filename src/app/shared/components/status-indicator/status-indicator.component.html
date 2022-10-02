@@ -1,0 +1,9 @@
+<span
+    [class.status-indicator--normal]="status === 0"
+    [class.status-indicator--success]="status === 1"
+    [class.status-indicator--warning]="status === 2"
+    [class.status-indicator--failure]="status === 3"
+>
+    <span class="status-indicator__badge">●</span>
+    <span class="status-indicator__text"> {{ label }}</span>
+</span>

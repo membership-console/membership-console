@@ -44,9 +44,11 @@ import { SharedMarkdownEditorComponent } from "@shared/components/shared-markdow
 import { SharedTextareaComponent } from "@shared/components/shared-textarea/shared-textarea.component";
 import { SnackBarComponent } from "@shared/components/snack-bar/snack-bar.component";
 import { StatusBadgeComponent } from "@shared/components/status-badge/status-badge.component";
+import { StatusIndicatorComponent } from "@shared/components/status-indicator/status-indicator.component";
 import { StrokedButtonComponent } from "@shared/components/stroked-button/stroked-button.component";
 import { ErrorResponseInterceptor } from "@shared/interceptors/error-response.interceptor";
 import { LoadingInterceptor } from "@shared/interceptors/loading.interceptor";
+import { NumberPipe } from "@shared/pipes/number.pipe";
 import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
 import { UsernamePipe } from "@shared/pipes/username.pipe";
 
@@ -72,9 +74,11 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         SharedTextareaComponent,
         SnackBarComponent,
         StatusBadgeComponent,
+        StatusIndicatorComponent,
         StrokedButtonComponent,
 
         // Pipes
+        NumberPipe,
         SafeHtmlPipe,
         UsernamePipe,
     ],
@@ -132,11 +136,12 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         SharedMarkdownEditorComponent,
         SharedTextareaComponent,
         StatusBadgeComponent,
+        StatusIndicatorComponent,
 
         // Pipes
+        NumberPipe,
         SafeHtmlPipe,
         UsernamePipe,
-        SharedMarkdownEditorComponent,
     ],
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: "ja-JP" },
