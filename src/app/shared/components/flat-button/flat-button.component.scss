@@ -1,16 +1,8 @@
-@import "src/assets/scss/colors";
-
 .mat-icon {
     margin-right: 3px;
 }
 
 button.color-none {
-    @include font-color-black;
-    border: 1px solid !important;
-    border-color: #c4c4c4 !important;
-}
-
-button:not(.color-none) {
-    border: 1px solid;
-    border-color: #3f51b5 !important;
+    outline: 1px solid #c4c4c4;
+    outline-offset: -1px !important;
 }

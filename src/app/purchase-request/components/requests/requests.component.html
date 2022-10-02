@@ -6,7 +6,107 @@
         queryParamsHandling="merge"
     ></app-flat-button>
 
-    <blockquote>
-        <p>🔔 購入申請リストを表示</p>
-    </blockquote>
+    <div fxFlex="100" fxLayout="column">
+        <table [dataSource]="dataSource" mat-table multiTemplateDataRows>
+            <ng-container matColumnDef="name">
+                <th *matHeaderCellDef mat-header-cell>商品名</th>
+                <td *matCellDef="let element" mat-cell class="truncate-text">
+                    <a [href]="element.url" target="_blank" rel="noopener noreferrer">{{
+                        element.name
+                    }}</a>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="price">
+                <th *matHeaderCellDef mat-header-cell>税込価格</th>
+                <td *matCellDef="let element" mat-cell>{{ element.price | number }}円</td>
+            </ng-container>
+
+            <ng-container matColumnDef="quantity">
+                <th *matHeaderCellDef mat-header-cell>個数</th>
+                <td *matCellDef="let element" mat-cell>{{ element.quantity | number }}個</td>
+            </ng-container>
+
+            <ng-container matColumnDef="requested_by">
+                <th *matHeaderCellDef mat-header-cell>申請者</th>
+                <td *matCellDef="let element" mat-cell>{{ element.requested_by }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="is_approved">
+                <th *matHeaderCellDef mat-header-cell>承認ステータス</th>
+                <td *matCellDef="let element" mat-cell>
+                    <app-status-indicator
+                        [label]="element.is_approved ? '承認済' : '未承認'"
+                        [status]="element | isApproved"
+                    ></app-status-indicator>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="is_purchased">
+                <th *matHeaderCellDef mat-header-cell>購入ステータス</th>
+                <td *matCellDef="let element" mat-cell>
+                    <app-status-indicator
+                        [label]="element.is_purchased ? '購入済' : '未購入'"
+                        [status]="element | isPurchased"
+                    ></app-status-indicator>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="requested_date">
+                <th *matHeaderCellDef mat-header-cell>申請日</th>
+                <td *matCellDef="let element" mat-cell>
+                    {{ element.requested_date | date: "yyyy年MM月dd日" }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="expanded-content">
+                <td *matCellDef="let element" [attr.colspan]="columns.length" mat-cell>
+                    <div
+                        [@detailExpand]="element === expandedElement ? 'expanded' : 'collapsed'"
+                        class="expandable-detail-row__wrapper"
+                    >
+                        <div class="expandable-detail-row__wrapper__content" fxLayout="column">
+                            <app-markdown-viewer [text]="element.description"></app-markdown-viewer>
+
+                            <div fxLayout="row" fxLayoutGap="10px">
+                                <app-flat-button
+                                    [label]="element.is_approved ? '承認取消' : '承認する'"
+                                    [color]="element.is_approved ? 'warn' : 'primary'"
+                                    (click)="
+                                        element.is_approved
+                                            ? onClickRejectApproval(element)
+                                            : onClickApprove(element)
+                                    "
+                                ></app-flat-button>
+                                <app-stroked-button
+                                    [label]="element.is_purchased ? '購入取消' : '購入完了'"
+                                    [color]="element.is_purchased ? 'warn' : 'primary'"
+                                    (click)="
+                                        element.is_approved
+                                            ? onClickRejectPurchase(element)
+                                            : onClickPurchase(element)
+                                    "
+                                ></app-stroked-button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr *matHeaderRowDef="columns; sticky: true" mat-header-row></tr>
+            <tr
+                (click)="expand(element)"
+                *matRowDef="let element; columns: columns"
+                class="expandable-row"
+                mat-row
+            ></tr>
+            <tr
+                *matRowDef="let element; columns: ['expanded-content']"
+                class="expandable-detail-row"
+                mat-row
+            ></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[20, 40, 60]" showFirstLastButtons></mat-paginator>
+    </div>
 </app-card>

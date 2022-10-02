@@ -26,6 +26,12 @@ $font-color-gray: rgba(0, 0, 0, 0.54);
     color: $font-color-gray !important;
 }
 
+// フォント色【明るい灰色】
+$font-color-light-gray: #6b788c;
+@mixin font-color-light-gray {
+    color: $font-color-light-gray !important;
+}
+
 // フォント色【リンク】
 $font-color-link: #36c;
 @mixin font-color-link {

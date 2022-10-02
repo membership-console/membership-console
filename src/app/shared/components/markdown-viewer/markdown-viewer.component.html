@@ -1,1 +1,4 @@
-<markdown>{{ source }}</markdown>
+<div class="markdown-preview">
+    <markdown *ngIf="text">{{ text }}</markdown>
+    <markdown *ngIf="file" [src]="file"></markdown>
+</div>

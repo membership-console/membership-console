@@ -1,0 +1,22 @@
+.status-indicator--normal {
+    .status-indicator__badge {
+        color: #c9cdd0;
+    }
+
+    .status-indicator__text {
+        color: #575757;
+    }
+}
+
+.status-indicator--success {
+    color: #3a74ca;
+}
+
+.status-indicator--warning {
+    // color: #ffa200;
+    color: #00838f;
+}
+
+.status-indicator--failure {
+    color: #da4a48;
+}

@@ -14,7 +14,7 @@ blockquote {
     border-left: 4px solid #0066cc;
     border-radius: 4px;
     color: #666;
-    margin: 20px 0;
+    margin: 0;
     padding: 1px 20px;
 }
 
@@ -74,7 +74,7 @@ blockquote {
     app-shared-input,
     app-shared-textarea,
     app-shared-markdown-editor {
-        min-width: 300px;
+        min-width: 600px;
         width: 100%;
         margin-bottom: 10px;
     }

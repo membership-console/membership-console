@@ -12,14 +12,12 @@
 
     <!-- Markdown Viewer -->
     <ng-template #MarkdownViewer>
-        <app-markdown-viewer [source]="controlDir.control.value"></app-markdown-viewer>
+        <app-markdown-viewer [text]="controlDir.control.value"></app-markdown-viewer>
     </ng-template>
 
     <!-- Edit Guide -->
     <ng-template #EditGuide>
-        <blockquote>
-            <p>🔔 EDIT GUIDEを表示予定</p>
-        </blockquote>
+        <app-markdown-viewer file="assets/docs/edit_guide.md"></app-markdown-viewer>
     </ng-template>
 
     <mat-tab-group headerPosition="below" mat-stretch-tabs>
