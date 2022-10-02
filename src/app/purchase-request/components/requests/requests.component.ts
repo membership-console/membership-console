@@ -62,7 +62,7 @@ export class RequestsComponent implements OnInit {
             requested_date: new Date(),
             requested_by: "山田 太郎",
             is_approved: true,
-            is_purchased: false,
+            is_purchased: true,
         },
     ];
 
@@ -120,14 +120,32 @@ export class RequestsComponent implements OnInit {
     }
 
     /**
+     * 承認取り消し
+     *
+     * @param element 要素
+     */
+    onClickRejectApproval(element: Request) {
+        this.alertService.confirm("取消確認", "この購入申請の承認を取り消しますか？");
+    }
+
+    /**
      * 購入完了
      *
      * @param element 要素
      */
-    onClickPurchased(element: Request) {
+    onClickPurchase(element: Request) {
         this.alertService.confirm(
             "承認確認",
             "ステータスを購入完了に変更します。\n購入が完了しましたか？"
         );
+    }
+
+    /**
+     * 購入取り消し
+     *
+     * @param element 要素
+     */
+    onClickRejectPurchase(element: Request) {
+        this.alertService.confirm("取消確認", "既に購入完了した申請です。\n購入を取り消しますか？");
     }
 }

@@ -79,15 +79,22 @@
 
                             <div fxLayout="row" fxLayoutGap="10px">
                                 <app-flat-button
-                                    label="承認する"
-                                    [disabled]="element.is_approved"
-                                    (click)="onClickApprove(element)"
+                                    [label]="element.is_approved ? '承認取消' : '承認する'"
+                                    [color]="element.is_approved ? 'warn' : 'primary'"
+                                    (click)="
+                                        element.is_approved
+                                            ? onClickRejectApproval(element)
+                                            : onClickApprove(element)
+                                    "
                                 ></app-flat-button>
                                 <app-stroked-button
-                                    label="購入完了"
-                                    color="primary"
-                                    [disabled]="element.is_purchased"
-                                    (click)="onClickPurchased(element)"
+                                    [label]="element.is_purchased ? '購入取消' : '購入完了'"
+                                    [color]="element.is_purchased ? 'warn' : 'primary'"
+                                    (click)="
+                                        element.is_approved
+                                            ? onClickRejectPurchase(element)
+                                            : onClickPurchase(element)
+                                    "
                                 ></app-stroked-button>
                             </div>
                         </div>
