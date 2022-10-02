@@ -3,7 +3,7 @@
     "prettier --write --",
     "ng-lint-staged ng lint --fix --"
   ],
-  "*.{css,scss}": [
+  "*.{css,scss,md}": [
     "prettier --write --"
   ]
 }
