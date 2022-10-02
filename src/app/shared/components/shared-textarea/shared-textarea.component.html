@@ -1,0 +1,39 @@
+<mat-form-field *ngIf="controlDir.control !== null" [appearance]="appearance" fxFlex>
+    <mat-label>{{ label }}</mat-label>
+    <ng-container *ngIf="autosize; else elseTemplate">
+        <textarea
+            [formControl]="controlDir.control"
+            [placeholder]="placeholder"
+            [rows]="rows"
+            cdkTextareaAutosize
+            matInput
+        ></textarea>
+    </ng-container>
+    <ng-template #elseTemplate>
+        <textarea
+            [formControl]="controlDir.control"
+            [placeholder]="placeholder"
+            [rows]="rows"
+            matInput
+        ></textarea>
+    </ng-template>
+    <mat-error *ngIf="controlDir.control?.hasError('required')">
+        {{ placeholder }}を入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('empty')">
+        空白のみの入力は禁止されています。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('minlength')">
+        {{ controlDir.control!.errors!["minlength"].requiredLength }}文字以上で入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('maxlength')">
+        {{ controlDir.control!.errors!["maxlength"].requiredLength }}文字以内で入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('pattern')">
+        有効なフォーマットで入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('invalid_url')">
+        有効なURLを入力してください。
+    </mat-error>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+</mat-form-field>

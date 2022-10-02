@@ -6,7 +6,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
-import { MAT_DATE_LOCALE } from "@angular/material/core";
+import { MAT_DATE_LOCALE, MatNativeDateModule } from "@angular/material/core";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -35,6 +36,8 @@ import { PageContainerComponent } from "@shared/components/page-container/page-c
 import { SidenavComponent } from "@shared/components/page-container/sidenav/sidenav.component";
 import { TitleComponent } from "@shared/components/page-container/title/title.component";
 import { ProgressSpinnerComponent } from "@shared/components/progress-spinner/progress-spinner.component";
+import { SharedInputComponent } from "@shared/components/shared-input/shared-input.component";
+import { SharedTextareaComponent } from "@shared/components/shared-textarea/shared-textarea.component";
 import { SnackBarComponent } from "@shared/components/snack-bar/snack-bar.component";
 import { StatusBadgeComponent } from "@shared/components/status-badge/status-badge.component";
 import { StrokedButtonComponent } from "@shared/components/stroked-button/stroked-button.component";
@@ -59,6 +62,8 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         SidenavComponent,
         TitleComponent,
         ProgressSpinnerComponent,
+        SharedInputComponent,
+        SharedTextareaComponent,
         SnackBarComponent,
         StatusBadgeComponent,
         StrokedButtonComponent,
@@ -80,9 +85,13 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         MatBadgeModule,
         MatButtonModule,
         MatCardModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
         MatDialogModule,
         MatExpansionModule,
+        MatFormFieldModule,
         MatIconModule,
+        MatInputModule,
         MatListModule,
         MatMenuModule,
         MatProgressSpinnerModule,
@@ -92,6 +101,9 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
     ],
     exports: [
         // Modules
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterTestingModule,
 
         // UI Modules
@@ -107,6 +119,8 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         // Components
         CardComponent,
         FlatButtonComponent,
+        SharedInputComponent,
+        SharedTextareaComponent,
         StatusBadgeComponent,
 
         // Pipes

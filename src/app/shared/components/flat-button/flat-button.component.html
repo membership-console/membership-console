@@ -4,6 +4,7 @@
     [style.min-width]="minWidth"
     [type]="type"
     mat-flat-button
+    [class.color-none]="color === null"
 >
     <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
     <span>{{ label }}</span>

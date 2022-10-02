@@ -34,5 +34,5 @@ export class FlatButtonComponent {
     /**
      * ボタン色
      */
-    @Input() color: "primary" | "accent" | "warn" = "primary";
+    @Input() color: "primary" | "accent" | "warn" | null = "primary";
 }
