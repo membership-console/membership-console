@@ -41,6 +41,7 @@ import { StrokedButtonComponent } from "@shared/components/stroked-button/stroke
 import { ErrorResponseInterceptor } from "@shared/interceptors/error-response.interceptor";
 import { LoadingInterceptor } from "@shared/interceptors/loading.interceptor";
 import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
+import { UsernamePipe } from "@shared/pipes/username.pipe";
 
 @NgModule({
     declarations: [
@@ -64,6 +65,7 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
 
         // Pipes
         SafeHtmlPipe,
+        UsernamePipe,
     ],
     imports: [
         // Modules
@@ -106,6 +108,10 @@ import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
         CardComponent,
         FlatButtonComponent,
         StatusBadgeComponent,
+
+        // Pipes
+        SafeHtmlPipe,
+        UsernamePipe,
     ],
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: "ja-JP" },
