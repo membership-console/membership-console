@@ -26,6 +26,20 @@ export class DashboardComponent {
             version: "開発中",
         },
         {
+            name: "リマインダー",
+            description: "会員向けにメール配信・リマインダーが設定できます。",
+            icon: "notifications_active",
+            path: "/reminder",
+            version: "開発中",
+        },
+        {
+            name: "フォーム",
+            description: "会員向けフォームを作成できます。回答状況のビューアも提供されます。",
+            icon: "article",
+            path: "/form",
+            version: "開発中",
+        },
+        {
             name: "購入申請",
             description: "追加で備品を購入したい場合は、本プロダクトから会計局へ申請してください。",
             icon: "account_balance_wallet",
@@ -33,10 +47,10 @@ export class DashboardComponent {
             version: "開発中",
         },
         {
-            name: "Kiri Tansu",
-            description: "RCCの備品貸出ツールです。備品・蔵書をレンタルできます。",
-            icon: "menu_book",
-            path: "/kiri-tansu",
+            name: "総会文書生成ツール",
+            description: "総会文書リポジトリを設定ファイルを指定するだけで自動生成できます。",
+            icon: "description",
+            path: "/soukai-generator",
             version: "開発中",
         },
     ];
