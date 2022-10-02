@@ -1,19 +1,19 @@
 # Membership Console
 
-![CI](https://github.com/averak/membership-console/workflows/CI/badge.svg)
-![deploy](https://github.com/averak/membership-console/workflows/deploy/badge.svg)
+![CI](https://github.com/membership-console/membership-console/workflows/CI/badge.svg)
+![deploy](https://github.com/membership-console/membership-console/workflows/deploy/badge.svg)
 ![version](https://img.shields.io/badge/version-1.0.0__SNAPSHOT-blue.svg)
 
 ## 概要
 
-本プロジェクトは汎用的なグループウェアの統合UIです。
+本プロジェクトは汎用的なグループウェアの統合 UI です。
 
 ## 開発
 
 ### 開発環境
 
-- Node.js 18
-- Angular 14
+-   Node.js 18
+-   Angular 14
 
 ### インストール
 
