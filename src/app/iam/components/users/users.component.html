@@ -1,0 +1,50 @@
+<app-card>
+    <app-flat-button
+        icon="add"
+        label="新規作成"
+        [routerLink]="['new']"
+        queryParamsHandling="merge"
+    ></app-flat-button>
+
+    <div fxFlex="100" fxLayout="column">
+        <table [dataSource]="dataSource" mat-table>
+            <ng-container matColumnDef="name">
+                <th *matHeaderCellDef mat-header-cell>名前</th>
+                <td *matCellDef="let element" mat-cell class="truncate-text">
+                    {{ element.lastName }} {{ element.firstName }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th *matHeaderCellDef mat-header-cell>メールアドレス</th>
+                <td *matCellDef="let element" mat-cell class="truncate-text">
+                    {{ element.email }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="entranceYear">
+                <th *matHeaderCellDef mat-header-cell>入学年度</th>
+                <td *matCellDef="let element" mat-cell class="truncate-text">
+                    {{ element.entranceYear }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="control">
+                <th *matHeaderCellDef mat-header-cell>操作</th>
+                <td *matCellDef="let user" mat-cell>
+                    <button (click)="onClickEdit(user)" mat-icon-button>
+                        <mat-icon color="primary">edit</mat-icon>
+                    </button>
+                    <button (click)="onClickDelete(user)" mat-icon-button>
+                        <mat-icon color="primary">delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr *matHeaderRowDef="columns; sticky: true" mat-header-row></tr>
+            <tr *matRowDef="let row; columns: columns" mat-row></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[20, 40, 60]" showFirstLastButtons></mat-paginator>
+    </div>
+</app-card>
