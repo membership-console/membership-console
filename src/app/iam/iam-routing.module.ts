@@ -5,10 +5,9 @@ import { UserGroupsComponent } from "@iam/components/user-groups/user-groups.com
 import { UsersComponent } from "@iam/components/users/users.component";
 
 const routes: Routes = [
-    // TODO: /iamは/iam/usersへリダイレクト
     {
         path: "",
-        redirectTo: "user-groups",
+        redirectTo: "users",
         pathMatch: "full",
     },
     {

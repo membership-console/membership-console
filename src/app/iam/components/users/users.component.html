@@ -11,7 +11,7 @@
             <ng-container matColumnDef="name">
                 <th *matHeaderCellDef mat-header-cell>名前</th>
                 <td *matCellDef="let element" mat-cell class="truncate-text">
-                    {{ element.lastName }} {{ element.firstName }}
+                    {{ getName(element) }}
                 </td>
             </ng-container>
 
