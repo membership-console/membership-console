@@ -7,7 +7,7 @@
     ></app-flat-button>
 
     <div fxFlex="100" fxLayout="column">
-        <table [dataSource]="dataSource" mat-table>
+        <table [dataSource]="dataSource" mat-table multiTemplateDataRows>
             <ng-container matColumnDef="name">
                 <th *matHeaderCellDef mat-header-cell>商品名</th>
                 <td *matCellDef="let element" mat-cell class="truncate-text">
@@ -58,8 +58,55 @@
                     {{ element.requested_date | date: "yyyy年MM月dd日" }}
                 </td>
             </ng-container>
+
+            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+            <ng-container matColumnDef="expanded-content">
+                <td *matCellDef="let element" [attr.colspan]="columns.length" mat-cell>
+                    <div
+                        [@detailExpand]="element === expandedElement ? 'expanded' : 'collapsed'"
+                        class="expandable-detail-row__wrapper"
+                    >
+                        <div
+                            class="expandable-detail-row__wrapper__content"
+                            fxLayout="column"
+                            fxLayoutGap="20px"
+                        >
+                            <div class="description" fxLayout="column" fxLayoutGap="10px">
+                                <app-markdown-viewer
+                                    [source]="element.description"
+                                ></app-markdown-viewer>
+                            </div>
+
+                            <div fxLayout="row" fxLayoutGap="10px">
+                                <app-flat-button
+                                    label="承認する"
+                                    [disabled]="element.is_approved"
+                                    (click)="onClickApprove(element)"
+                                ></app-flat-button>
+                                <app-stroked-button
+                                    label="購入完了"
+                                    color="primary"
+                                    [disabled]="element.is_purchased"
+                                    (click)="onClickPurchased(element)"
+                                ></app-stroked-button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </ng-container>
+
             <tr *matHeaderRowDef="columns; sticky: true" mat-header-row></tr>
-            <tr *matRowDef="let row; columns: columns" mat-row></tr>
+            <tr
+                (click)="expand(element)"
+                *matRowDef="let element; columns: columns"
+                class="expandable-row"
+                mat-row
+            ></tr>
+            <tr
+                *matRowDef="let element; columns: ['expanded-content']"
+                class="expandable-detail-row"
+                mat-row
+            ></tr>
         </table>
 
         <mat-paginator [pageSizeOptions]="[20, 40, 60]" showFirstLastButtons></mat-paginator>

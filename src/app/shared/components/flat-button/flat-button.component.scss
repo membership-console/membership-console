@@ -14,3 +14,8 @@ button:not(.color-none) {
     border: 1px solid;
     border-color: #3f51b5 !important;
 }
+
+button.disabled {
+    border: 1px solid;
+    border-color: #e0e0e0 !important;
+}

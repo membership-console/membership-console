@@ -125,6 +125,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
+        MatListModule,
         MatPaginatorModule,
         MatTableModule,
 
@@ -142,6 +143,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         NumberPipe,
         SafeHtmlPipe,
         UsernamePipe,
+        StrokedButtonComponent,
     ],
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: "ja-JP" },
