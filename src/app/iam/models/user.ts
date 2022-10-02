@@ -8,19 +8,19 @@ export type User = {
     id: number;
 
     /**
-     * ユーザ名
+     * 苗字
      */
-    name: string;
+    lastName: string;
 
     /**
-     * ロール
+     * 名前
      */
-    role: number;
+    firstName: string;
 
     /**
      * メールアドレス
      */
-    mailAddress: string;
+    email: string;
 
     /**
      * 入学年度
