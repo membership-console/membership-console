@@ -31,8 +31,16 @@ const routes: Routes = [
             {
                 path: "iam",
                 loadChildren: () =>
-                    import("@app/iam/iam-routing.module").then((m) => m.IamRoutingModule),
+                    import("@iam/iam-routing.module").then((m) => m.IamRoutingModule),
                 data: { breadcrumb: "IAM", title: null },
+            },
+            {
+                path: "purchase-request",
+                loadChildren: () =>
+                    import("@purchase-request/purchase-request-routing.module").then(
+                        (m) => m.PurchaseRequestRoutingModule
+                    ),
+                data: { breadcrumb: "購入申請", title: null },
             },
         ],
     },

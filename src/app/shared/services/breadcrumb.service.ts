@@ -4,7 +4,7 @@ import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { BehaviorSubject, Observable } from "rxjs";
 import { filter } from "rxjs/operators";
 
-import { Breadcrumb } from "@app/models/breadcrumb";
+import { Breadcrumb } from "@shared/models/breadcrumb";
 
 @UntilDestroy()
 @Injectable({

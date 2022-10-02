@@ -40,6 +40,7 @@
               "src",
               "@app/api",
               "@app/iam",
+              "@app/purchase-request",
               "@app/shared",
               "@api/models/*",
               "@api/services/*"
@@ -90,6 +91,11 @@
               },
               {
                 "pattern": "@iam/**",
+                "group": "parent",
+                "position": "before"
+              },
+              {
+                "pattern": "@purchase-request/**",
                 "group": "parent",
                 "position": "before"
               },
