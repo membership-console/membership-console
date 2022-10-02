@@ -103,12 +103,4 @@ export class UsersComponent implements OnInit {
                 }
             });
     }
-
-    /**
-     * ユーザの名前を取得
-     * @param user
-     */
-    getName(user: User): string {
-        return `${user.lastName} ${user.firstName}`;
-    }
 }
