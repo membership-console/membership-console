@@ -1,0 +1,57 @@
+<mat-form-field *ngIf="controlDir.control !== null" [appearance]="appearance" fxFlex>
+    <mat-label>{{ label }}</mat-label>
+    <input
+        *ngIf="type !== 'date'"
+        [formControl]="controlDir.control"
+        [placeholder]="placeholder"
+        [type]="getInputType()"
+        matInput
+    />
+    <input
+        *ngIf="type === 'date'"
+        [formControl]="controlDir.control"
+        [matDatepicker]="picker"
+        [placeholder]="placeholder"
+        [type]="getInputType()"
+        matInput
+    />
+    <mat-datepicker-toggle *ngIf="type === 'date'" [for]="picker" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-icon (click)="hide = !hide" *ngIf="type === 'password'" matSuffix>{{
+        hide ? "visibility" : "visibility_off"
+    }}</mat-icon>
+    <button (click)="onClickIcon()" *ngIf="icon" mat-icon-button matSuffix type="button">
+        <mat-icon>{{ icon }}</mat-icon>
+    </button>
+    <mat-error *ngIf="controlDir.control?.hasError('required')">
+        {{ placeholder }}を入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('matDatepickerParse')">
+        {{ placeholder }}を入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('empty')">
+        空白のみの入力は禁止されています。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('minlength')">
+        {{ controlDir.control!.errors!["minlength"].requiredLength }}文字以上で入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('maxlength')">
+        {{ controlDir.control!.errors!["maxlength"].requiredLength }}文字以内で入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('min')">
+        {{ controlDir.control!.errors!["min"].min }}以上で入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('max')">
+        {{ controlDir.control!.errors!["max"].max }}以内で入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('email')">
+        有効なメールアドレスを入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('pattern')">
+        有効なフォーマットで入力してください。
+    </mat-error>
+    <mat-error *ngIf="controlDir.control?.hasError('invalid_url')">
+        有効なURLを入力してください。
+    </mat-error>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+</mat-form-field>

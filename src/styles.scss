@@ -39,3 +39,43 @@ blockquote {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.form-field-wrapper--half {
+    width: 100%;
+
+    span {
+        width: 200px;
+        min-width: 200px;
+        padding-top: 10px;
+    }
+
+    app-shared-input:nth-of-type(1) {
+        padding-right: 20px;
+    }
+
+    app-shared-input,
+    app-shared-textarea,
+    app-shared-markdown-editor {
+        min-width: 300px;
+        width: calc((100% - 200px) / 2);
+        margin-bottom: 10px;
+    }
+}
+
+.form-field-wrapper--full {
+    width: 100%;
+
+    span {
+        width: 200px;
+        min-width: 200px;
+        padding-top: 10px;
+    }
+
+    app-shared-input,
+    app-shared-textarea,
+    app-shared-markdown-editor {
+        min-width: 300px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

@@ -1,7 +1,7 @@
 import { Component, Inject } from "@angular/core";
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from "@angular/material/snack-bar";
 
-import { Alert } from "@app/models/alert";
+import { Alert } from "@shared/models/alert";
 
 @Component({
     selector: "app-snack-bar",

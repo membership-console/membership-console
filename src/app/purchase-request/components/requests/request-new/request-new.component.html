@@ -1,0 +1,51 @@
+<app-card>
+    <form
+        (ngSubmit)="onSubmit()"
+        *ngIf="form"
+        [formGroup]="form"
+        fxLayout="column"
+        fxLayoutAlign="start center"
+    >
+        <div class="form-field-wrapper--full" fxLayout="row">
+            <span>商品名</span>
+            <app-shared-input formControlName="name" label="商品名"></app-shared-input>
+        </div>
+
+        <div class="form-field-wrapper--full" fxLayout="row">
+            <span>説明文</span>
+            <app-shared-markdown-editor
+                formControlName="description"
+                label="説明文"
+            ></app-shared-markdown-editor>
+        </div>
+
+        <div class="form-field-wrapper--full" fxLayout="row">
+            <span>商品URL</span>
+            <app-shared-input formControlName="url" label="商品URL"></app-shared-input>
+        </div>
+
+        <div class="form-field-wrapper--half" fxLayout="row">
+            <span>価格</span>
+            <app-shared-input
+                formControlName="price"
+                label="税込価格"
+                type="number"
+            ></app-shared-input>
+
+            <app-shared-input
+                formControlName="quantity"
+                label="個数"
+                type="number"
+            ></app-shared-input>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center center" fxFlexOffset="10px" fxLayoutGap="10px">
+            <app-flat-button label="確認" type="submit"></app-flat-button>
+            <app-flat-button
+                label="キャンセル"
+                [color]="null"
+                (click)="onCancel()"
+            ></app-flat-button>
+        </div>
+    </form>
+</app-card>

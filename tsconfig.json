@@ -28,6 +28,9 @@
       "@iam/*": [
         "src/app/iam/*"
       ],
+      "@purchase-request/*": [
+        "src/app/purchase-request/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ],

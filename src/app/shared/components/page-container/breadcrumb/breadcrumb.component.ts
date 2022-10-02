@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
-import { Breadcrumb } from "@app/models/breadcrumb";
-
+import { Breadcrumb } from "@shared/models/breadcrumb";
 import { BreadcrumbService } from "@shared/services/breadcrumb.service";
 
 @UntilDestroy()

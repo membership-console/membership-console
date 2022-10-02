@@ -29,7 +29,7 @@ export class DashboardComponent {
             name: "購入申請",
             description: "追加で備品を購入したい場合は、本プロダクトから会計局へ申請してください。",
             icon: "account_balance_wallet",
-            path: "/purchase",
+            path: "/purchase-request",
             version: "開発中",
         },
         {

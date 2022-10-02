@@ -34,5 +34,5 @@ export class StrokedButtonComponent {
     /**
      * ボタン色
      */
-    @Input() color: "primary" | "accent" | "warn" | undefined = undefined;
+    @Input() color: "primary" | "accent" | "warn" | null = null;
 }
