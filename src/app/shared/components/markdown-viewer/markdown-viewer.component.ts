@@ -9,7 +9,12 @@ export class MarkdownViewerComponent {
     /**
      * Markdownテキスト
      */
-    @Input() source = "";
+    @Input() text: string | undefined;
+
+    /**
+     * Markdownファイル
+     */
+    @Input() file: string | undefined;
 
     constructor() {}
 }

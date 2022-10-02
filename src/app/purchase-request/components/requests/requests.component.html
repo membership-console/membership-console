@@ -59,23 +59,14 @@
                 </td>
             </ng-container>
 
-            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
             <ng-container matColumnDef="expanded-content">
                 <td *matCellDef="let element" [attr.colspan]="columns.length" mat-cell>
                     <div
                         [@detailExpand]="element === expandedElement ? 'expanded' : 'collapsed'"
                         class="expandable-detail-row__wrapper"
                     >
-                        <div
-                            class="expandable-detail-row__wrapper__content"
-                            fxLayout="column"
-                            fxLayoutGap="20px"
-                        >
-                            <div class="description" fxLayout="column" fxLayoutGap="10px">
-                                <app-markdown-viewer
-                                    [source]="element.description"
-                                ></app-markdown-viewer>
-                            </div>
+                        <div class="expandable-detail-row__wrapper__content" fxLayout="column">
+                            <app-markdown-viewer [text]="element.description"></app-markdown-viewer>
 
                             <div fxLayout="row" fxLayoutGap="10px">
                                 <app-flat-button
