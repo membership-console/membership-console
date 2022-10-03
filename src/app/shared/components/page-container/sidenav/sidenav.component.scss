@@ -50,10 +50,15 @@ $nav-font-color: #cbcbcb;
     h2 {
         font-size: 1.3rem;
         margin-block-end: 1em;
+        font-family: sans-serif;
     }
 
     p {
         font-size: 0.9rem;
         margin-block-start: 0;
     }
+}
+
+a.mat-list-item.active {
+    color: #d08121 !important;
 }
