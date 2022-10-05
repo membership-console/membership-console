@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router } from "@angular/router";
+import { ActivatedRouteSnapshot, NavigationEnd, Router } from "@angular/router";
 import { BehaviorSubject, Observable, of } from "rxjs";
 import { filter } from "rxjs/operators";
 
@@ -91,14 +91,12 @@ export class ProductService {
      */
     private activeProduct = new BehaviorSubject<Product>({} as Product);
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-        this.router.events
-            .pipe(filter((event) => event instanceof NavigationEnd))
-            .subscribe((_) => {
-                const root = this.router.routerState.snapshot.root;
+    constructor(private router: Router) {
+        this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
+            const root = this.router.routerState.snapshot.root;
 
-                this.searchProduct(root);
-            });
+            this.searchProduct(root);
+        });
     }
 
     /**
