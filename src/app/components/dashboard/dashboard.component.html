@@ -1,28 +1,27 @@
-<div fxLayout="row wrap" fxLayoutAlign="start wrap">
-    <a
-        class="product-card"
+<div fxLayout="row wrap" fxLayoutAlign="start wrap" fxLayoutGap="20px">
+    <mat-card
+        class="mat-elevation-z2 product-card noselect"
+        style="width: 100%"
         *ngFor="let element of products"
         [routerLink]="element.path"
         queryParamsHandling="merge"
     >
-        <mat-card class="mat-elevation-z2" style="width: 100%">
-            <mat-card-content fxLayout="column" fxLayoutAlign="start">
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <div
-                        fxLayout="row"
-                        fxLayoutAlign="start center"
-                        fxLayoutGap="8px"
-                        class="product-card__title"
-                    >
-                        <mat-icon>{{ element.icon }}</mat-icon>
-                        <span>{{ element.name }}</span>
-                    </div>
-
-                    <app-status-badge [status]="true" [label]="element.version"></app-status-badge>
+        <mat-card-content fxLayout="column" fxLayoutAlign="start">
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxLayoutGap="8px"
+                    class="product-card__title"
+                >
+                    <mat-icon>{{ element.icon }}</mat-icon>
+                    <span>{{ element.name }}</span>
                 </div>
 
-                <p class="product-card__description">{{ element.description }}</p>
-            </mat-card-content>
-        </mat-card>
-    </a>
+                <app-status-badge [status]="true" [label]="element.version"></app-status-badge>
+            </div>
+
+            <p class="product-card__description">{{ element.description }}</p>
+        </mat-card-content>
+    </mat-card>
 </div>

@@ -17,7 +17,7 @@ const routes: Routes = [
             {
                 path: "dashboard",
                 component: DashboardComponent,
-                data: { breadcrumb: "ダッシュボード", title: "プロダクト一覧" },
+                data: { breadcrumb: "ダッシュボード", title: "連携プロダクト" },
             },
             {
                 path: "notifications",
@@ -48,7 +48,7 @@ const routes: Routes = [
     {
         path: "login",
         component: LoginComponent,
-        data: { breadcrumb: "ログイン", title: "ログイン" },
+        data: { breadcrumb: null, title: null },
     },
     { path: "**", redirectTo: "/error/404", pathMatch: "full" },
 ];
