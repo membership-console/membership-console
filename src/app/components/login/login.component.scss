@@ -1,0 +1,41 @@
+@import "src/assets/scss/colors";
+
+.login-container {
+    margin-top: 160px;
+}
+
+.forgot-password {
+    @include font-color-link;
+}
+
+.card {
+    width: 340px;
+    padding: 40px;
+}
+
+.account-circle-display {
+    transform: scale(2.5);
+    margin-top: 40px;
+    color: #3a74ca;
+}
+
+.input-icon-display {
+    color: #666666;
+}
+
+mat-form-field {
+    width: 300px;
+}
+
+mat-label {
+    margin-left: 18px;
+}
+
+input {
+    margin-left: 14px;
+}
+
+.login-button {
+    width: 300px !important;
+    min-width: unset !important;
+}

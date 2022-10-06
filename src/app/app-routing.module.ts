@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { DashboardComponent } from "@app/components/dashboard/dashboard.component";
 import { ErrorComponent } from "@app/components/error/error.component";
+import { LoginComponent } from "@app/components/login/login.component";
 import { NotificationsComponent } from "@app/components/notifications/notifications.component";
 
 import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
@@ -43,6 +44,11 @@ const routes: Routes = [
                 data: { breadcrumb: "購入申請", title: null },
             },
         ],
+    },
+    {
+        path: "login",
+        component: LoginComponent,
+        data: { breadcrumb: "ログイン", title: "ログイン" },
     },
     { path: "**", redirectTo: "/error/404", pathMatch: "full" },
 ];

@@ -6,6 +6,7 @@ import { AppRoutingModule } from "@app/app-routing.module";
 import { AppComponent } from "@app/app.component";
 import { DashboardComponent } from "@app/components/dashboard/dashboard.component";
 import { ErrorComponent } from "@app/components/error/error.component";
+import { LoginComponent } from "@app/components/login/login.component";
 import { NotificationsComponent } from "@app/components/notifications/notifications.component";
 
 import { IamModule } from "@iam/iam.module";
@@ -21,6 +22,7 @@ import { SharedModule } from "@shared/shared.module";
         DashboardComponent,
         ErrorComponent,
         NotificationsComponent,
+        LoginComponent,
     ],
     imports: [
         SharedModule,

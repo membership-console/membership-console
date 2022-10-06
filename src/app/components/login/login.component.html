@@ -1,0 +1,66 @@
+<app-header></app-header>
+<div fxLayout="column" fxLayoutAlign="center center" class="login-container">
+    <mat-card class="card">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+            <mat-icon class="account-circle-display">account_circle</mat-icon>
+
+            <div style="font-weight: bold; font-size: 1.2em">
+                <span style="color: #0e9fcc">Login</span>
+                Your Account
+            </div>
+
+            <mat-form-field appearance="fill">
+                <span matPrefix><mat-icon class="input-icon-display">mail</mat-icon></span>
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="pat@example.com" [formControl]="email" required />
+                <mat-error *ngIf="email.invalid">{{ getEmailErrorMessage() }}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <span matPrefix><mat-icon class="input-icon-display">lock</mat-icon></span>
+                <mat-label>Password</mat-label>
+                <input
+                    matInput
+                    [type]="passwordHide ? 'password' : 'text'"
+                    [formControl]="password"
+                    required
+                />
+                <mat-error *ngIf="password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
+                <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="passwordHide = !passwordHide"
+                    [attr.aria-label]="'passwordHide password'"
+                    [attr.aria-pressed]="passwordHide"
+                >
+                    <mat-icon class="input-icon-display">{{
+                        passwordHide ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-around" style="padding: 20px">
+            <div>
+                <mat-checkbox color="primary">Remember</mat-checkbox>
+            </div>
+            <div>
+                <span class="forgot-password" (click)="onClickForgotPassword()"
+                    >Forgot Password?</span
+                >
+            </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+            <button
+                mat-flat-button
+                color="primary"
+                class="login-button"
+                (click)="login()"
+                type="submit"
+            >
+                LOGIN
+            </button>
+        </div>
+    </mat-card>
+</div>

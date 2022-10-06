@@ -5,8 +5,10 @@
     </div>
 
     <div fxLayout="row" fxLayoutAlign="start center">
-        <app-notification-menu></app-notification-menu>
-        <app-help-menu></app-help-menu>
-        <app-user-menu></app-user-menu>
+        <div *ngIf="isMenuValid">
+            <app-notification-menu></app-notification-menu>
+            <app-help-menu></app-help-menu>
+            <app-user-menu></app-user-menu>
+        </div>
     </div>
 </mat-toolbar>
