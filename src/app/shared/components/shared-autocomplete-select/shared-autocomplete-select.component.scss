@@ -1,0 +1,21 @@
+.search-container {
+    margin: 8px;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.38);
+    transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+
+    .search-container__input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding-left: 1rem;
+    }
+
+    .search-container__clear-button {
+        width: 36px;
+        height: 36px;
+        line-height: 33px;
+        color: #808080;
+    }
+}

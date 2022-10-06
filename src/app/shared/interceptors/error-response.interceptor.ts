@@ -26,13 +26,15 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
             catchError((error: HttpErrorResponse) => {
                 const response = this.extractErrorResponseByBody(error);
 
-                // 不正な認証情報
+                // エラーハンドリング
                 if (error.status === 401) {
                     this.router.navigate(["/login"], {
                         queryParamsHandling: "merge",
                     });
                 } else if (error.status === 403) {
                     this.navigateErrorPage(403);
+                } else if (error.status === 404) {
+                    this.navigateErrorPage(404);
                 } else if (error.status === 500) {
                     this.navigateErrorPage(500);
                 }

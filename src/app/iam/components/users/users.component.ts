@@ -75,7 +75,7 @@ export class UsersComponent implements OnInit {
      * @param user ユーザグループ
      */
     onClickEdit(user: UserResponse) {
-        this.router.navigate(["edit", user.id], {
+        this.router.navigate([user.id, "edit"], {
             queryParams: {},
             queryParamsHandling: "merge",
             relativeTo: this.activatedRoute,

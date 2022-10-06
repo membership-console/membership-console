@@ -3,11 +3,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MAT_DATE_LOCALE, MatNativeDateModule } from "@angular/material/core";
+import { MatChipsModule } from "@angular/material/chips";
+import { MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule } from "@angular/material/core";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatExpansionModule } from "@angular/material/expansion";
@@ -18,6 +20,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatSelectModule } from "@angular/material/select";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatTableModule } from "@angular/material/table";
@@ -40,6 +43,8 @@ import { PageContainerComponent } from "@shared/components/page-container/page-c
 import { SidenavComponent } from "@shared/components/page-container/sidenav/sidenav.component";
 import { TitleComponent } from "@shared/components/page-container/title/title.component";
 import { ProgressSpinnerComponent } from "@shared/components/progress-spinner/progress-spinner.component";
+import { SharedAutocompleteChipInputComponent } from "@shared/components/shared-autocomplete-chip-input/shared-autocomplete-chip-input.component";
+import { SharedAutocompleteSelectComponent } from "@shared/components/shared-autocomplete-select/shared-autocomplete-select.component";
 import { SharedInputComponent } from "@shared/components/shared-input/shared-input.component";
 import { SharedMarkdownEditorComponent } from "@shared/components/shared-markdown-editor/shared-markdown-editor.component";
 import { SharedTextareaComponent } from "@shared/components/shared-textarea/shared-textarea.component";
@@ -71,6 +76,8 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         SidenavComponent,
         TitleComponent,
         ProgressSpinnerComponent,
+        SharedAutocompleteChipInputComponent,
+        SharedAutocompleteSelectComponent,
         SharedInputComponent,
         SharedMarkdownEditorComponent,
         SharedTextareaComponent,
@@ -94,10 +101,13 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
 
         // UI Modules
         FlexLayoutModule,
+        MatAutocompleteModule,
         MatBadgeModule,
         MatButtonModule,
         MatCardModule,
+        MatChipsModule,
         MatNativeDateModule,
+        MatOptionModule,
         MatDatepickerModule,
         MatDialogModule,
         MatExpansionModule,
@@ -107,6 +117,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         MatListModule,
         MatMenuModule,
         MatProgressSpinnerModule,
+        MatSelectModule,
         MatSidenavModule,
         MatSnackBarModule,
         MatTabsModule,
@@ -138,6 +149,8 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         FlatButtonComponent,
         HeaderComponent,
         MarkdownViewerComponent,
+        SharedAutocompleteChipInputComponent,
+        SharedAutocompleteSelectComponent,
         SharedInputComponent,
         SharedMarkdownEditorComponent,
         SharedTextareaComponent,
