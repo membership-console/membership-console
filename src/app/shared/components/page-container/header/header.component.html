@@ -4,11 +4,9 @@
         <span class="header-title noselect">Membership Console</span>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="start center">
-        <div *ngIf="isMenuValid">
-            <app-notification-menu></app-notification-menu>
-            <app-help-menu></app-help-menu>
-            <app-user-menu></app-user-menu>
-        </div>
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="isMenuValid">
+        <app-notification-menu></app-notification-menu>
+        <app-help-menu></app-help-menu>
+        <app-user-menu></app-user-menu>
     </div>
 </mat-toolbar>
