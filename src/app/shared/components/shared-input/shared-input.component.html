@@ -1,4 +1,5 @@
 <mat-form-field *ngIf="controlDir.control !== null" [appearance]="appearance" fxFlex>
+    <mat-icon matPrefix *ngIf="prefixIcon" class="prefix-icon">{{ prefixIcon }}</mat-icon>
     <mat-label>{{ label }}</mat-label>
     <input
         *ngIf="type !== 'date'"

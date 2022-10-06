@@ -1,41 +1,36 @@
 @import "src/assets/scss/colors";
 
 .login-container {
-    margin-top: 160px;
+    // ヘッダー（64px）を差し引いた画面の中央に表示する
+    height: calc(100vh - 64px);
+    // ログインカードの高さが449pxなので、上下30px分のマージンを入れる（padding-bottomも足す）
+    min-height: calc(449px + 60px + 150px);
+    padding-bottom: 150px;
+
+    .mat-card-content {
+        width: 300px;
+        padding: 30px 40px;
+    }
+}
+
+.login-container__logo {
+    font-size: 60px !important;
+    color: #3a74ca;
+}
+
+.login-container__title {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.login-container__form {
+    width: 100%;
+
+    .login-container__form-field {
+        width: 100%;
+    }
 }
 
 .forgot-password {
     @include font-color-link;
-}
-
-.card {
-    width: 340px;
-    padding: 40px;
-}
-
-.account-circle-display {
-    transform: scale(2.5);
-    margin-top: 40px;
-    color: #3a74ca;
-}
-
-.input-icon-display {
-    color: #666666;
-}
-
-mat-form-field {
-    width: 300px;
-}
-
-mat-label {
-    margin-left: 18px;
-}
-
-input {
-    margin-left: 14px;
-}
-
-.login-button {
-    width: 300px !important;
-    min-width: unset !important;
 }

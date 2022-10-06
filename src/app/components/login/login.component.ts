@@ -1,22 +1,43 @@
-import { Component } from "@angular/core";
-import { FormControl, Validators } from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 import { AlertService } from "@shared/services/alert.service";
+import { whiteSpaceValidator } from "@shared/validators/white-space.validator";
 
 @Component({
     selector: "app-login",
     templateUrl: "./login.component.html",
     styleUrls: ["./login.component.scss"],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     /**
-     * FormControlオブジェクト
+     * フォーム
      */
-    email = new FormControl("", [Validators.required, Validators.email]);
-    password = new FormControl("", [Validators.required, Validators.email]);
-    passwordHide = true;
+    form!: UntypedFormGroup;
 
-    constructor(private alertService: AlertService) {}
+    constructor(
+        private alertService: AlertService,
+        private formBuilder: FormBuilder,
+        private router: Router
+    ) {}
+
+    ngOnInit() {
+        this.form = this.formBuilder.group({
+            // メールアドレス
+            email: [null, [Validators.required, Validators.email, whiteSpaceValidator]],
+            // パスワード
+            password: [
+                null,
+                [
+                    Validators.required,
+                    Validators.minLength(8),
+                    Validators.maxLength(32),
+                    whiteSpaceValidator,
+                ],
+            ],
+        });
+    }
 
     onClickForgotPassword() {
         this.alertService.confirm(
@@ -25,22 +46,17 @@ export class LoginComponent {
         );
     }
 
-    getEmailErrorMessage() {
-        if (this.email.hasError("required")) {
-            return "メールアドレスを入力してください";
+    /**
+     * フォーム送信
+     */
+    onSubmit() {
+        if (this.form.valid) {
+            // TODO: ログイン機能を実装する
+            this.router.navigate(["/"], {
+                queryParams: {},
+                queryParamsHandling: "merge",
+            });
+            this.alertService.warn("その機能はまだ実装されていません。");
         }
-        return this.email.hasError("email") ? "メールアドレスが正しくありません" : "";
-    }
-
-    getPasswordErrorMessage() {
-        if (this.password.hasError("required")) {
-            return "パスワードを入力してください";
-        }
-        return this.password.hasError("email") ? "パスワードはxx文字以上yy文字以内です" : "";
-    }
-
-    login() {
-        // TODO: ログイン機能を実装する
-        this.alertService.warn("未実装です。まだ遷移しません。");
     }
 }
