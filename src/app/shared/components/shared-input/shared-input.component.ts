@@ -35,6 +35,11 @@ export class SharedInputComponent extends AbstractInputComponent implements OnIn
     @Input() icon: string | undefined;
 
     /**
+     * プレフィックスに表示するアイコン
+     */
+    @Input() prefixIcon: string | undefined;
+
+    /**
      * テキストを隠すかどうか
      */
     hide = true;

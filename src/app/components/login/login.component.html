@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div fxLayout="column" fxLayoutAlign="center center" class="login-container">
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+                <div fxLayout="column" fxLayoutAlign="center center">
+                    <mat-icon [inline]="true" class="login-container__logo"
+                        >account_circle
+                    </mat-icon>
+
+                    <div class="login-container__title">
+                        <span style="color: #0e9fcc">Login</span>
+                        <span> Your Account</span>
+                    </div>
+                </div>
+
+                <form
+                    (ngSubmit)="onSubmit()"
+                    *ngIf="form"
+                    [formGroup]="form"
+                    fxLayout="column"
+                    fxLayoutAlign="start center"
+                    class="login-container__form"
+                    fxLayoutGap="10px"
+                >
+                    <app-shared-input
+                        class="login-container__form-field"
+                        formControlName="email"
+                        label="メールアドレス"
+                        appearance="fill"
+                        prefixIcon="mail"
+                    ></app-shared-input>
+
+                    <app-shared-input
+                        class="login-container__form-field"
+                        formControlName="password"
+                        label="パスワード"
+                        appearance="fill"
+                        type="password"
+                        prefixIcon="lock"
+                    ></app-shared-input>
+
+                    <div
+                        fxLayout="row"
+                        fxLayoutAlign="space-between"
+                        class="login-container__form-field"
+                    >
+                        <mat-checkbox>REMEMBER ME</mat-checkbox>
+                        <span class="forgot-password" (click)="onClickForgotPassword()"
+                            >Forgot Password?</span
+                        >
+                    </div>
+
+                    <app-flat-button
+                        label="LOGIN"
+                        type="submit"
+                        fxFlexOffset="10px"
+                        minWidth="100%"
+                        class="login-container__form-field"
+                    ></app-flat-button>
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

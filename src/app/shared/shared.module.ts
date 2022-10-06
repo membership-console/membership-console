@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MAT_DATE_LOCALE, MatNativeDateModule } from "@angular/material/core";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDialogModule } from "@angular/material/dialog";
@@ -109,6 +110,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         MatSnackBarModule,
         MatTabsModule,
         MatToolbarModule,
+        MatCheckboxModule,
         MarkdownModule.forRoot({}),
     ],
     exports: [
@@ -128,10 +130,12 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         MatListModule,
         MatPaginatorModule,
         MatTableModule,
+        MatCheckboxModule,
 
         // Components
         CardComponent,
         FlatButtonComponent,
+        HeaderComponent,
         MarkdownViewerComponent,
         SharedInputComponent,
         SharedMarkdownEditorComponent,
