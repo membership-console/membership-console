@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
-import { User } from "@iam/models/user";
+import { UserResponse } from "@api/models";
 
 @Pipe({
     name: "username",
 })
 export class UsernamePipe implements PipeTransform {
-    transform(value: User | null | undefined): string {
+    transform(value: UserResponse | null | undefined): string {
         if (value === null || value === undefined) {
             return "-";
         }

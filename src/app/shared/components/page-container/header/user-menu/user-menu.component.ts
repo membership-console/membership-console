@@ -1,25 +1,51 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
+
+import { UserResponse } from "@api/models";
+import { AuthAPIService, UserAPIService } from "@api/services";
 
 import { AlertService } from "@shared/services/alert.service";
 
+@UntilDestroy()
 @Component({
     selector: "app-user-menu",
     templateUrl: "./user-menu.component.html",
     styleUrls: ["./user-menu.component.scss"],
 })
-export class UserMenuComponent {
-    constructor(private alertService: AlertService, private router: Router) {}
+export class UserMenuComponent implements OnInit {
+    /**
+     * ログインユーザ
+     */
+    loginUser!: UserResponse;
+
+    constructor(
+        private alertService: AlertService,
+        private router: Router,
+        private authAPIService: AuthAPIService,
+        private userAPIService: UserAPIService
+    ) {}
+
+    ngOnInit() {
+        this.userAPIService
+            .getLoginUser()
+            .pipe(untilDestroyed(this))
+            .subscribe((response) => (this.loginUser = response));
+    }
 
     /**
      * ログアウトボタンをクリック
      */
     onClickLogout() {
-        // TODO: ログアウト機能を実装
-        this.router.navigate(["login"], {
-            queryParams: {},
-            queryParamsHandling: "merge",
-        });
-        this.alertService.warn("その機能はまだ実装されていません。");
+        this.authAPIService
+            .logout()
+            .pipe(untilDestroyed(this))
+            .subscribe(() => {
+                this.router.navigate(["login"], {
+                    queryParams: {},
+                    queryParamsHandling: "merge",
+                });
+                this.alertService.success("ログアウトしました。。");
+            });
     }
 }

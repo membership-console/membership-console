@@ -76,8 +76,8 @@ export class ProductService {
             ],
         },
         {
-            name: "総会文書生成ツール",
-            description: "総会文書リポジトリを設定ファイルを指定するだけで自動生成できます。",
+            name: "総会文書ジェネレータ",
+            description: "総会文書リポジトリを自動生成できます。",
             icon: "description",
             path: "/soukai-generator",
             version: "開発中",

@@ -4,7 +4,8 @@ import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
-import { User } from "@iam/models/user";
+import { UserResponse } from "@api/models";
+import { UserAPIService } from "@api/services";
 
 import { AlertService } from "@shared/services/alert.service";
 
@@ -18,36 +19,7 @@ export class UsersComponent implements OnInit {
     /**
      * ユーザリスト
      */
-    users: User[] = [
-        {
-            id: 1,
-            lastName: "小林",
-            firstName: "修一",
-            email: "is4872@ed.ritsumei.ac.jp",
-            entranceYear: 2019,
-        },
-        {
-            id: 2,
-            lastName: "中川",
-            firstName: "達也",
-            email: "is5498@ed.ritsumei.ac.jp",
-            entranceYear: 2020,
-        },
-        {
-            id: 3,
-            lastName: "池田",
-            firstName: "純",
-            email: "is7739@ed.ritsumei.ac.jp",
-            entranceYear: 2020,
-        },
-        {
-            id: 4,
-            lastName: "石田",
-            firstName: "剛",
-            email: "is0834@ed.ritsumei.ac.jp",
-            entranceYear: 2021,
-        },
-    ];
+    users: UserResponse[] = [];
 
     /**
      * テーブルのカラムリスト
@@ -57,7 +29,7 @@ export class UsersComponent implements OnInit {
     /**
      * テーブルのデータソース
      */
-    dataSource!: MatTableDataSource<User>;
+    dataSource!: MatTableDataSource<UserResponse>;
 
     /**
      * テーブルのページネータ
@@ -67,12 +39,34 @@ export class UsersComponent implements OnInit {
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private userAPIService: UserAPIService
     ) {}
 
     ngOnInit(): void {
-        this.dataSource = new MatTableDataSource<User>(this.users);
+        this.loadDataSource();
+        this.setDataSource();
+    }
+
+    /**
+     * データソースにデータを挿入
+     */
+    setDataSource() {
+        this.dataSource = new MatTableDataSource<UserResponse>(this.users);
         this.dataSource.paginator = this.paginator;
+    }
+
+    /**
+     * データソースをロード
+     */
+    loadDataSource() {
+        this.userAPIService
+            .getUsers()
+            .pipe(untilDestroyed(this))
+            .subscribe((response) => {
+                this.users = response.users;
+                this.setDataSource();
+            });
     }
 
     /**
@@ -80,7 +74,7 @@ export class UsersComponent implements OnInit {
      *
      * @param user ユーザグループ
      */
-    onClickEdit(user: User) {
+    onClickEdit(user: UserResponse) {
         this.router.navigate(["edit", user.id], {
             queryParams: {},
             queryParamsHandling: "merge",
@@ -93,15 +87,21 @@ export class UsersComponent implements OnInit {
      *
      * @param user ユーザグループ
      */
-    onClickDelete(user: User) {
+    onClickDelete(user: UserResponse) {
         this.alertService
             .confirm("削除確認", "この動作は取り消せませんが、本当に削除しますか？")
             .pipe(untilDestroyed(this))
             .subscribe((result) => {
-                // TODO: ユーザグループ削除機能を実装
-                if (result) {
-                    this.alertService.warn("その機能はまだ実装されていません。");
+                if (!result) {
+                    return;
                 }
+
+                this.userAPIService
+                    .deleteUser({ user_id: user.id })
+                    .pipe(untilDestroyed(this))
+                    .subscribe(() => {
+                        this.alertService.success("ユーザを削除しました。");
+                    });
             });
     }
 }
