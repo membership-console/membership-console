@@ -98,7 +98,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "membership-console:build"
+            "browserTarget": "membership-console:build",
+            "proxyConfig": "proxy.conf.js"
           },
           "configurations": {
             "production": {
