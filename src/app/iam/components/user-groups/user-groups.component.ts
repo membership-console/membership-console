@@ -4,8 +4,8 @@ import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
-import { UserGroupResponse } from "@api/models";
-import { UserGroupAPIService } from "@api/services";
+import { UserGroupResponse } from "@iam/api/models";
+import { UserGroupAPIService } from "@iam/api/services";
 
 import { AlertService } from "@shared/services/alert.service";
 

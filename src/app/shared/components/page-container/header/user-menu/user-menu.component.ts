@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
-import { UserResponse } from "@api/models";
-import { AuthAPIService, UserAPIService } from "@api/services";
+import { UserResponse } from "@iam/api/models";
+import { AuthAPIService, UserAPIService } from "@iam/api/services";
 
 import { AlertService } from "@shared/services/alert.service";
 

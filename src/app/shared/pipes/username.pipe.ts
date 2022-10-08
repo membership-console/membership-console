@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
-import { UserResponse } from "@api/models";
+import { UserResponse } from "@iam/api/models";
 
 @Pipe({
     name: "username",

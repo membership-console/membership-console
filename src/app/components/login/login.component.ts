@@ -3,7 +3,7 @@ import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
-import { AuthAPIService } from "@api/services";
+import { AuthAPIService } from "@iam/api/services";
 
 import { AlertService } from "@shared/services/alert.service";
 import { whiteSpaceValidator } from "@shared/validators/white-space.validator";

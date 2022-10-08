@@ -26,7 +26,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { RouterTestingModule } from "@angular/router/testing";
 import { MarkdownModule } from "ngx-markdown";
 
-import { ApiConfiguration } from "@api/api-configuration";
+import { ApiConfiguration } from "@iam/api/api-configuration";
 
 import { CardComponent } from "@shared/components/card/card.component";
 import { ConfirmDialogComponent } from "@shared/components/confirm-dialog/confirm-dialog.component";
