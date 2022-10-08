@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/ng-openapi-gen/ng-openapi-gen-schema.json",
-  "input": "openapi.json",
-  "output": "src/app/api",
+  "input": "openapi/iam-openapi.yaml",
+  "output": "src/app/iam/api",
   "serviceSuffix": "APIService"
 }
