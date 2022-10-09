@@ -1,4 +1,5 @@
 <button
+    *ngIf="loginUser"
     fxLayout="row"
     fxLayoutAlign="start center"
     [matMenuTriggerFor]="menu"
@@ -6,7 +7,7 @@
     style="padding: 0 8px"
 >
     <mat-icon style="margin-right: 5px">account_circle</mat-icon>
-    <span>abe_tatsuya</span>
+    <span>{{ loginUser | username }}</span>
     <mat-icon>arrow_drop_down</mat-icon>
 </button>
 

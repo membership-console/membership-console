@@ -1,7 +1,10 @@
+/* tslint:disable */
+/* eslint-disable */
+
 /**
- * ユーザグループモデル
+ * ユーザグループレスポンス
  */
-export type UserGroup = {
+export interface UserGroupResponse {
     /**
      * ユーザグループID
      */
@@ -15,5 +18,5 @@ export type UserGroup = {
     /**
      * ロールリスト
      */
-    roles: number[];
-};
+    roles: Array<number>;
+}

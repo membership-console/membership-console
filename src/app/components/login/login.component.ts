@@ -1,10 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
+
+import { AuthAPIService } from "@iam/api/services";
 
 import { AlertService } from "@shared/services/alert.service";
 import { whiteSpaceValidator } from "@shared/validators/white-space.validator";
 
+@UntilDestroy()
 @Component({
     selector: "app-login",
     templateUrl: "./login.component.html",
@@ -19,7 +23,8 @@ export class LoginComponent implements OnInit {
     constructor(
         private alertService: AlertService,
         private formBuilder: FormBuilder,
-        private router: Router
+        private router: Router,
+        private authAPIService: AuthAPIService
     ) {}
 
     ngOnInit() {
@@ -51,12 +56,16 @@ export class LoginComponent implements OnInit {
      */
     onSubmit() {
         if (this.form.valid) {
-            // TODO: ログイン機能を実装する
-            this.router.navigate(["/"], {
-                queryParams: {},
-                queryParamsHandling: "merge",
-            });
-            this.alertService.warn("その機能はまだ実装されていません。");
+            this.authAPIService
+                .login({ body: this.form.value })
+                .pipe(untilDestroyed(this))
+                .subscribe(() => {
+                    this.router.navigate(["/"], {
+                        queryParams: {},
+                        queryParamsHandling: "merge",
+                    });
+                    this.alertService.success("ログインに成功しました。");
+                });
         }
     }
 }

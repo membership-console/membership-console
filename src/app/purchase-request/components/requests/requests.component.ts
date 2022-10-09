@@ -116,6 +116,7 @@ export class RequestsComponent implements OnInit {
      * @param element 要素
      */
     onClickApprove(element: Request) {
+        // TODO: 購入申請の承認機能を実装
         this.alertService.confirm("承認確認", "この購入申請を承認しますか？");
     }
 
@@ -125,6 +126,7 @@ export class RequestsComponent implements OnInit {
      * @param element 要素
      */
     onClickRejectApproval(element: Request) {
+        // TODO: 購入申請の承認取り消し機能を実装
         this.alertService.confirm("取消確認", "この購入申請の承認を取り消しますか？");
     }
 
@@ -134,6 +136,7 @@ export class RequestsComponent implements OnInit {
      * @param element 要素
      */
     onClickPurchase(element: Request) {
+        // TODO: 購入申請の購入完了機能を実装
         this.alertService.confirm(
             "承認確認",
             "ステータスを購入完了に変更します。\n購入が完了しましたか？"
@@ -146,6 +149,7 @@ export class RequestsComponent implements OnInit {
      * @param element 要素
      */
     onClickRejectPurchase(element: Request) {
+        // TODO: 購入申請の購入取り消し機能を実装
         this.alertService.confirm("取消確認", "既に購入完了した申請です。\n購入を取り消しますか？");
     }
 }

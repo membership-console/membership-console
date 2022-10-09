@@ -144,7 +144,7 @@
     {
       "files": [
         "*.spec.ts",
-        "src/app/api/**/*.ts"
+        "src/app/**/api/**/*.ts"
       ],
       "rules": {
         "no-restricted-imports": "off"

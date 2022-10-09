@@ -4,7 +4,8 @@ import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
-import { UserGroup } from "@iam/models/user-group";
+import { UserGroupResponse } from "@iam/api/models";
+import { UserGroupAPIService } from "@iam/api/services";
 
 import { AlertService } from "@shared/services/alert.service";
 
@@ -18,18 +19,7 @@ export class UserGroupsComponent implements OnInit {
     /**
      * ユーザグループリスト
      */
-    userGroups: UserGroup[] = [
-        {
-            id: 1,
-            name: "全体管理者",
-            roles: [0, 1, 2],
-        },
-        {
-            id: 2,
-            name: "システム管理局",
-            roles: [1, 2],
-        },
-    ];
+    userGroups: UserGroupResponse[] = [];
 
     /**
      * テーブルのカラムリスト
@@ -39,7 +29,7 @@ export class UserGroupsComponent implements OnInit {
     /**
      * テーブルのデータソース
      */
-    dataSource!: MatTableDataSource<UserGroup>;
+    dataSource!: MatTableDataSource<UserGroupResponse>;
 
     /**
      * テーブルのページネータ
@@ -49,12 +39,34 @@ export class UserGroupsComponent implements OnInit {
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private userGroupAPIService: UserGroupAPIService
     ) {}
 
     ngOnInit() {
-        this.dataSource = new MatTableDataSource<UserGroup>(this.userGroups);
+        this.loadDataSource();
+        this.setDataSource();
+    }
+
+    /**
+     * データソースにデータを挿入
+     */
+    setDataSource() {
+        this.dataSource = new MatTableDataSource<UserGroupResponse>(this.userGroups);
         this.dataSource.paginator = this.paginator;
+    }
+
+    /**
+     * データソースをロード
+     */
+    loadDataSource() {
+        this.userGroupAPIService
+            .getUserGroups()
+            .pipe(untilDestroyed(this))
+            .subscribe((response) => {
+                this.userGroups = response.userGroups;
+                this.setDataSource();
+            });
     }
 
     /**
@@ -62,7 +74,7 @@ export class UserGroupsComponent implements OnInit {
      *
      * @param userGroup ユーザグループ
      */
-    onClickEdit(userGroup: UserGroup) {
+    onClickEdit(userGroup: UserGroupResponse) {
         this.router.navigate(["edit", userGroup.id], {
             queryParams: {},
             queryParamsHandling: "merge",
@@ -75,15 +87,21 @@ export class UserGroupsComponent implements OnInit {
      *
      * @param userGroup ユーザグループ
      */
-    onClickDelete(userGroup: UserGroup) {
+    onClickDelete(userGroup: UserGroupResponse) {
         this.alertService
             .confirm("削除確認", "この動作は取り消せませんが、本当に削除しますか？")
             .pipe(untilDestroyed(this))
             .subscribe((result) => {
-                // TODO: ユーザグループ削除機能を実装
-                if (result) {
-                    this.alertService.warn("その機能はまだ実装されていません。");
+                if (!result) {
+                    return;
                 }
+
+                this.userGroupAPIService
+                    .deleteUserGroup({ user_group_id: userGroup.id })
+                    .pipe(untilDestroyed(this))
+                    .subscribe(() => {
+                        this.alertService.success("ユーザグループを削除しました。");
+                    });
             });
     }
 }
