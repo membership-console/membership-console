@@ -49,6 +49,7 @@ import { StatusIndicatorComponent } from "@shared/components/status-indicator/st
 import { StrokedButtonComponent } from "@shared/components/stroked-button/stroked-button.component";
 import { ErrorResponseInterceptor } from "@shared/interceptors/error-response.interceptor";
 import { LoadingInterceptor } from "@shared/interceptors/loading.interceptor";
+import { XsrfInterceptor } from "@shared/interceptors/xsrf.interceptor";
 import { NumberPipe } from "@shared/pipes/number.pipe";
 import { SafeHtmlPipe } from "@shared/pipes/safe-html.pipe";
 import { UsernamePipe } from "@shared/pipes/username.pipe";
@@ -153,6 +154,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         { provide: MAT_DATE_LOCALE, useValue: "ja-JP" },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorResponseInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: XsrfInterceptor, multi: true },
         DatePipe,
     ],
 })
