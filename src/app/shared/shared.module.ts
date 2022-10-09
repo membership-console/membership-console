@@ -26,8 +26,6 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { RouterTestingModule } from "@angular/router/testing";
 import { MarkdownModule } from "ngx-markdown";
 
-import { ApiConfiguration } from "@iam/api/api-configuration";
-
 import { CardComponent } from "@shared/components/card/card.component";
 import { ConfirmDialogComponent } from "@shared/components/confirm-dialog/confirm-dialog.component";
 import { FlatButtonComponent } from "@shared/components/flat-button/flat-button.component";
@@ -152,7 +150,6 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         StrokedButtonComponent,
     ],
     providers: [
-        { provide: ApiConfiguration, useValue: { rootUrl: "" } },
         { provide: MAT_DATE_LOCALE, useValue: "ja-JP" },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorResponseInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },

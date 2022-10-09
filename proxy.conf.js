@@ -1,9 +1,8 @@
-const PROXY_CONFIG = [
+module.exports = [
     {
-        context: ["/api"],
+        context: ["/iam/api"],
         target: "http://localhost:8080",
+        pathRewrite: { "^/iam/api": "/api" },
         secure: false,
     },
 ];
-
-module.exports = PROXY_CONFIG;
