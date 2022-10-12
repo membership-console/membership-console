@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { UserGroupsComponent } from "@iam/components/user-groups/user-groups.component";
+import { UserEditComponent } from "@iam/components/users/user-edit/user-edit.component";
 import { UsersComponent } from "@iam/components/users/users.component";
 
 const routes: Routes = [
@@ -13,12 +14,23 @@ const routes: Routes = [
     {
         path: "user-groups",
         component: UserGroupsComponent,
-        data: { breadcrumb: "ユーザグループ", title: "ユーザグループ" },
+        data: { breadcrumb: "ユーザグループリスト", title: "ユーザグループリスト" },
     },
     {
         path: "users",
-        component: UsersComponent,
-        data: { breadcrumb: "ユーザ一覧", title: "ユーザ一覧" },
+        data: { breadcrumb: "ユーザリスト", title: null },
+        children: [
+            {
+                path: "",
+                component: UsersComponent,
+                data: { breadcrumb: null, title: "ユーザリスト" },
+            },
+            {
+                path: ":userId/edit",
+                component: UserEditComponent,
+                data: { breadcrumb: "ユーザ編集", title: "ユーザ編集" },
+            },
+        ],
     },
 ];
 

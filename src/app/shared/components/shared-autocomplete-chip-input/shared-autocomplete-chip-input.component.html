@@ -1,0 +1,28 @@
+<mat-form-field [appearance]="appearance" fxFlex>
+    <mat-label>{{ label }}</mat-label>
+    <mat-chip-list #chipList>
+        <mat-chip (removed)="remove(option)" *ngFor="let option of selectedOptions">
+            {{ option }}
+            <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-chip>
+        <input
+            #input
+            (matChipInputTokenEnd)="add($event)"
+            [formControl]="form"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        />
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{ option }}
+        </mat-option>
+        <mat-option *ngIf="(filteredOptions | async)?.length === 0" [disabled]="true">
+            No results found
+        </mat-option>
+    </mat-autocomplete>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+</mat-form-field>

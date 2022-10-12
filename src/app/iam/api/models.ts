@@ -1,3 +1,4 @@
+export { UserUpdateRequest } from "./models/user-update-request";
 export { LoginUserPasswordUpdateRequest } from "./models/login-user-password-update-request";
 export { UserGroupUpsertRequest } from "./models/user-group-upsert-request";
 export { UserCreateRequest } from "./models/user-create-request";

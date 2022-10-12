@@ -31,7 +31,7 @@ export class ProductService {
             visible: true,
             navs: [
                 {
-                    label: "ユーザ一覧",
+                    label: "ユーザ",
                     icon: "person",
                     path: "/users",
                 },

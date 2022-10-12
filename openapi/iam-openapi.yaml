@@ -15,6 +15,69 @@ tags:
   - name: User
     description: ユーザ
 paths:
+  "/api/users/{user_id}":
+    get:
+      tags:
+        - User
+      summary: ユーザ取得API
+      description: ユーザ取得API
+      operationId: getUser
+      parameters:
+        - name: user_id
+          in: path
+          description: ユーザID
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/UserResponse"
+    put:
+      tags:
+        - User
+      summary: ユーザ更新API
+      description: ユーザ更新API
+      operationId: updateUser
+      parameters:
+        - name: user_id
+          in: path
+          description: ユーザID
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: ユーザ更新リクエスト
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UserUpdateRequest"
+        required: true
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+        - User
+      summary: ユーザ削除API
+      description: ユーザ削除API
+      operationId: deleteUser
+      parameters:
+        - name: user_id
+          in: path
+          description: ユーザID
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
   "/api/users/me/password":
     put:
       tags:
@@ -215,45 +278,6 @@ paths:
       responses:
         '200':
           description: OK
-  "/api/users/{user_id}":
-    get:
-      tags:
-        - User
-      summary: ユーザ取得API
-      description: ユーザ取得API
-      operationId: getUser
-      parameters:
-        - name: user_id
-          in: path
-          description: ユーザID
-          required: true
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/UserResponse"
-    delete:
-      tags:
-        - User
-      summary: ユーザ削除API
-      description: ユーザ削除API
-      operationId: deleteUser
-      parameters:
-        - name: user_id
-          in: path
-          description: ユーザID
-          required: true
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: OK
   "/api/users/me":
     get:
       tags:
@@ -278,6 +302,35 @@ paths:
           description: OK
 components:
   schemas:
+    UserUpdateRequest:
+      required:
+        - email
+        - entranceYear
+        - firstName
+        - lastName
+        - userGroupIds
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: ファーストネーム
+        lastName:
+          type: string
+          description: ラストネーム
+        email:
+          type: string
+          description: メールアドレス
+        entranceYear:
+          type: integer
+          description: 入学年度
+          format: int32
+        userGroupIds:
+          type: array
+          description: ユーザグループIDリスト
+          items:
+            type: integer
+            format: int32
+      description: ユーザ更新リクエスト
     LoginUserPasswordUpdateRequest:
       required:
         - newPassword
