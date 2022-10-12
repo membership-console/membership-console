@@ -5,6 +5,8 @@ import { DashboardComponent } from "@app/components/dashboard/dashboard.componen
 import { ErrorComponent } from "@app/components/error/error.component";
 import { LoginComponent } from "@app/components/login/login.component";
 import { NotificationsComponent } from "@app/components/notifications/notifications.component";
+import { PasswordChangeComponent } from "@app/components/password-reset/password-change/password-change.component";
+import { PasswordResetComponent } from "@app/components/password-reset/password-reset.component";
 
 import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
 
@@ -48,7 +50,19 @@ const routes: Routes = [
     {
         path: "login",
         component: LoginComponent,
-        data: { breadcrumb: null, title: null },
+    },
+    {
+        path: "password_reset",
+        children: [
+            {
+                path: "",
+                component: PasswordResetComponent,
+            },
+            {
+                path: ":token",
+                component: PasswordChangeComponent,
+            },
+        ],
     },
     { path: "**", redirectTo: "/error/404", pathMatch: "full" },
 ];

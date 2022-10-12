@@ -13,6 +13,11 @@ export class HeaderComponent {
      */
     isMenuValid = false;
 
+    /**
+     * ユーザメニューを無効化するURLリスト
+     */
+    disableUserMenuUrls = ["/login", "/password_reset"];
+
     constructor(private router: Router) {
         this.router.events
             .pipe(filter((e) => e instanceof NavigationEnd))
@@ -20,6 +25,7 @@ export class HeaderComponent {
     }
 
     setIsMenuValid(): void {
-        this.isMenuValid = this.router.url !== "/login";
+        this.isMenuValid =
+            this.disableUserMenuUrls.filter((url) => this.router.url.startsWith(url)).length === 0;
     }
 }
