@@ -33,10 +33,7 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
                     });
                 } else if (error.status === 403) {
                     this.navigateErrorPage(403);
-                }
-
-                // 予期せぬエラーが発生した場合は500ページにリダイレクト
-                if (response.code === 500) {
+                } else if (error.status === 500) {
                     this.navigateErrorPage(500);
                 }
 
@@ -66,7 +63,13 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
      */
     extractErrorResponseByBody(error: HttpErrorResponse): ErrorResponse {
         try {
-            return typeof error.error === "string" ? JSON.parse(error.error) : error.error;
+            const responseBody =
+                typeof error.error === "string" ? JSON.parse(error.error) : error.error;
+            responseBody.code = responseBody.code ? responseBody.code : 500;
+            responseBody.message = responseBody.message
+                ? responseBody.message
+                : "予期しないエラーが発生しました。問題が解決しない場合は、管理者までお問い合わせください。";
+            return responseBody;
         } catch (_) {
             return {
                 code: 500,

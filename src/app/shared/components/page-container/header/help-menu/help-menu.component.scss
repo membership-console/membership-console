@@ -4,6 +4,10 @@
     @include font-color-gray;
 }
 
+a {
+    @include font-color-black;
+}
+
 .launch-icon {
     @include font-color-black;
     font-size: 0.9rem;
