@@ -1,11 +1,11 @@
 @import "src/assets/scss/colors";
 
-.login-container {
+.auth-card-container {
     // ヘッダー（64px）を差し引いた画面の中央に表示する
     height: calc(100vh - 64px);
     // ログインカードの高さが449pxなので、上下30px分のマージンを入れる（padding-bottomも足す）
-    min-height: calc(449px + 60px + 150px);
-    padding-bottom: 150px;
+    min-height: calc(449px + 60px + 200px);
+    padding-bottom: 200px;
 
     .mat-card-content {
         width: 300px;
@@ -13,20 +13,20 @@
     }
 }
 
-.login-container__logo {
+.auth-card-container__logo {
     font-size: 60px !important;
     color: #3a74ca;
 }
 
-.login-container__title {
+.auth-card-container__title {
     font-weight: bold;
     font-size: 1.2rem;
 }
 
-.login-container__form {
+.auth-card-container__form {
     width: 100%;
 
-    .login-container__form-field {
+    .auth-card-container__form-field {
         width: 100%;
     }
 }

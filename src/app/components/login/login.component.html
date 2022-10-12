@@ -1,14 +1,14 @@
 <app-header></app-header>
-<div fxLayout="column" fxLayoutAlign="center center" class="login-container">
+<div fxLayout="column" fxLayoutAlign="center center" class="auth-card-container">
     <mat-card>
         <mat-card-content>
             <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
                 <div fxLayout="column" fxLayoutAlign="center center">
-                    <mat-icon [inline]="true" class="login-container__logo"
+                    <mat-icon [inline]="true" class="auth-card-container__logo"
                         >account_circle
                     </mat-icon>
 
-                    <div class="login-container__title">
+                    <div class="auth-card-container__title">
                         <span style="color: #0e9fcc">Login</span>
                         <span> Your Account</span>
                     </div>
@@ -20,11 +20,11 @@
                     [formGroup]="form"
                     fxLayout="column"
                     fxLayoutAlign="start center"
-                    class="login-container__form"
+                    class="auth-card-container__form"
                     fxLayoutGap="10px"
                 >
                     <app-shared-input
-                        class="login-container__form-field"
+                        class="auth-card-container__form-field"
                         formControlName="email"
                         label="メールアドレス"
                         appearance="fill"
@@ -32,7 +32,7 @@
                     ></app-shared-input>
 
                     <app-shared-input
-                        class="login-container__form-field"
+                        class="auth-card-container__form-field"
                         formControlName="password"
                         label="パスワード"
                         appearance="fill"
@@ -43,7 +43,7 @@
                     <div
                         fxLayout="row"
                         fxLayoutAlign="space-between"
-                        class="login-container__form-field"
+                        class="auth-card-container__form-field"
                     >
                         <mat-checkbox>REMEMBER ME</mat-checkbox>
                         <span class="forgot-password" (click)="onClickForgotPassword()"
@@ -56,7 +56,7 @@
                         type="submit"
                         fxFlexOffset="10px"
                         minWidth="100%"
-                        class="login-container__form-field"
+                        class="auth-card-container__form-field"
                     ></app-flat-button>
                 </form>
             </div>
