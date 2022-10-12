@@ -80,3 +80,8 @@ blockquote {
         margin-bottom: 10px;
     }
 }
+
+a {
+    @include font-color-link;
+    text-decoration: none;
+}

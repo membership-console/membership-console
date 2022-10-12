@@ -11,9 +11,9 @@
             <ng-container matColumnDef="name">
                 <th *matHeaderCellDef mat-header-cell>商品名</th>
                 <td *matCellDef="let element" mat-cell class="truncate-text">
-                    <a [href]="element.url" target="_blank" rel="noopener noreferrer">{{
-                        element.name
-                    }}</a>
+                    <a [href]="element.url" target="_blank" rel="noopener noreferrer">
+                        {{ element.name }}
+                    </a>
                 </td>
             </ng-container>
 

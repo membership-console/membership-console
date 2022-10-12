@@ -4,13 +4,14 @@
         <mat-card-content>
             <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
                 <div fxLayout="column" fxLayoutAlign="center center">
-                    <mat-icon [inline]="true" class="auth-card-container__logo"
-                        >account_circle
+                    <mat-icon [inline]="true" class="auth-card-container__logo">
+                        account_circle
                     </mat-icon>
 
                     <div class="auth-card-container__title">
                         <span style="color: #0e9fcc">Login</span>
-                        <span> Your Account</span>
+                        <span>{{ " " }}</span>
+                        <span>Your Account</span>
                     </div>
                 </div>
 
@@ -46,9 +47,9 @@
                         class="auth-card-container__form-field"
                     >
                         <mat-checkbox>REMEMBER ME</mat-checkbox>
-                        <span class="forgot-password" (click)="onClickForgotPassword()"
-                            >Forgot Password?</span
-                        >
+                        <a [routerLink]="'/password_reset'" queryParamsHandling="merge">
+                            Forgot Password?
+                        </a>
                     </div>
 
                     <app-flat-button
