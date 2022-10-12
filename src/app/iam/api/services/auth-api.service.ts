@@ -10,6 +10,8 @@ import { Observable } from "rxjs";
 import { map, filter } from "rxjs/operators";
 
 import { LoginRequest } from "../models/login-request";
+import { PasswordResetRequest } from "../models/password-reset-request";
+import { RequestPasswordResetRequest } from "../models/request-password-reset-request";
 
 /**
  * 認証
@@ -20,6 +22,148 @@ import { LoginRequest } from "../models/login-request";
 export class AuthAPIService extends BaseService {
     constructor(config: ApiConfiguration, http: HttpClient) {
         super(config, http);
+    }
+
+    /**
+     * Path part for operation requestPasswordReset
+     */
+    static readonly RequestPasswordResetPath = "/api/request_password_reset";
+
+    /**
+     * パスワードリセット要求API.
+     *
+     * パスワードリセット要求API
+     *
+     * This method provides access to the full `HttpResponse`, allowing access to response headers.
+     * To access only the response body, use `requestPasswordReset()` instead.
+     *
+     * This method sends `application/json` and handles request body of type `application/json`.
+     */
+    requestPasswordReset$Response(params: {
+        context?: HttpContext;
+
+        /**
+         * パスワードリセット要求リクエスト
+         */
+        body: RequestPasswordResetRequest;
+    }): Observable<StrictHttpResponse<void>> {
+        const rb = new RequestBuilder(
+            this.rootUrl,
+            AuthAPIService.RequestPasswordResetPath,
+            "post"
+        );
+        if (params) {
+            rb.body(params.body, "application/json");
+        }
+
+        return this.http
+            .request(
+                rb.build({
+                    responseType: "text",
+                    accept: "*/*",
+                    context: params?.context,
+                })
+            )
+            .pipe(
+                filter((r: any) => r instanceof HttpResponse),
+                map((r: HttpResponse<any>) => {
+                    return (r as HttpResponse<any>).clone({
+                        body: undefined,
+                    }) as StrictHttpResponse<void>;
+                })
+            );
+    }
+
+    /**
+     * パスワードリセット要求API.
+     *
+     * パスワードリセット要求API
+     *
+     * This method provides access to only to the response body.
+     * To access the full response (for headers, for example), `requestPasswordReset$Response()` instead.
+     *
+     * This method sends `application/json` and handles request body of type `application/json`.
+     */
+    requestPasswordReset(params: {
+        context?: HttpContext;
+
+        /**
+         * パスワードリセット要求リクエスト
+         */
+        body: RequestPasswordResetRequest;
+    }): Observable<void> {
+        return this.requestPasswordReset$Response(params).pipe(
+            map((r: StrictHttpResponse<void>) => r.body as void)
+        );
+    }
+
+    /**
+     * Path part for operation resetPassword
+     */
+    static readonly ResetPasswordPath = "/api/password_reset";
+
+    /**
+     * パスワードリセットAPI.
+     *
+     * パスワードリセットAPI
+     *
+     * This method provides access to the full `HttpResponse`, allowing access to response headers.
+     * To access only the response body, use `resetPassword()` instead.
+     *
+     * This method sends `application/json` and handles request body of type `application/json`.
+     */
+    resetPassword$Response(params: {
+        context?: HttpContext;
+
+        /**
+         * パスワードリセットリクエスト
+         */
+        body: PasswordResetRequest;
+    }): Observable<StrictHttpResponse<void>> {
+        const rb = new RequestBuilder(this.rootUrl, AuthAPIService.ResetPasswordPath, "post");
+        if (params) {
+            rb.body(params.body, "application/json");
+        }
+
+        return this.http
+            .request(
+                rb.build({
+                    responseType: "text",
+                    accept: "*/*",
+                    context: params?.context,
+                })
+            )
+            .pipe(
+                filter((r: any) => r instanceof HttpResponse),
+                map((r: HttpResponse<any>) => {
+                    return (r as HttpResponse<any>).clone({
+                        body: undefined,
+                    }) as StrictHttpResponse<void>;
+                })
+            );
+    }
+
+    /**
+     * パスワードリセットAPI.
+     *
+     * パスワードリセットAPI
+     *
+     * This method provides access to only to the response body.
+     * To access the full response (for headers, for example), `resetPassword$Response()` instead.
+     *
+     * This method sends `application/json` and handles request body of type `application/json`.
+     */
+    resetPassword(params: {
+        context?: HttpContext;
+
+        /**
+         * パスワードリセットリクエスト
+         */
+        body: PasswordResetRequest;
+    }): Observable<void> {
+        return this.resetPassword$Response(params).pipe(
+            map((r: StrictHttpResponse<void>) => r.body as void)
+        );
     }
 
     /**
