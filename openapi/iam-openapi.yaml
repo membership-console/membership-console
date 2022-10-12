@@ -154,6 +154,40 @@ paths:
       responses:
         '201':
           description: Created
+  "/api/request_password_reset":
+    post:
+      tags:
+        - Auth
+      summary: パスワードリセット要求API
+      description: パスワードリセット要求API
+      operationId: requestPasswordReset
+      requestBody:
+        description: パスワードリセット要求リクエスト
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/RequestPasswordResetRequest"
+        required: true
+      responses:
+        '200':
+          description: OK
+  "/api/password_reset":
+    post:
+      tags:
+        - Auth
+      summary: パスワードリセットAPI
+      description: パスワードリセットAPI
+      operationId: resetPassword
+      requestBody:
+        description: パスワードリセットリクエスト
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/PasswordResetRequest"
+        required: true
+      responses:
+        '200':
+          description: OK
   "/api/logout":
     post:
       tags:
@@ -306,6 +340,28 @@ components:
             type: integer
             format: int32
       description: ユーザ作成リクエスト
+    RequestPasswordResetRequest:
+      required:
+        - email
+      type: object
+      properties:
+        email:
+          type: string
+          description: メールアドレス
+      description: パスワードリセット要求リクエスト
+    PasswordResetRequest:
+      required:
+        - newPassword
+        - token
+      type: object
+      properties:
+        newPassword:
+          type: string
+          description: 新しいパスワード
+        token:
+          type: string
+          description: トークン
+      description: パスワードリセットリクエスト
     LoginRequest:
       required:
         - email

@@ -1,10 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
+
+import { AuthAPIService } from "@iam/api/services";
 
 import { AlertService } from "@shared/services/alert.service";
 import { whiteSpaceValidator } from "@shared/validators/white-space.validator";
 
+@UntilDestroy()
 @Component({
     selector: "app-password-change",
     templateUrl: "./password-change.component.html",
@@ -22,9 +26,11 @@ export class PasswordChangeComponent implements OnInit {
     form!: UntypedFormGroup;
 
     constructor(
+        private router: Router,
         private activatedRoute: ActivatedRoute,
         private formBuilder: FormBuilder,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private authAPIService: AuthAPIService
     ) {}
 
     ngOnInit(): void {
@@ -64,14 +70,22 @@ export class PasswordChangeComponent implements OnInit {
             // 新しいパスワードと確認の入力チェック
             if (this.form.value["newPassword"] !== this.form.value["confirmNewPassword"]) {
                 this.alertService.warn("新しいパスワードが間違えています。");
+                return;
             }
 
-            // TODO: パスワード変更APIを呼び出す
             const requestBody = {
-                token: this.token,
-                newPassword: this.form.value["newPassword"],
+                token: this.token as string,
+                newPassword: this.form.value["newPassword"] as string,
             };
-            this.alertService.warn("その機能はまだ実装されていません。");
+            this.authAPIService
+                .resetPassword({ body: requestBody })
+                .pipe(untilDestroyed(this))
+                .subscribe(() => {
+                    this.alertService.success("パスワードを再設定しました。");
+                    this.router.navigate(["/login"], {
+                        queryParamsHandling: "merge",
+                    });
+                });
         }
     }
 }

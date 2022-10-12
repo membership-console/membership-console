@@ -29,7 +29,6 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
                 // 不正な認証情報
                 if (error.status === 401) {
                     this.router.navigate(["/login"], {
-                        queryParams: { shop: null },
                         queryParamsHandling: "merge",
                     });
                 } else if (error.status === 403) {
