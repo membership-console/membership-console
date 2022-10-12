@@ -42,8 +42,8 @@
               "@app/iam",
               "@app/purchase-request",
               "@app/shared",
-              "@api/models/*",
-              "@api/services/*"
+              "@*/api/models/*",
+              "@*/api/services/*"
             ]
           }
         ],
