@@ -1,10 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import { UntilDestroy } from "@ngneat/until-destroy";
 
 import { AlertService } from "@shared/services/alert.service";
 import { whiteSpaceValidator } from "@shared/validators/white-space.validator";
 
+@UntilDestroy()
 @Component({
     selector: "app-password-change",
     templateUrl: "./password-change.component.html",
