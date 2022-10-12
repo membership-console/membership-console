@@ -44,13 +44,6 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    onClickForgotPassword() {
-        this.alertService.confirm(
-            "パスワードを忘れた場合",
-            "IAMユーザのパスワードは管理者のみがリセットできます。\n詳細はアカウントを提供した管理者までお問い合わせください。"
-        );
-    }
-
     /**
      * フォーム送信
      */

@@ -10,6 +10,7 @@ import { Observable } from "rxjs";
 import { map, filter } from "rxjs/operators";
 
 import { LoginUserPasswordUpdateRequest } from "../models/login-user-password-update-request";
+import { UserCreateRequest } from "../models/user-create-request";
 import { UserResponse } from "../models/user-response";
 import { UsersResponse } from "../models/users-response";
 
@@ -148,6 +149,75 @@ export class UserAPIService extends BaseService {
     getUsers(params?: { context?: HttpContext }): Observable<UsersResponse> {
         return this.getUsers$Response(params).pipe(
             map((r: StrictHttpResponse<UsersResponse>) => r.body as UsersResponse)
+        );
+    }
+
+    /**
+     * Path part for operation createUser
+     */
+    static readonly CreateUserPath = "/api/users";
+
+    /**
+     * ユーザ作成API.
+     *
+     * ユーザ作成API
+     *
+     * This method provides access to the full `HttpResponse`, allowing access to response headers.
+     * To access only the response body, use `createUser()` instead.
+     *
+     * This method sends `application/json` and handles request body of type `application/json`.
+     */
+    createUser$Response(params: {
+        context?: HttpContext;
+
+        /**
+         * ユーザ作成リクエスト
+         */
+        body: UserCreateRequest;
+    }): Observable<StrictHttpResponse<void>> {
+        const rb = new RequestBuilder(this.rootUrl, UserAPIService.CreateUserPath, "post");
+        if (params) {
+            rb.body(params.body, "application/json");
+        }
+
+        return this.http
+            .request(
+                rb.build({
+                    responseType: "text",
+                    accept: "*/*",
+                    context: params?.context,
+                })
+            )
+            .pipe(
+                filter((r: any) => r instanceof HttpResponse),
+                map((r: HttpResponse<any>) => {
+                    return (r as HttpResponse<any>).clone({
+                        body: undefined,
+                    }) as StrictHttpResponse<void>;
+                })
+            );
+    }
+
+    /**
+     * ユーザ作成API.
+     *
+     * ユーザ作成API
+     *
+     * This method provides access to only to the response body.
+     * To access the full response (for headers, for example), `createUser$Response()` instead.
+     *
+     * This method sends `application/json` and handles request body of type `application/json`.
+     */
+    createUser(params: {
+        context?: HttpContext;
+
+        /**
+         * ユーザ作成リクエスト
+         */
+        body: UserCreateRequest;
+    }): Observable<void> {
+        return this.createUser$Response(params).pipe(
+            map((r: StrictHttpResponse<void>) => r.body as void)
         );
     }
 

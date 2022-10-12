@@ -59,6 +59,10 @@ $nav-font-color: #cbcbcb;
     }
 }
 
+a {
+    color: $nav-font-color !important;
+}
+
 a.mat-list-item.active {
     color: #d08121 !important;
 }

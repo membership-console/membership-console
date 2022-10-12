@@ -18,9 +18,9 @@
     />
     <mat-datepicker-toggle *ngIf="type === 'date'" [for]="picker" matSuffix></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-    <mat-icon (click)="hide = !hide" *ngIf="type === 'password'" matSuffix>{{
-        hide ? "visibility" : "visibility_off"
-    }}</mat-icon>
+    <mat-icon (click)="hide = !hide" *ngIf="type === 'password'" matSuffix>
+        {{ hide ? "visibility" : "visibility_off" }}
+    </mat-icon>
     <button (click)="onClickIcon()" *ngIf="icon" mat-icon-button matSuffix type="button">
         <mat-icon>{{ icon }}</mat-icon>
     </button>

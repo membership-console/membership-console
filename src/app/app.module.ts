@@ -8,6 +8,8 @@ import { DashboardComponent } from "@app/components/dashboard/dashboard.componen
 import { ErrorComponent } from "@app/components/error/error.component";
 import { LoginComponent } from "@app/components/login/login.component";
 import { NotificationsComponent } from "@app/components/notifications/notifications.component";
+import { PasswordChangeComponent } from "@app/components/password-reset/password-change/password-change.component";
+import { PasswordResetComponent } from "@app/components/password-reset/password-reset.component";
 
 import { IamModule } from "@iam/iam.module";
 
@@ -21,8 +23,10 @@ import { SharedModule } from "@shared/shared.module";
         AppComponent,
         DashboardComponent,
         ErrorComponent,
-        NotificationsComponent,
         LoginComponent,
+        NotificationsComponent,
+        PasswordChangeComponent,
+        PasswordResetComponent,
     ],
     imports: [
         SharedModule,
