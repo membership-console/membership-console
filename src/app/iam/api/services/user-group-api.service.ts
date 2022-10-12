@@ -25,6 +25,214 @@ export class UserGroupAPIService extends BaseService {
     }
 
     /**
+     * Path part for operation getUserGroup
+     */
+    static readonly GetUserGroupPath = "/api/user-groups/{user_group_id}";
+
+    /**
+     * ユーザグループ取得API.
+     *
+     * ユーザグループ取得API
+     *
+     * This method provides access to the full `HttpResponse`, allowing access to response headers.
+     * To access only the response body, use `getUserGroup()` instead.
+     *
+     * This method doesn't expect any request body.
+     */
+    getUserGroup$Response(params: {
+        /**
+         * ユーザグループID
+         */
+        user_group_id: number;
+        context?: HttpContext;
+    }): Observable<StrictHttpResponse<UserGroupResponse>> {
+        const rb = new RequestBuilder(this.rootUrl, UserGroupAPIService.GetUserGroupPath, "get");
+        if (params) {
+            rb.path("user_group_id", params.user_group_id, {});
+        }
+
+        return this.http
+            .request(
+                rb.build({
+                    responseType: "json",
+                    accept: "application/json",
+                    context: params?.context,
+                })
+            )
+            .pipe(
+                filter((r: any) => r instanceof HttpResponse),
+                map((r: HttpResponse<any>) => {
+                    return r as StrictHttpResponse<UserGroupResponse>;
+                })
+            );
+    }
+
+    /**
+     * ユーザグループ取得API.
+     *
+     * ユーザグループ取得API
+     *
+     * This method provides access to only to the response body.
+     * To access the full response (for headers, for example), `getUserGroup$Response()` instead.
+     *
+     * This method doesn't expect any request body.
+     */
+    getUserGroup(params: {
+        /**
+         * ユーザグループID
+         */
+        user_group_id: number;
+        context?: HttpContext;
+    }): Observable<UserGroupResponse> {
+        return this.getUserGroup$Response(params).pipe(
+            map((r: StrictHttpResponse<UserGroupResponse>) => r.body as UserGroupResponse)
+        );
+    }
+
+    /**
+     * Path part for operation updateUserGroup
+     */
+    static readonly UpdateUserGroupPath = "/api/user-groups/{user_group_id}";
+
+    /**
+     * ユーザグループ更新API.
+     *
+     * ユーザグループ更新API
+     *
+     * This method provides access to the full `HttpResponse`, allowing access to response headers.
+     * To access only the response body, use `updateUserGroup()` instead.
+     *
+     * This method sends `application/json` and handles request body of type `application/json`.
+     */
+    updateUserGroup$Response(params: {
+        user_group_id: number;
+        context?: HttpContext;
+
+        /**
+         * ユーザグループ更新リクエスト
+         */
+        body: UserGroupUpsertRequest;
+    }): Observable<StrictHttpResponse<void>> {
+        const rb = new RequestBuilder(this.rootUrl, UserGroupAPIService.UpdateUserGroupPath, "put");
+        if (params) {
+            rb.path("user_group_id", params.user_group_id, {});
+            rb.body(params.body, "application/json");
+        }
+
+        return this.http
+            .request(
+                rb.build({
+                    responseType: "text",
+                    accept: "*/*",
+                    context: params?.context,
+                })
+            )
+            .pipe(
+                filter((r: any) => r instanceof HttpResponse),
+                map((r: HttpResponse<any>) => {
+                    return (r as HttpResponse<any>).clone({
+                        body: undefined,
+                    }) as StrictHttpResponse<void>;
+                })
+            );
+    }
+
+    /**
+     * ユーザグループ更新API.
+     *
+     * ユーザグループ更新API
+     *
+     * This method provides access to only to the response body.
+     * To access the full response (for headers, for example), `updateUserGroup$Response()` instead.
+     *
+     * This method sends `application/json` and handles request body of type `application/json`.
+     */
+    updateUserGroup(params: {
+        user_group_id: number;
+        context?: HttpContext;
+
+        /**
+         * ユーザグループ更新リクエスト
+         */
+        body: UserGroupUpsertRequest;
+    }): Observable<void> {
+        return this.updateUserGroup$Response(params).pipe(
+            map((r: StrictHttpResponse<void>) => r.body as void)
+        );
+    }
+
+    /**
+     * Path part for operation deleteUserGroup
+     */
+    static readonly DeleteUserGroupPath = "/api/user-groups/{user_group_id}";
+
+    /**
+     * ユーザグループ削除API.
+     *
+     * ユーザグループ削除API
+     *
+     * This method provides access to the full `HttpResponse`, allowing access to response headers.
+     * To access only the response body, use `deleteUserGroup()` instead.
+     *
+     * This method doesn't expect any request body.
+     */
+    deleteUserGroup$Response(params: {
+        /**
+         * ユーザグループID
+         */
+        user_group_id: number;
+        context?: HttpContext;
+    }): Observable<StrictHttpResponse<void>> {
+        const rb = new RequestBuilder(
+            this.rootUrl,
+            UserGroupAPIService.DeleteUserGroupPath,
+            "delete"
+        );
+        if (params) {
+            rb.path("user_group_id", params.user_group_id, {});
+        }
+
+        return this.http
+            .request(
+                rb.build({
+                    responseType: "text",
+                    accept: "*/*",
+                    context: params?.context,
+                })
+            )
+            .pipe(
+                filter((r: any) => r instanceof HttpResponse),
+                map((r: HttpResponse<any>) => {
+                    return (r as HttpResponse<any>).clone({
+                        body: undefined,
+                    }) as StrictHttpResponse<void>;
+                })
+            );
+    }
+
+    /**
+     * ユーザグループ削除API.
+     *
+     * ユーザグループ削除API
+     *
+     * This method provides access to only to the response body.
+     * To access the full response (for headers, for example), `deleteUserGroup$Response()` instead.
+     *
+     * This method doesn't expect any request body.
+     */
+    deleteUserGroup(params: {
+        /**
+         * ユーザグループID
+         */
+        user_group_id: number;
+        context?: HttpContext;
+    }): Observable<void> {
+        return this.deleteUserGroup$Response(params).pipe(
+            map((r: StrictHttpResponse<void>) => r.body as void)
+        );
+    }
+
+    /**
      * Path part for operation getUserGroups
      */
     static readonly GetUserGroupsPath = "/api/user-groups";
@@ -147,142 +355,6 @@ export class UserGroupAPIService extends BaseService {
         body: UserGroupUpsertRequest;
     }): Observable<void> {
         return this.createUserGroup$Response(params).pipe(
-            map((r: StrictHttpResponse<void>) => r.body as void)
-        );
-    }
-
-    /**
-     * Path part for operation getUserGroup
-     */
-    static readonly GetUserGroupPath = "/api/user-groups/{user_group_id}";
-
-    /**
-     * ユーザグループ取得API.
-     *
-     * ユーザグループ取得API
-     *
-     * This method provides access to the full `HttpResponse`, allowing access to response headers.
-     * To access only the response body, use `getUserGroup()` instead.
-     *
-     * This method doesn't expect any request body.
-     */
-    getUserGroup$Response(params: {
-        /**
-         * ユーザグループID
-         */
-        user_group_id: number;
-        context?: HttpContext;
-    }): Observable<StrictHttpResponse<UserGroupResponse>> {
-        const rb = new RequestBuilder(this.rootUrl, UserGroupAPIService.GetUserGroupPath, "get");
-        if (params) {
-            rb.path("user_group_id", params.user_group_id, {});
-        }
-
-        return this.http
-            .request(
-                rb.build({
-                    responseType: "json",
-                    accept: "application/json",
-                    context: params?.context,
-                })
-            )
-            .pipe(
-                filter((r: any) => r instanceof HttpResponse),
-                map((r: HttpResponse<any>) => {
-                    return r as StrictHttpResponse<UserGroupResponse>;
-                })
-            );
-    }
-
-    /**
-     * ユーザグループ取得API.
-     *
-     * ユーザグループ取得API
-     *
-     * This method provides access to only to the response body.
-     * To access the full response (for headers, for example), `getUserGroup$Response()` instead.
-     *
-     * This method doesn't expect any request body.
-     */
-    getUserGroup(params: {
-        /**
-         * ユーザグループID
-         */
-        user_group_id: number;
-        context?: HttpContext;
-    }): Observable<UserGroupResponse> {
-        return this.getUserGroup$Response(params).pipe(
-            map((r: StrictHttpResponse<UserGroupResponse>) => r.body as UserGroupResponse)
-        );
-    }
-
-    /**
-     * Path part for operation deleteUserGroup
-     */
-    static readonly DeleteUserGroupPath = "/api/user-groups/{user_group_id}";
-
-    /**
-     * ユーザグループ削除API.
-     *
-     * ユーザグループ削除API
-     *
-     * This method provides access to the full `HttpResponse`, allowing access to response headers.
-     * To access only the response body, use `deleteUserGroup()` instead.
-     *
-     * This method doesn't expect any request body.
-     */
-    deleteUserGroup$Response(params: {
-        /**
-         * ユーザグループID
-         */
-        user_group_id: number;
-        context?: HttpContext;
-    }): Observable<StrictHttpResponse<void>> {
-        const rb = new RequestBuilder(
-            this.rootUrl,
-            UserGroupAPIService.DeleteUserGroupPath,
-            "delete"
-        );
-        if (params) {
-            rb.path("user_group_id", params.user_group_id, {});
-        }
-
-        return this.http
-            .request(
-                rb.build({
-                    responseType: "text",
-                    accept: "*/*",
-                    context: params?.context,
-                })
-            )
-            .pipe(
-                filter((r: any) => r instanceof HttpResponse),
-                map((r: HttpResponse<any>) => {
-                    return (r as HttpResponse<any>).clone({
-                        body: undefined,
-                    }) as StrictHttpResponse<void>;
-                })
-            );
-    }
-
-    /**
-     * ユーザグループ削除API.
-     *
-     * ユーザグループ削除API
-     *
-     * This method provides access to only to the response body.
-     * To access the full response (for headers, for example), `deleteUserGroup$Response()` instead.
-     *
-     * This method doesn't expect any request body.
-     */
-    deleteUserGroup(params: {
-        /**
-         * ユーザグループID
-         */
-        user_group_id: number;
-        context?: HttpContext;
-    }): Observable<void> {
-        return this.deleteUserGroup$Response(params).pipe(
             map((r: StrictHttpResponse<void>) => r.body as void)
         );
     }

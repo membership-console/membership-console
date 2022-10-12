@@ -32,6 +32,98 @@ paths:
       responses:
         '200':
           description: OK
+  "/api/user-groups/{user_group_id}":
+    get:
+      tags:
+        - User Group
+      summary: ユーザグループ取得API
+      description: ユーザグループ取得API
+      operationId: getUserGroup
+      parameters:
+        - name: user_group_id
+          in: path
+          description: ユーザグループID
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: ユーザグループ
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/UserGroupResponse"
+    put:
+      tags:
+        - User Group
+      summary: ユーザグループ更新API
+      description: ユーザグループ更新API
+      operationId: updateUserGroup
+      parameters:
+        - name: user_group_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: ユーザグループ更新リクエスト
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UserGroupUpsertRequest"
+        required: true
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+        - User Group
+      summary: ユーザグループ削除API
+      description: ユーザグループ削除API
+      operationId: deleteUserGroup
+      parameters:
+        - name: user_group_id
+          in: path
+          description: ユーザグループID
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+  "/api/users":
+    get:
+      tags:
+        - User
+      summary: ユーザリスト取得API
+      description: ユーザリスト取得API
+      operationId: getUsers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/UsersResponse"
+    post:
+      tags:
+        - User
+      summary: ユーザ作成API
+      description: ユーザ作成API
+      operationId: createUser
+      requestBody:
+        description: ユーザ作成リクエスト
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UserCreateRequest"
+        required: true
+      responses:
+        '201':
+          description: Created
   "/api/user-groups":
     get:
       tags:
@@ -89,20 +181,6 @@ paths:
       responses:
         '200':
           description: OK
-  "/api/users":
-    get:
-      tags:
-        - User
-      summary: ユーザリスト取得API
-      description: ユーザリスト取得API
-      operationId: getUsers
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/UsersResponse"
   "/api/users/{user_id}":
     get:
       tags:
@@ -156,45 +234,6 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/UserResponse"
-  "/api/user-groups/{user_group_id}":
-    get:
-      tags:
-        - User Group
-      summary: ユーザグループ取得API
-      description: ユーザグループ取得API
-      operationId: getUserGroup
-      parameters:
-        - name: user_group_id
-          in: path
-          description: ユーザグループID
-          required: true
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: ユーザグループ
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/UserGroupResponse"
-    delete:
-      tags:
-        - User Group
-      summary: ユーザグループ削除API
-      description: ユーザグループ削除API
-      operationId: deleteUserGroup
-      parameters:
-        - name: user_group_id
-          in: path
-          description: ユーザグループID
-          required: true
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: OK
   "/api/health":
     get:
       tags:
@@ -234,6 +273,39 @@ components:
             type: integer
             format: int32
       description: ユーザグループ作成/更新リクエスト
+    UserCreateRequest:
+      required:
+        - email
+        - entranceYear
+        - firstName
+        - lastName
+        - password
+        - userGroupIds
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: ファーストネーム
+        lastName:
+          type: string
+          description: ラストネーム
+        email:
+          type: string
+          description: メールアドレス
+        password:
+          type: string
+          description: パスワード
+        entranceYear:
+          type: integer
+          description: 入学年度
+          format: int32
+        userGroupIds:
+          type: array
+          description: ユーザグループIDリスト
+          items:
+            type: integer
+            format: int32
+      description: ユーザ作成リクエスト
     LoginRequest:
       required:
         - email
