@@ -1,0 +1,55 @@
+<app-card>
+    <form
+        (ngSubmit)="onSubmit()"
+        *ngIf="form"
+        [formGroup]="form"
+        fxLayout="column"
+        fxLayoutAlign="start center"
+    >
+        <div class="form-field-wrapper--half" fxLayout="row">
+            <span>氏名</span>
+            <app-shared-input formControlName="lastName" label="姓"></app-shared-input>
+            <app-shared-input formControlName="firstName" label="名"></app-shared-input>
+        </div>
+
+        <div class="form-field-wrapper--half" fxLayout="row">
+            <span>認証情報</span>
+            <app-shared-input formControlName="email" label="メールアドレス"></app-shared-input>
+            <app-shared-input
+                formControlName="password"
+                label="パスワード"
+                type="password"
+            ></app-shared-input>
+        </div>
+
+        <div class="form-field-wrapper--full" fxLayout="row">
+            <span>入学年度</span>
+            <app-shared-autocomplete-select
+                *ngIf="entranceYearOptions.length !== 0"
+                formControlName="entranceYear"
+                [options]="entranceYearOptions"
+                label="入学年度"
+            ></app-shared-autocomplete-select>
+        </div>
+
+        <div class="form-field-wrapper--full" fxLayout="row">
+            <span>ユーザグループ</span>
+            <app-shared-autocomplete-chip-input
+                *ngIf="userGroupOptions.length !== 0"
+                formArrayName="userGroupIds"
+                [options]="userGroupOptions"
+                label="ユーザグループ"
+                hint="ユーザには1つ以上のユーザグループを割り当てる必要があります。"
+            ></app-shared-autocomplete-chip-input>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center center" fxFlexOffset="10px" fxLayoutGap="10px">
+            <app-flat-button label="確認" type="submit"></app-flat-button>
+            <app-flat-button
+                label="キャンセル"
+                [color]="null"
+                (click)="onCancel()"
+            ></app-flat-button>
+        </div>
+    </form>
+</app-card>
