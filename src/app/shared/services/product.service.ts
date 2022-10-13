@@ -40,6 +40,11 @@ export class ProductService {
                     icon: "admin_panel_settings",
                     path: "/user-groups",
                 },
+                {
+                    label: "OAuthクライアント",
+                    icon: "cloud_sync",
+                    path: "/clients",
+                },
             ],
         },
         {
@@ -78,7 +83,7 @@ export class ProductService {
         {
             name: "総会文書ジェネレータ",
             description: "総会文書リポジトリを自動生成できます。",
-            icon: "description",
+            icon: "rocket_launch",
             path: "/soukai-generator",
             version: "開発中",
             visible: true,

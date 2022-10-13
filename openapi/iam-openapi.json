@@ -12,6 +12,10 @@
   ],
   "tags": [
     {
+      "name": "Client",
+      "description": "クライアント"
+    },
+    {
       "name": "User Group",
       "description": "ユーザグループ"
     },
@@ -463,6 +467,28 @@
           }
         }
       }
+    },
+    "/api/clients": {
+      "get": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "クライアントリスト取得API",
+        "description": "クライアントリスト取得API",
+        "operationId": "getClients",
+        "responses": {
+          "200": {
+            "description": "クライアントリスト",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -739,6 +765,53 @@
           }
         },
         "description": "ユーザグループリストレスポンス"
+      },
+      "ClientResponse": {
+        "required": [
+          "clientId",
+          "id",
+          "name",
+          "scopes"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "クライアント名"
+          },
+          "clientId": {
+            "type": "string",
+            "description": "クライアントID"
+          },
+          "scopes": {
+            "type": "array",
+            "description": "スコープリスト",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "クライアントレスポンス"
+      },
+      "ClientsResponse": {
+        "required": [
+          "clients"
+        ],
+        "type": "object",
+        "properties": {
+          "clients": {
+            "type": "array",
+            "description": "クライアントリストレスポンス",
+            "items": {
+              "$ref": "#/components/schemas/ClientResponse"
+            }
+          }
+        },
+        "description": "クライアントリストレスポンス"
       }
     }
   }

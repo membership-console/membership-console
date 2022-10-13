@@ -9,3 +9,5 @@ export { UserGroupResponse } from "./models/user-group-response";
 export { UserResponse } from "./models/user-response";
 export { UsersResponse } from "./models/users-response";
 export { UserGroupsResponse } from "./models/user-groups-response";
+export { ClientResponse } from "./models/client-response";
+export { ClientsResponse } from "./models/clients-response";

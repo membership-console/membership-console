@@ -185,3 +185,7 @@ $theme: map-merge(
     display: flex;
     justify-content: center;
 }
+
+.mat-select-placeholder {
+    padding: 0 !important;
+}

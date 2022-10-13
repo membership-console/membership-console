@@ -8,6 +8,7 @@ import { UserAPIService } from "./services/user-api.service";
 import { UserGroupAPIService } from "./services/user-group-api.service";
 import { AuthAPIService } from "./services/auth-api.service";
 import { HealthCheckAPIService } from "./services/health-check-api.service";
+import { ClientAPIService } from "./services/client-api.service";
 
 /**
  * Module that provides all services and configuration.
@@ -21,6 +22,7 @@ import { HealthCheckAPIService } from "./services/health-check-api.service";
         UserGroupAPIService,
         AuthAPIService,
         HealthCheckAPIService,
+        ClientAPIService,
         ApiConfiguration,
     ],
 })
