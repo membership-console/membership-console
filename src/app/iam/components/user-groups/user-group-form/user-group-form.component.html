@@ -1,0 +1,34 @@
+<app-card>
+    <form
+        (ngSubmit)="onSubmit()"
+        *ngIf="form"
+        [formGroup]="form"
+        fxLayout="column"
+        fxLayoutAlign="start center"
+    >
+        <div class="form-field-wrapper--full" fxLayout="row">
+            <span>名前</span>
+            <app-shared-input formControlName="name" label="名前"></app-shared-input>
+        </div>
+
+        <div class="form-field-wrapper--full" fxLayout="row">
+            <span>ロール</span>
+            <app-shared-autocomplete-chip-input
+                *ngIf="roleOptions"
+                formArrayName="roles"
+                [options]="roleOptions"
+                label="ロール"
+                hint="ユーザグループには1つ以上のロールを割り当てる必要があります。"
+            ></app-shared-autocomplete-chip-input>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center center" fxFlexOffset="10px" fxLayoutGap="10px">
+            <app-flat-button label="確認" type="submit"></app-flat-button>
+            <app-flat-button
+                label="キャンセル"
+                [color]="null"
+                (click)="onCancel()"
+            ></app-flat-button>
+        </div>
+    </form>
+</app-card>

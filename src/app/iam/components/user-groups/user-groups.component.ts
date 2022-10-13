@@ -101,6 +101,7 @@ export class UserGroupsComponent implements OnInit {
                     .pipe(untilDestroyed(this))
                     .subscribe(() => {
                         this.alertService.success("ユーザグループを削除しました。");
+                        this.loadDataSource();
                     });
             });
     }
