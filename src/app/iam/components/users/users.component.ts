@@ -101,6 +101,7 @@ export class UsersComponent implements OnInit {
                     .pipe(untilDestroyed(this))
                     .subscribe(() => {
                         this.alertService.success("ユーザを削除しました。");
+                        this.loadDataSource();
                     });
             });
     }
