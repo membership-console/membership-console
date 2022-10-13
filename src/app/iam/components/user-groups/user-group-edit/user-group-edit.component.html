@@ -1,0 +1,6 @@
+<app-user-group-form
+    *ngIf="userGroup"
+    [userGroup]="userGroup"
+    (submitEventEmitter)="submitEventEmitter($event)"
+    (cancelEventEmitter)="cancelEventEmitter()"
+></app-user-group-form>

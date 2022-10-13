@@ -20,7 +20,7 @@
         <div class="form-field-wrapper--full" fxLayout="row">
             <span>入学年度</span>
             <app-shared-autocomplete-select
-                *ngIf="entranceYearOptions.length !== 0"
+                *ngIf="entranceYearOptions"
                 formControlName="entranceYear"
                 [options]="entranceYearOptions"
                 label="入学年度"
@@ -30,7 +30,7 @@
         <div class="form-field-wrapper--full" fxLayout="row">
             <span>ユーザグループ</span>
             <app-shared-autocomplete-chip-input
-                *ngIf="userGroupOptions.length !== 0"
+                *ngIf="userGroupOptions"
                 formArrayName="userGroupIds"
                 [options]="userGroupOptions"
                 label="ユーザグループ"

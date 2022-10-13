@@ -25,12 +25,12 @@ export class UserEditComponent implements OnInit {
     /**
      * ユーザグループ選択肢リスト
      */
-    userGroupOptions: SelectOption[] = [];
+    userGroupOptions!: SelectOption[];
 
     /**
      * 入学年度選択肢リスト
      */
-    entranceYearOptions: SelectOption[] = [];
+    entranceYearOptions!: SelectOption[];
 
     /**
      * フォーム

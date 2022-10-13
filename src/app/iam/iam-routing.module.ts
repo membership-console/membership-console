@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
+import { UserGroupEditComponent } from "@iam/components/user-groups/user-group-edit/user-group-edit.component";
 import { UserGroupNewComponent } from "@iam/components/user-groups/user-group-new/user-group-new.component";
 import { UserGroupsComponent } from "@iam/components/user-groups/user-groups.component";
 import { UserEditComponent } from "@iam/components/users/user-edit/user-edit.component";
@@ -26,6 +27,11 @@ const routes: Routes = [
                 path: "new",
                 component: UserGroupNewComponent,
                 data: { breadcrumb: "新規作成", title: "ユーザグループ作成" },
+            },
+            {
+                path: ":userGroupId/edit",
+                component: UserGroupEditComponent,
+                data: { breadcrumb: "編集", title: "ユーザグループ編集" },
             },
         ],
     },
