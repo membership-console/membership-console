@@ -7,6 +7,7 @@ import { LoginComponent } from "@app/components/login/login.component";
 import { NotificationsComponent } from "@app/components/notifications/notifications.component";
 import { PasswordChangeComponent } from "@app/components/password-reset/password-change/password-change.component";
 import { PasswordResetComponent } from "@app/components/password-reset/password-reset.component";
+import { SettingsComponent } from "@app/components/settings/settings.component";
 
 import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
 
@@ -25,6 +26,11 @@ const routes: Routes = [
                 path: "notifications",
                 component: NotificationsComponent,
                 data: { breadcrumb: "運営のお知らせ", title: "運営のお知らせ" },
+            },
+            {
+                path: "settings",
+                component: SettingsComponent,
+                data: { breadcrumb: "アプリケーション設定", title: "アプリケーション設定" },
             },
             {
                 path: "error/:status",

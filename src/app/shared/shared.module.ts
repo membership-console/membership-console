@@ -20,8 +20,10 @@ import { MatListModule } from "@angular/material/list";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatTableModule } from "@angular/material/table";
 import { MatTabsModule } from "@angular/material/tabs";
@@ -122,6 +124,8 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         MatTabsModule,
         MatToolbarModule,
         MatCheckboxModule,
+        MatSlideToggleModule,
+        MatRadioModule,
         MarkdownModule.forRoot({}),
     ],
     exports: [
@@ -142,6 +146,8 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         MatPaginatorModule,
         MatTableModule,
         MatCheckboxModule,
+        MatSlideToggleModule,
+        MatRadioModule,
 
         // Components
         CardComponent,
@@ -155,6 +161,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         SharedTextareaComponent,
         StatusBadgeComponent,
         StatusIndicatorComponent,
+        MatSelectModule,
 
         // Pipes
         NumberPipe,
