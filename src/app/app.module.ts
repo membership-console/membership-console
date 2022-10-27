@@ -10,6 +10,7 @@ import { LoginComponent } from "@app/components/login/login.component";
 import { NotificationsComponent } from "@app/components/notifications/notifications.component";
 import { PasswordChangeComponent } from "@app/components/password-reset/password-change/password-change.component";
 import { PasswordResetComponent } from "@app/components/password-reset/password-reset.component";
+import { SettingsComponent } from "@app/components/settings/settings.component";
 
 import { IamModule } from "@iam/iam.module";
 
@@ -27,6 +28,7 @@ import { SharedModule } from "@shared/shared.module";
         NotificationsComponent,
         PasswordChangeComponent,
         PasswordResetComponent,
+        SettingsComponent,
     ],
     imports: [
         SharedModule,

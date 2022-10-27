@@ -1,0 +1,49 @@
+<div fxLayout="column" fxLayoutGap="30px">
+    <app-card title="基本設定">
+        <div fxLayout="row" class="form-field-wrapper">
+            <span>通知</span>
+            <mat-slide-toggle [(ngModel)]="isNotificationValid"></mat-slide-toggle>
+        </div>
+
+        <div fxLayout="row" class="form-field-wrapper">
+            <span>テーマ</span>
+            <mat-radio-group aria-label="Select an theme" [(ngModel)]="colorTheme">
+                <mat-radio-button value="light">ライト</mat-radio-button>
+                <mat-radio-button value="dark">ダーク</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div fxLayout="row" class="form-field-wrapper">
+            <span>
+                <mat-icon>language</mat-icon>
+                言語
+            </span>
+            <mat-form-field appearance="fill">
+                <mat-label>Language</mat-label>
+                <mat-select [(value)]="selectedLanguage">
+                    <div *ngFor="let element of languages">
+                        <mat-option value="{{ element }}">{{ element }}</mat-option>
+                    </div>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" fxFlexOffset="10px" fxLayoutGap="10px">
+            <app-flat-button
+                label="設定を保存"
+                type="submit"
+                (click)="onSubmit()"
+            ></app-flat-button>
+            <app-flat-button
+                label="キャンセル"
+                [color]="null"
+                (click)="onCancel()"
+            ></app-flat-button>
+        </div>
+    </app-card>
+
+    <app-card title="多要素認証">
+        <blockquote>
+            <p>多要素認証を行えるようにする</p>
+        </blockquote>
+    </app-card>
+</div>

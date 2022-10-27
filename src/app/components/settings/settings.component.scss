@@ -1,0 +1,25 @@
+mat-radio-button {
+    margin: 0 2em;
+}
+
+.form-field-wrapper {
+    width: 100%;
+
+    span {
+        width: 150px;
+        min-width: 150px;
+
+        mat-icon {
+            position: relative;
+            top: 0.3em;
+            color: #0066cc;
+        }
+    }
+
+    mat-slide-toggle,
+    mat-radio-group,
+    mat-form-field {
+        min-width: 200px;
+        margin-bottom: 10px;
+    }
+}
