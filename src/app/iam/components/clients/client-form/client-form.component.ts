@@ -1,22 +1,22 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, UntypedFormArray, UntypedFormGroup, Validators } from "@angular/forms";
 
-import { UserGroupResponse } from "@iam/api/models";
+import { ClientResponse } from "@iam/api/models";
 
 import { SelectOption } from "@shared/models/select-option";
-import { UserGroupService } from "@shared/services/user-group.service";
+import { ClientService } from "@shared/services/client.service";
 import { whiteSpaceValidator } from "@shared/validators/white-space.validator";
 
 @Component({
-    selector: "app-user-group-form",
-    templateUrl: "./user-group-form.component.html",
-    styleUrls: ["./user-group-form.component.scss"],
+    selector: "app-client-form",
+    templateUrl: "./client-form.component.html",
+    styleUrls: ["./client-form.component.scss"],
 })
-export class UserGroupFormComponent implements OnInit {
+export class ClientFormComponent implements OnInit {
     /**
-     * ユーザグループ
+     * クライアント
      */
-    @Input() userGroup: UserGroupResponse | undefined;
+    @Input() client: ClientResponse | undefined;
 
     /**
      * 送信EventEmitter
@@ -35,43 +35,40 @@ export class UserGroupFormComponent implements OnInit {
     form!: UntypedFormGroup;
 
     /**
-     * ユーザグループロールリストフォーム
+     * スコープリストフォーム
      */
-    userGroupRolesFrom!: UntypedFormArray;
+    scopesFrom!: UntypedFormArray;
 
     /**
-     * ロール選択肢リスト
+     * スコープ選択肢リスト
      */
-    roleOptions!: SelectOption[];
+    scopeOptions!: SelectOption[];
 
-    constructor(private formBuilder: FormBuilder, private userGroupService: UserGroupService) {}
+    constructor(private formBuilder: FormBuilder, private clientService: ClientService) {}
 
     ngOnInit(): void {
-        // ロール選択肢リストを取得
-        this.roleOptions = this.userGroupService.getRoleSelectOptions();
-
-        // フォームを作成
-        if (this.userGroup) {
-            this.userGroupRolesFrom = this.formBuilder.array(
-                this.userGroup.roles.map((role) =>
-                    this.formBuilder.control(role, [Validators.required])
+        // スコープ選択肢リストを取得
+        this.scopeOptions = this.clientService.getScopeSelectOptions();
+        if (this.client) {
+            this.scopesFrom = this.formBuilder.array(
+                this.client.scopes.map((scope) =>
+                    this.formBuilder.control(scope, [Validators.required])
                 )
             );
         } else {
-            this.userGroupRolesFrom = this.formBuilder.array([]);
+            this.scopesFrom = this.formBuilder.array([]);
         }
         this.form = this.formBuilder.group({
             name: [
-                this.userGroup ? this.userGroup.name : null,
+                this.client ? this.client.name : null,
                 [
-                    Validators.required,
                     Validators.required,
                     Validators.minLength(1),
                     Validators.maxLength(100),
                     whiteSpaceValidator,
                 ],
             ],
-            roles: this.userGroupRolesFrom,
+            scopes: this.scopesFrom,
         });
     }
 

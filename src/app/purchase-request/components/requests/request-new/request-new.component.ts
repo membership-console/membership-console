@@ -47,7 +47,6 @@ export class RequestNewComponent implements OnInit {
                 ],
             ],
             // 商品URL
-            // TODO: URLパターンのValidatorを実装
             url: [null, [Validators.required, urlValidator, whiteSpaceValidator]],
             // 税込価格
             price: [null, [Validators.required, Validators.min(1), whiteSpaceValidator]],

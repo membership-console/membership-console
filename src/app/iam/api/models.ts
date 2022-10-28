@@ -1,10 +1,12 @@
 export { UserUpdateRequest } from "./models/user-update-request";
 export { LoginUserPasswordUpdateRequest } from "./models/login-user-password-update-request";
 export { UserGroupUpsertRequest } from "./models/user-group-upsert-request";
+export { ClientUpsertRequest } from "./models/client-upsert-request";
 export { UserCreateRequest } from "./models/user-create-request";
 export { RequestPasswordResetRequest } from "./models/request-password-reset-request";
 export { PasswordResetRequest } from "./models/password-reset-request";
 export { LoginRequest } from "./models/login-request";
+export { ClientCredentialsResponse } from "./models/client-credentials-response";
 export { UserGroupResponse } from "./models/user-group-response";
 export { UserResponse } from "./models/user-response";
 export { UsersResponse } from "./models/users-response";
