@@ -1,0 +1,27 @@
+<div fxLayout="column">
+    <div>
+        <input [formControl]="controlDir.control" [hidden]="true" matInput />
+        <mat-button-toggle-group
+            (change)="onChange($event.value)"
+            [formControl]="controlDir.control"
+            [multiple]="multiple"
+            [value]="defaultOption?.value"
+            class="toggle__container"
+        >
+            <mat-button-toggle
+                *ngFor="let option of options"
+                [value]="option.value"
+                class="toggle__container__button"
+            >
+                {{ option.label }}
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+
+    <div style="height: 1em">
+        <mat-error *ngIf="controlDir.control?.hasError('required')">
+            {{ placeholder }}を入力してください。
+        </mat-error>
+        <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+    </div>
+</div>

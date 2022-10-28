@@ -4,32 +4,32 @@ import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
-import { UserResponse } from "@iam/api/models";
-import { UserAPIService } from "@iam/api/services";
+import { ClientResponse } from "@iam/api/models";
+import { ClientAPIService } from "@iam/api/services";
 
 import { AlertService } from "@shared/services/alert.service";
 
 @UntilDestroy()
 @Component({
-    selector: "app-users",
-    templateUrl: "./users.component.html",
-    styleUrls: ["./users.component.scss"],
+    selector: "app-clients",
+    templateUrl: "./clients.component.html",
+    styleUrls: ["./clients.component.scss"],
 })
-export class UsersComponent implements OnInit {
+export class ClientsComponent implements OnInit {
     /**
-     * ユーザリスト
+     * クライアントリスト
      */
-    users: UserResponse[] = [];
+    clients: ClientResponse[] = [];
 
     /**
      * テーブルのカラムリスト
      */
-    columns = ["name", "email", "entranceYear", "control"];
+    columns = ["name", "type", "sso", "scopes", "control"];
 
     /**
      * テーブルのデータソース
      */
-    dataSource!: MatTableDataSource<UserResponse>;
+    dataSource!: MatTableDataSource<ClientResponse>;
 
     /**
      * テーブルのページネータ
@@ -40,7 +40,7 @@ export class UsersComponent implements OnInit {
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private alertService: AlertService,
-        private userAPIService: UserAPIService
+        private clientAPIService: ClientAPIService
     ) {}
 
     ngOnInit(): void {
@@ -52,7 +52,7 @@ export class UsersComponent implements OnInit {
      * データソースにデータを挿入
      */
     setDataSource() {
-        this.dataSource = new MatTableDataSource<UserResponse>(this.users);
+        this.dataSource = new MatTableDataSource<ClientResponse>(this.clients);
         this.dataSource.paginator = this.paginator;
     }
 
@@ -60,22 +60,22 @@ export class UsersComponent implements OnInit {
      * データソースをロード
      */
     loadDataSource() {
-        this.userAPIService
-            .getUsers()
+        this.clientAPIService
+            .getClients()
             .pipe(untilDestroyed(this))
             .subscribe((response) => {
-                this.users = response.users;
+                this.clients = response.clients;
                 this.setDataSource();
             });
     }
 
     /**
-     * ユーザを編集
+     * クライアントを編集
      *
-     * @param user ユーザ
+     * @param client クライアント
      */
-    onClickEdit(user: UserResponse) {
-        this.router.navigate([user.id, "edit"], {
+    onClickEdit(client: ClientResponse) {
+        this.router.navigate([client.id, "edit"], {
             queryParams: {},
             queryParamsHandling: "merge",
             relativeTo: this.activatedRoute,
@@ -83,11 +83,11 @@ export class UsersComponent implements OnInit {
     }
 
     /**
-     * ユーザを削除
+     * クライアントを削除
      *
-     * @param user ユーザ
+     * @param client クライアント
      */
-    onClickDelete(user: UserResponse) {
+    onClickDelete(client: ClientResponse) {
         this.alertService
             .confirm("削除確認", "この動作は取り消せませんが、本当に削除しますか？")
             .pipe(untilDestroyed(this))
@@ -96,13 +96,8 @@ export class UsersComponent implements OnInit {
                     return;
                 }
 
-                this.userAPIService
-                    .deleteUser({ user_id: user.id })
-                    .pipe(untilDestroyed(this))
-                    .subscribe(() => {
-                        this.alertService.success("ユーザを削除しました。");
-                        this.loadDataSource();
-                    });
+                // TODO: クライアント削除APIを呼び出す
+                this.alertService.warn("その機能はまだ実装されていません。");
             });
     }
 }

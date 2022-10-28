@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
+import { ClientsComponent } from "@iam/components/clients/clients.component";
 import { UserGroupEditComponent } from "@iam/components/user-groups/user-group-edit/user-group-edit.component";
 import { UserGroupNewComponent } from "@iam/components/user-groups/user-group-new/user-group-new.component";
 import { UserGroupsComponent } from "@iam/components/user-groups/user-groups.component";
@@ -13,6 +14,27 @@ const routes: Routes = [
         path: "",
         redirectTo: "users",
         pathMatch: "full",
+    },
+    {
+        path: "users",
+        data: { breadcrumb: "ユーザ", title: null },
+        children: [
+            {
+                path: "",
+                component: UsersComponent,
+                data: { breadcrumb: null, title: "ユーザリスト" },
+            },
+            {
+                path: "new",
+                component: UserNewComponent,
+                data: { breadcrumb: "新規作成", title: "ユーザ作成" },
+            },
+            {
+                path: ":userId/edit",
+                component: UserEditComponent,
+                data: { breadcrumb: "編集", title: "ユーザ編集" },
+            },
+        ],
     },
     {
         path: "user-groups",
@@ -36,23 +58,13 @@ const routes: Routes = [
         ],
     },
     {
-        path: "users",
-        data: { breadcrumb: "ユーザ", title: null },
+        path: "clients",
+        data: { breadcrumb: "OAuthクライアント", title: null },
         children: [
             {
                 path: "",
-                component: UsersComponent,
-                data: { breadcrumb: null, title: "ユーザリスト" },
-            },
-            {
-                path: "new",
-                component: UserNewComponent,
-                data: { breadcrumb: "新規作成", title: "ユーザ作成" },
-            },
-            {
-                path: ":userId/edit",
-                component: UserEditComponent,
-                data: { breadcrumb: "編集", title: "ユーザ編集" },
+                component: ClientsComponent,
+                data: { breadcrumb: null, title: "OAuthクライアントリスト" },
             },
         ],
     },

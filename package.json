@@ -17,6 +17,7 @@
     "format": "prettier --write src && ng lint --fix",
     "openapi-gen": "npm-run-all openapi-gen:*",
     "openapi-gen:iam": "ng-openapi-gen --config openapi/iam.json",
+    "openapi-gen:purchase-request": "ng-openapi-gen --config openapi/purchase-request.json",
     "prepare": "husky install"
   },
   "private": true,

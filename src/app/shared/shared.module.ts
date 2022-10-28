@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatButtonModule } from "@angular/material/button";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatCardModule } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatChipsModule } from "@angular/material/chips";
@@ -50,6 +51,7 @@ import { SharedAutocompleteSelectComponent } from "@shared/components/shared-aut
 import { SharedInputComponent } from "@shared/components/shared-input/shared-input.component";
 import { SharedMarkdownEditorComponent } from "@shared/components/shared-markdown-editor/shared-markdown-editor.component";
 import { SharedTextareaComponent } from "@shared/components/shared-textarea/shared-textarea.component";
+import { SharedToggleButtonComponent } from "@shared/components/shared-toggle-button/shared-toggle-button.component";
 import { SnackBarComponent } from "@shared/components/snack-bar/snack-bar.component";
 import { StatusBadgeComponent } from "@shared/components/status-badge/status-badge.component";
 import { StatusIndicatorComponent } from "@shared/components/status-indicator/status-indicator.component";
@@ -82,6 +84,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         SharedInputComponent,
         SharedMarkdownEditorComponent,
         SharedTextareaComponent,
+        SharedToggleButtonComponent,
         SnackBarComponent,
         StatusBadgeComponent,
         StatusIndicatorComponent,
@@ -105,6 +108,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         MatAutocompleteModule,
         MatBadgeModule,
         MatButtonModule,
+        MatButtonToggleModule,
         MatCardModule,
         MatChipsModule,
         MatNativeDateModule,
@@ -159,6 +163,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         SharedInputComponent,
         SharedMarkdownEditorComponent,
         SharedTextareaComponent,
+        SharedToggleButtonComponent,
         StatusBadgeComponent,
         StatusIndicatorComponent,
         MatSelectModule,
