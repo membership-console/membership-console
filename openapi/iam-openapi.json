@@ -248,6 +248,67 @@
         }
       }
     },
+    "/api/clients/{id}": {
+      "put": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "クライアント更新API",
+        "description": "クライアント更新API",
+        "operationId": "updateClient",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "クライアント更新リクエスト",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientUpsertRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "クライアント削除API",
+        "description": "クライアント削除API",
+        "operationId": "deleteClient",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/users": {
       "get": {
         "tags": [
@@ -433,6 +494,59 @@
         }
       }
     },
+    "/api/clients": {
+      "get": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "クライアントリスト取得API",
+        "description": "クライアントリスト取得API",
+        "operationId": "getClients",
+        "responses": {
+          "200": {
+            "description": "クライアントリスト",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientsResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "クライアント作成API",
+        "description": "クライアント作成API",
+        "operationId": "createClient",
+        "requestBody": {
+          "description": "クライアント作成リクエスト",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientUpsertRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "クレデンシャル",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientCredentialsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/users/me": {
       "get": {
         "tags": [
@@ -464,28 +578,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/clients": {
-      "get": {
-        "tags": [
-          "Client"
-        ],
-        "summary": "クライアントリスト取得API",
-        "description": "クライアントリスト取得API",
-        "operationId": "getClients",
-        "responses": {
-          "200": {
-            "description": "クライアントリスト",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientsResponse"
-                }
-              }
-            }
           }
         }
       }
@@ -570,6 +662,27 @@
           }
         },
         "description": "ユーザグループ作成/更新リクエスト"
+      },
+      "ClientUpsertRequest": {
+        "required": [
+          "name",
+          "scopes"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "クライアント名"
+          },
+          "scopes": {
+            "type": "array",
+            "description": "スコープリスト",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "クライアント作成/更新リクエスト"
       },
       "UserCreateRequest": {
         "required": [
@@ -662,6 +775,24 @@
           }
         },
         "description": "ログインリクエスト"
+      },
+      "ClientCredentialsResponse": {
+        "required": [
+          "clientId",
+          "clientSecret"
+        ],
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "description": "クライアントID"
+          },
+          "clientSecret": {
+            "type": "string",
+            "description": "クライアントシークレット"
+          }
+        },
+        "description": "クライアントクレデンシャルレスポンス"
       },
       "UserGroupResponse": {
         "required": [

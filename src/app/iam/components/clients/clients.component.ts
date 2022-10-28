@@ -96,8 +96,13 @@ export class ClientsComponent implements OnInit {
                     return;
                 }
 
-                // TODO: クライアント削除APIを呼び出す
-                this.alertService.warn("その機能はまだ実装されていません。");
+                this.clientAPIService
+                    .deleteClient({ id: client.id })
+                    .pipe(untilDestroyed(this))
+                    .subscribe(() => {
+                        this.alertService.success("クライアントを削除しました。");
+                        this.loadDataSource();
+                    });
             });
     }
 }

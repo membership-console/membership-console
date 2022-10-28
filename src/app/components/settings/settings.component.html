@@ -7,17 +7,14 @@
 
         <div fxLayout="row" class="form-field-wrapper">
             <span>テーマ</span>
-            <mat-radio-group aria-label="Select an theme" [(ngModel)]="colorTheme">
+            <mat-radio-group [(ngModel)]="colorTheme" fxLayout="row" fxLayoutGap="25px">
                 <mat-radio-button value="light">ライト</mat-radio-button>
                 <mat-radio-button value="dark">ダーク</mat-radio-button>
             </mat-radio-group>
         </div>
 
         <div fxLayout="row" class="form-field-wrapper">
-            <span>
-                <mat-icon>language</mat-icon>
-                言語
-            </span>
+            <span>言語</span>
             <mat-form-field appearance="fill">
                 <mat-label>Language</mat-label>
                 <mat-select [(value)]="selectedLanguage">

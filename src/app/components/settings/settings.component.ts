@@ -10,19 +10,20 @@ import { AlertService } from "@shared/services/alert.service";
 })
 export class SettingsComponent {
     /**
-     * 通知を有効化するかどうか（デフォルトは無効）
+     * 通知を有効化するかどうか
      */
-    isNotificationValid = false;
+    isNotificationValid = true;
 
     /**
-     * ダークモードかどうか（デフォルトはライト）
+     * ダークモードかどうか
      */
     colorTheme: "light" | "dark" = "light";
 
     /**
-     * 言語選択（デフォルトは日本語）
+     * 言語選択
      */
     languages: string[] = ["日本語", "English", "한국어", "汉语"];
+
     // 現在選択されている言語
     selectedLanguage = "日本語";
 

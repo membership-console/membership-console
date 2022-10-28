@@ -12,13 +12,13 @@
         </div>
 
         <div class="form-field-wrapper--full" fxLayout="row">
-            <span>ロール</span>
+            <span>スコープ</span>
             <app-shared-autocomplete-chip-input
-                *ngIf="roleOptions"
-                formArrayName="roles"
-                [options]="roleOptions"
-                label="ロール"
-                hint="1つ以上のロールを割り当てる必要があります。"
+                *ngIf="scopeOptions"
+                formArrayName="scopes"
+                [options]="scopeOptions"
+                label="スコープ"
+                hint="1つ以上のスコープを割り当てる必要があります。"
             ></app-shared-autocomplete-chip-input>
         </div>
 
