@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 
 import { ApiConfiguration } from "@iam/api/api-configuration";
 import { ClientCredentialsDialogComponent } from "@iam/components/clients/client-credentials-dialog/client-credentials-dialog.component";
+import { ClientEditComponent } from "@iam/components/clients/client-edit/client-edit.component";
 import { ClientFormComponent } from "@iam/components/clients/client-form/client-form.component";
 import { ClientNewComponent } from "@iam/components/clients/client-new/client-new.component";
 import { ClientsComponent } from "@iam/components/clients/clients.component";
@@ -20,6 +21,7 @@ import { environment } from "@environments/environment";
 @NgModule({
     declarations: [
         ClientCredentialsDialogComponent,
+        ClientEditComponent,
         ClientFormComponent,
         ClientNewComponent,
         ClientsComponent,

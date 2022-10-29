@@ -1,0 +1,6 @@
+<app-client-form
+    *ngIf="client"
+    [client]="client"
+    (submitEventEmitter)="submitEventEmitter($event)"
+    (cancelEventEmitter)="cancelEventEmitter()"
+></app-client-form>

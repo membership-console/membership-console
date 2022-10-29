@@ -249,6 +249,37 @@
       }
     },
     "/api/clients/{id}": {
+      "get": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "クライアント取得API",
+        "description": "クライアント取得API",
+        "operationId": "getClient",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "クライアント",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientResponse"
+                }
+              }
+            }
+          }
+        }
+      },
       "put": {
         "tags": [
           "Client"
