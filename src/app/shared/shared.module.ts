@@ -143,6 +143,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         FlexLayoutModule,
         MatButtonModule,
         MatCardModule,
+        MatDialogModule,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
