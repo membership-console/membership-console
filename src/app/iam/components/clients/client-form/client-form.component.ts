@@ -44,6 +44,34 @@ export class ClientFormComponent implements OnInit {
      */
     scopeOptions!: SelectOption[];
 
+    /**
+     * クライアント種別選択肢リスト
+     */
+    typeOptions: SelectOption[] = [
+        {
+            label: "OAuth2.0",
+            value: "OAuth2.0",
+        },
+        {
+            label: "OIDC",
+            value: "OIDC",
+        },
+    ];
+
+    /**
+     * SSO可否選択肢リスト
+     */
+    ssoOptions: SelectOption[] = [
+        {
+            label: "ON",
+            value: true,
+        },
+        {
+            label: "OFF",
+            value: false,
+        },
+    ];
+
     constructor(private formBuilder: FormBuilder, private clientService: ClientService) {}
 
     ngOnInit(): void {
@@ -68,6 +96,8 @@ export class ClientFormComponent implements OnInit {
                     whiteSpaceValidator,
                 ],
             ],
+            type: ["OAuth2.0", [Validators.required]],
+            sso: [false, [Validators.required]],
             scopes: this.scopesFrom,
         });
     }

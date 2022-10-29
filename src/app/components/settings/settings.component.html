@@ -1,41 +1,51 @@
 <div fxLayout="column" fxLayoutGap="30px">
     <app-card title="基本設定">
-        <div fxLayout="row" class="form-field-wrapper">
-            <span>通知</span>
-            <mat-slide-toggle [(ngModel)]="isNotificationValid"></mat-slide-toggle>
-        </div>
+        <form
+            (ngSubmit)="onSubmit()"
+            *ngIf="form"
+            [formGroup]="form"
+            fxLayout="column"
+            fxLayoutAlign="start center"
+        >
+            <div class="form-field-wrapper--auto" fxLayout="row">
+                <span>通知</span>
+                <app-shared-toggle-button
+                    formControlName="notification"
+                    [options]="notificationOptions"
+                ></app-shared-toggle-button>
+            </div>
 
-        <div fxLayout="row" class="form-field-wrapper">
-            <span>テーマ</span>
-            <mat-radio-group [(ngModel)]="colorTheme" fxLayout="row" fxLayoutGap="25px">
-                <mat-radio-button value="light">ライト</mat-radio-button>
-                <mat-radio-button value="dark">ダーク</mat-radio-button>
-            </mat-radio-group>
-        </div>
+            <div class="form-field-wrapper--auto" fxLayout="row">
+                <span>テーマ</span>
+                <app-shared-radio-button
+                    formControlName="theme"
+                    [options]="themeOptions"
+                ></app-shared-radio-button>
+            </div>
 
-        <div fxLayout="row" class="form-field-wrapper">
-            <span>言語</span>
-            <mat-form-field appearance="fill">
-                <mat-label>Language</mat-label>
-                <mat-select [(value)]="selectedLanguage">
-                    <div *ngFor="let element of languages">
-                        <mat-option value="{{ element }}">{{ element }}</mat-option>
-                    </div>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="center center" fxFlexOffset="10px" fxLayoutGap="10px">
-            <app-flat-button
-                label="設定を保存"
-                type="submit"
-                (click)="onSubmit()"
-            ></app-flat-button>
-            <app-flat-button
-                label="キャンセル"
-                [color]="null"
-                (click)="onCancel()"
-            ></app-flat-button>
-        </div>
+            <div class="form-field-wrapper--auto" fxLayout="row">
+                <span>言語</span>
+                <app-shared-autocomplete-select
+                    formControlName="language"
+                    [options]="languageOptions"
+                    label="言語"
+                ></app-shared-autocomplete-select>
+            </div>
+
+            <div
+                fxLayout="row"
+                fxLayoutAlign="center center"
+                fxFlexOffset="10px"
+                fxLayoutGap="10px"
+            >
+                <app-flat-button label="確認" type="submit"></app-flat-button>
+                <app-flat-button
+                    label="キャンセル"
+                    [color]="null"
+                    (click)="onCancel()"
+                ></app-flat-button>
+            </div>
+        </form>
     </app-card>
 
     <app-card title="多要素認証">

@@ -5,11 +5,11 @@ import { AbstractInputComponent } from "@shared/components/abstract-input/abstra
 import { SelectOption } from "@shared/models/select-option";
 
 @Component({
-    selector: "app-shared-toggle-button",
-    templateUrl: "./shared-toggle-button.component.html",
-    styleUrls: ["./shared-toggle-button.component.scss"],
+    selector: "app-shared-radio-button",
+    templateUrl: "./shared-radio-button.component.html",
+    styleUrls: ["./shared-radio-button.component.scss"],
 })
-export class SharedToggleButtonComponent extends AbstractInputComponent implements OnInit {
+export class SharedRadioButtonComponent extends AbstractInputComponent implements OnInit {
     /**
      * 変更EventEmitter
      */
@@ -29,11 +29,6 @@ export class SharedToggleButtonComponent extends AbstractInputComponent implemen
      * デフォルトで選択される選択肢
      */
     @Input() defaultOption?: SelectOption;
-
-    /**
-     * 複数選択可能かどうか
-     */
-    @Input() multiple = false;
 
     /**
      * 不活性かどうか
