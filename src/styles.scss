@@ -44,7 +44,7 @@ blockquote {
 .form-field-wrapper--half {
     width: 100%;
 
-    span {
+    > span {
         width: 200px;
         min-width: 200px;
         padding-top: 10px;
@@ -56,6 +56,9 @@ blockquote {
 
     app-shared-input,
     app-shared-textarea,
+    app-shared-toggle-button,
+    app-shared-autocomplete-select,
+    app-shared-autocomplete-chip-input,
     app-shared-markdown-editor {
         min-width: 300px;
         width: calc((100% - 200px) / 2);
@@ -66,7 +69,7 @@ blockquote {
 .form-field-wrapper--full {
     width: 100%;
 
-    span {
+    > span {
         width: 200px;
         min-width: 200px;
         padding-top: 10px;
@@ -74,11 +77,31 @@ blockquote {
 
     app-shared-input,
     app-shared-textarea,
+    app-shared-toggle-button,
     app-shared-autocomplete-select,
     app-shared-autocomplete-chip-input,
     app-shared-markdown-editor {
         min-width: 600px;
         width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.form-field-wrapper--auto {
+    width: 100%;
+
+    > span {
+        width: 200px;
+        min-width: 200px;
+        padding-top: 10px;
+    }
+
+    app-shared-input,
+    app-shared-textarea,
+    app-shared-toggle-button,
+    app-shared-autocomplete-select,
+    app-shared-autocomplete-chip-input,
+    app-shared-markdown-editor {
         margin-bottom: 10px;
     }
 }

@@ -1,9 +1,11 @@
 import { Component } from "@angular/core";
 import { UntypedFormGroup } from "@angular/forms";
+import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
 import { ClientAPIService } from "@iam/api/services";
+import { ClientCredentialsDialogComponent } from "@iam/components/clients/client-credentials-dialog/client-credentials-dialog.component";
 
 import { AlertService } from "@shared/services/alert.service";
 
@@ -15,6 +17,7 @@ import { AlertService } from "@shared/services/alert.service";
 })
 export class ClientNewComponent {
     constructor(
+        private matDialog: MatDialog,
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private clientAPIService: ClientAPIService,
@@ -31,14 +34,18 @@ export class ClientNewComponent {
             .createClient({ body: formGroup.value })
             .pipe(untilDestroyed(this))
             .subscribe((response) => {
-                // TODO: クライアントID、シークレットを表示
-                console.log(response);
                 this.alertService.success("クライアントを新規作成しました。");
-                this.router.navigate(["../"], {
-                    queryParams: {},
-                    queryParamsHandling: "merge",
-                    relativeTo: this.activatedRoute,
-                });
+                this.router
+                    .navigate(["../"], {
+                        queryParams: {},
+                        queryParamsHandling: "merge",
+                        relativeTo: this.activatedRoute,
+                    })
+                    .then(() => {
+                        this.matDialog.open(ClientCredentialsDialogComponent, {
+                            data: response,
+                        });
+                    });
             });
     }
 

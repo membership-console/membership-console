@@ -41,6 +41,11 @@ export class SharedAutocompleteSelectComponent extends AbstractInputComponent im
      */
     @Input() appearance: "legacy" | "standard" | "fill" | "outline" = "outline";
 
+    /**
+     * 不活性かどうか
+     */
+    @Input() disabled = false;
+
     filteredOptions: Observable<SelectOption[]> = of([]);
 
     constructor(controlDir: FormControlName) {

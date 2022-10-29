@@ -1,22 +1,19 @@
 <div fxLayout="column">
     <div>
         <input [formControl]="controlDir.control" [hidden]="true" matInput />
-        <mat-button-toggle-group
+        <mat-radio-group
             (change)="onChange($event.value)"
             [formControl]="controlDir.control"
-            [multiple]="multiple"
             [value]="defaultOption?.value"
-            class="toggle__container"
             [disabled]="disabled"
+            class="radio-button-container"
+            fxLayout="row"
+            fxLayoutGap="30px"
         >
-            <mat-button-toggle
-                *ngFor="let option of options"
-                [value]="option.value"
-                class="toggle__container__button"
-            >
+            <mat-radio-button *ngFor="let option of options" [value]="option.value">
                 {{ option.label }}
-            </mat-button-toggle>
-        </mat-button-toggle-group>
+            </mat-radio-button>
+        </mat-radio-group>
     </div>
 
     <div style="height: 1em">

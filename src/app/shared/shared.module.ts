@@ -50,6 +50,7 @@ import { SharedAutocompleteChipInputComponent } from "@shared/components/shared-
 import { SharedAutocompleteSelectComponent } from "@shared/components/shared-autocomplete-select/shared-autocomplete-select.component";
 import { SharedInputComponent } from "@shared/components/shared-input/shared-input.component";
 import { SharedMarkdownEditorComponent } from "@shared/components/shared-markdown-editor/shared-markdown-editor.component";
+import { SharedRadioButtonComponent } from "@shared/components/shared-radio-button/shared-radio-button.component";
 import { SharedTextareaComponent } from "@shared/components/shared-textarea/shared-textarea.component";
 import { SharedToggleButtonComponent } from "@shared/components/shared-toggle-button/shared-toggle-button.component";
 import { SnackBarComponent } from "@shared/components/snack-bar/snack-bar.component";
@@ -83,6 +84,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         SharedAutocompleteSelectComponent,
         SharedInputComponent,
         SharedMarkdownEditorComponent,
+        SharedRadioButtonComponent,
         SharedTextareaComponent,
         SharedToggleButtonComponent,
         SnackBarComponent,
@@ -143,6 +145,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         FlexLayoutModule,
         MatButtonModule,
         MatCardModule,
+        MatDialogModule,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
@@ -162,6 +165,7 @@ import { UsernamePipe } from "@shared/pipes/username.pipe";
         SharedAutocompleteSelectComponent,
         SharedInputComponent,
         SharedMarkdownEditorComponent,
+        SharedRadioButtonComponent,
         SharedTextareaComponent,
         SharedToggleButtonComponent,
         StatusBadgeComponent,

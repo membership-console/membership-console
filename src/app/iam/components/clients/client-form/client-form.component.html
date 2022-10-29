@@ -22,6 +22,25 @@
             ></app-shared-autocomplete-chip-input>
         </div>
 
+        <div class="form-field-wrapper--auto" fxLayout="row">
+            <span>クライアント種別</span>
+            <app-shared-autocomplete-select
+                formControlName="type"
+                [options]="typeOptions"
+                label="クライアント種別"
+                [disabled]="true"
+            ></app-shared-autocomplete-select>
+        </div>
+
+        <div class="form-field-wrapper--full" fxLayout="row">
+            <span>SSO可否</span>
+            <app-shared-toggle-button
+                formControlName="sso"
+                [options]="ssoOptions"
+                [disabled]="true"
+            ></app-shared-toggle-button>
+        </div>
+
         <div fxLayout="row" fxLayoutAlign="center center" fxFlexOffset="10px" fxLayoutGap="10px">
             <app-flat-button label="確認" type="submit"></app-flat-button>
             <app-flat-button
