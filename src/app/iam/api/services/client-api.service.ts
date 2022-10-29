@@ -10,6 +10,7 @@ import { Observable } from "rxjs";
 import { map, filter } from "rxjs/operators";
 
 import { ClientCredentialsResponse } from "../models/client-credentials-response";
+import { ClientResponse } from "../models/client-response";
 import { ClientUpsertRequest } from "../models/client-upsert-request";
 import { ClientsResponse } from "../models/clients-response";
 
@@ -22,6 +23,71 @@ import { ClientsResponse } from "../models/clients-response";
 export class ClientAPIService extends BaseService {
     constructor(config: ApiConfiguration, http: HttpClient) {
         super(config, http);
+    }
+
+    /**
+     * Path part for operation getClient
+     */
+    static readonly GetClientPath = "/api/clients/{id}";
+
+    /**
+     * クライアント取得API.
+     *
+     * クライアント取得API
+     *
+     * This method provides access to the full `HttpResponse`, allowing access to response headers.
+     * To access only the response body, use `getClient()` instead.
+     *
+     * This method doesn't expect any request body.
+     */
+    getClient$Response(params: {
+        /**
+         * ID
+         */
+        id: string;
+        context?: HttpContext;
+    }): Observable<StrictHttpResponse<ClientResponse>> {
+        const rb = new RequestBuilder(this.rootUrl, ClientAPIService.GetClientPath, "get");
+        if (params) {
+            rb.path("id", params.id, {});
+        }
+
+        return this.http
+            .request(
+                rb.build({
+                    responseType: "json",
+                    accept: "application/json",
+                    context: params?.context,
+                })
+            )
+            .pipe(
+                filter((r: any) => r instanceof HttpResponse),
+                map((r: HttpResponse<any>) => {
+                    return r as StrictHttpResponse<ClientResponse>;
+                })
+            );
+    }
+
+    /**
+     * クライアント取得API.
+     *
+     * クライアント取得API
+     *
+     * This method provides access to only to the response body.
+     * To access the full response (for headers, for example), `getClient$Response()` instead.
+     *
+     * This method doesn't expect any request body.
+     */
+    getClient(params: {
+        /**
+         * ID
+         */
+        id: string;
+        context?: HttpContext;
+    }): Observable<ClientResponse> {
+        return this.getClient$Response(params).pipe(
+            map((r: StrictHttpResponse<ClientResponse>) => r.body as ClientResponse)
+        );
     }
 
     /**

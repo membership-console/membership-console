@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
+import { ClientEditComponent } from "@iam/components/clients/client-edit/client-edit.component";
 import { ClientNewComponent } from "@iam/components/clients/client-new/client-new.component";
 import { ClientsComponent } from "@iam/components/clients/clients.component";
 import { UserGroupEditComponent } from "@iam/components/user-groups/user-group-edit/user-group-edit.component";
@@ -71,6 +72,11 @@ const routes: Routes = [
                 path: "new",
                 component: ClientNewComponent,
                 data: { breadcrumb: "新規作成", title: "OAuthクライアント作成" },
+            },
+            {
+                path: ":id/edit",
+                component: ClientEditComponent,
+                data: { breadcrumb: "編集", title: "OAuthクライアント編集" },
             },
         ],
     },
