@@ -11,6 +11,8 @@ import { Product } from "@shared/models/product";
 export class ProductService {
     /**
      * 商品リスト
+     *
+     * versionはマイナーバージョンまで表示する
      */
     private products: Product[] = [
         {

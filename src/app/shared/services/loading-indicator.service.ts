@@ -1,4 +1,4 @@
-import { Overlay } from "@angular/cdk/overlay";
+import { Overlay, OverlayRef } from "@angular/cdk/overlay";
 import { ComponentPortal } from "@angular/cdk/portal";
 import { Injectable } from "@angular/core";
 
@@ -12,27 +12,47 @@ export interface LoadingIndicatorRef {
     providedIn: "root",
 })
 export class LoadingIndicatorService {
+    /**
+     * プロセス数
+     */
+    numberOfProcess = 0;
+
+    /**
+     * Portal化したインジケータコンポーネント
+     */
+    portal!: ComponentPortal<ProgressSpinnerComponent>;
+
+    /**
+     * overlayへの参照
+     */
+    overlayRef!: OverlayRef;
+
     constructor(private readonly overlay: Overlay) {}
 
     /**
      * インジケータを開く
-     *
-     * @return インジケータ
      */
-    open(): LoadingIndicatorRef {
-        const portal = new ComponentPortal(ProgressSpinnerComponent);
-        const overlayRef = this.overlay.create({
-            width: "100%",
-            height: "100%",
-            panelClass: "app-loading-indicator",
-        });
-        overlayRef.attach(portal);
-        const close = () => {
-            overlayRef.detach();
-            overlayRef.dispose();
-        };
-        return {
-            close,
-        };
+    open() {
+        this.numberOfProcess++;
+        if (this.numberOfProcess <= 1) {
+            this.portal = new ComponentPortal(ProgressSpinnerComponent);
+            this.overlayRef = this.overlay.create({
+                width: "100%",
+                height: "100%",
+                panelClass: "app-loading-indicator",
+            });
+            this.overlayRef.attach(this.portal);
+        }
+    }
+
+    /**
+     * インジケータを閉じる
+     */
+    close() {
+        this.numberOfProcess--;
+        if (this.numberOfProcess < 1) {
+            this.overlayRef.detach();
+            this.overlayRef.dispose();
+        }
     }
 }
