@@ -14,10 +14,10 @@ export class LoadingInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
             finalize(() => {
                 // 連続かつ直列でAPI呼び出しする場合にインジケータが表示・非表示を繰り返す問題を解消するために、
-                // 通信終了後10msだけ遅延させる（HTTP通信していない時間が生まれるとインジケータが消えるため）
+                // 通信終了後50msだけ遅延させる（HTTP通信していない時間が生まれるとインジケータが消えるため）
                 setTimeout(() => {
                     this.loadingIndicatorService.close();
-                }, 10);
+                }, 50);
             })
         );
     }

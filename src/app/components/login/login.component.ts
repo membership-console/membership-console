@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
 import { AuthAPIService } from "@iam/api/services";
@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     constructor(
         private alertService: AlertService,
         private formBuilder: FormBuilder,
+        private activatedRoute: ActivatedRoute,
         private router: Router,
         private authAPIService: AuthAPIService
     ) {}
@@ -53,11 +54,16 @@ export class LoginComponent implements OnInit {
                 .login({ body: this.form.value })
                 .pipe(untilDestroyed(this))
                 .subscribe(() => {
-                    this.router.navigate(["/"], {
-                        queryParams: {},
-                        queryParamsHandling: "merge",
+                    this.activatedRoute.queryParams.subscribe((params) => {
+                        // continueパラメータを保持している場合はそこに遷移する
+                        this.router.navigate([params["continue"] || "/"], {
+                            queryParams: {
+                                continue: null,
+                            },
+                            queryParamsHandling: "merge",
+                        });
+                        this.alertService.success("ログインに成功しました。");
                     });
-                    this.alertService.success("ログインに成功しました。");
                 });
         }
     }
