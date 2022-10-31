@@ -30,6 +30,9 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
                 if (error.status === 401) {
                     this.router.navigate(["/login"], {
                         queryParamsHandling: "merge",
+                        queryParams: {
+                            continue: this.router.url,
+                        },
                     });
                 } else if (error.status === 403) {
                     this.navigateErrorPage(403);
