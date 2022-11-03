@@ -11,6 +11,14 @@ import { SettingsComponent } from "@app/components/settings/settings.component";
 
 import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
 
+/**
+ * ページタイトルをビルド
+ *
+ * @param name ページ名
+ * @return ページタイトル
+ */
+const buildPageTitle = (name: string) => `${name} | Membership Console`;
+
 const routes: Routes = [
     {
         path: "",
@@ -21,27 +29,32 @@ const routes: Routes = [
                 path: "dashboard",
                 component: DashboardComponent,
                 data: { breadcrumb: "ダッシュボード", title: "連携プロダクト" },
+                title: buildPageTitle("ダッシュボード"),
             },
             {
                 path: "notifications",
                 component: NotificationsComponent,
                 data: { breadcrumb: "運営のお知らせ", title: "運営のお知らせ" },
+                title: buildPageTitle("運営のお知らせ"),
             },
             {
                 path: "settings",
                 component: SettingsComponent,
                 data: { breadcrumb: "アプリケーション設定", title: "アプリケーション設定" },
+                title: buildPageTitle("アプリケーション設定"),
             },
             {
                 path: "error/:status",
                 component: ErrorComponent,
                 data: { breadcrumb: "エラー", title: null },
+                title: buildPageTitle("エラー"),
             },
             {
                 path: "iam",
                 loadChildren: () =>
                     import("@iam/iam-routing.module").then((m) => m.IamRoutingModule),
                 data: { breadcrumb: "IAM", title: null },
+                title: buildPageTitle("IAM"),
             },
             {
                 path: "purchase-request",
@@ -50,15 +63,18 @@ const routes: Routes = [
                         (m) => m.PurchaseRequestRoutingModule
                     ),
                 data: { breadcrumb: "購入申請", title: null },
+                title: buildPageTitle("購入申請"),
             },
         ],
     },
     {
         path: "login",
         component: LoginComponent,
+        title: buildPageTitle("ログイン"),
     },
     {
         path: "password_reset",
+        title: buildPageTitle("パスワードリセット"),
         children: [
             {
                 path: "",
@@ -70,7 +86,11 @@ const routes: Routes = [
             },
         ],
     },
-    { path: "**", redirectTo: "/error/404", pathMatch: "full" },
+    {
+        path: "**",
+        redirectTo: "/error/404",
+        pathMatch: "full",
+    },
 ];
 
 @NgModule({
