@@ -6,6 +6,7 @@ import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { AuthAPIService } from "@iam/api/services";
 
 import { AlertService } from "@shared/services/alert.service";
+import { AuthService } from "@shared/services/auth.service";
 import { whiteSpaceValidator } from "@shared/validators/white-space.validator";
 
 @UntilDestroy()
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private activatedRoute: ActivatedRoute,
         private router: Router,
-        private authAPIService: AuthAPIService
+        private authAPIService: AuthAPIService,
+        private authService: AuthService
     ) {}
 
     ngOnInit() {
@@ -55,6 +57,7 @@ export class LoginComponent implements OnInit {
                 .pipe(untilDestroyed(this))
                 .subscribe(() => {
                     this.activatedRoute.queryParams.subscribe((params) => {
+                        this.authService.setIsAuthenticated(true);
                         // continueパラメータを保持している場合はそこに遷移する
                         this.router.navigate([params["continue"] || "/"], {
                             queryParams: {

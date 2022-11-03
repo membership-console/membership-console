@@ -1,5 +1,6 @@
 export const environment = {
     production: true,
+    IS_AUTHENTICATED_KEY: "Authenticated",
 
     // 各種APIのルートURLを指定
     IAM_API_ROOT_URL: "https://api.abelab.dev/membership-console/iam",

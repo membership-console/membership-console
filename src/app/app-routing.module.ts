@@ -10,6 +10,10 @@ import { PasswordResetComponent } from "@app/components/password-reset/password-
 import { SettingsComponent } from "@app/components/settings/settings.component";
 
 import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
+import { Role } from "@shared/enums/role";
+import { AuthGuard } from "@shared/guards/auth.guard";
+import { LoginedGuard } from "@shared/guards/logined.guard";
+import { RoleGuard } from "@shared/guards/role.guard";
 
 /**
  * ページタイトルをビルド
@@ -23,6 +27,7 @@ const routes: Routes = [
     {
         path: "",
         component: PageContainerComponent,
+        canActivate: [AuthGuard],
         children: [
             { path: "", redirectTo: "/dashboard", pathMatch: "full" },
             {
@@ -53,8 +58,9 @@ const routes: Routes = [
                 path: "iam",
                 loadChildren: () =>
                     import("@iam/iam-routing.module").then((m) => m.IamRoutingModule),
-                data: { breadcrumb: "IAM", title: null },
+                data: { breadcrumb: "IAM", title: null, role: Role.IAM_VIEWER },
                 title: buildPageTitle("IAM"),
+                canActivate: [RoleGuard],
             },
             {
                 path: "purchase-request",
@@ -62,8 +68,9 @@ const routes: Routes = [
                     import("@purchase-request/purchase-request-routing.module").then(
                         (m) => m.PurchaseRequestRoutingModule
                     ),
-                data: { breadcrumb: "購入申請", title: null },
+                data: { breadcrumb: "購入申請", title: null, role: Role.PURCHASE_REQUEST_VIEWER },
                 title: buildPageTitle("購入申請"),
+                canActivate: [RoleGuard],
             },
         ],
     },
@@ -71,10 +78,12 @@ const routes: Routes = [
         path: "login",
         component: LoginComponent,
         title: buildPageTitle("ログイン"),
+        canActivate: [LoginedGuard],
     },
     {
         path: "password_reset",
         title: buildPageTitle("パスワードリセット"),
+        canActivate: [LoginedGuard],
         children: [
             {
                 path: "",
