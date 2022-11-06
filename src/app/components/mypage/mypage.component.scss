@@ -1,0 +1,21 @@
+.divide-field {
+    margin: 10px;
+    width: 90%;
+
+    > span {
+        width: 200px;
+        min-width: 200px;
+        color: gray;
+        font-size: 0.8rem;
+    }
+
+    > div {
+        min-width: 300px;
+    }
+}
+
+.user-details {
+    > mat-divider {
+        width: 100%;
+    }
+}

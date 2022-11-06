@@ -1,0 +1,67 @@
+<div fxLayout="column" fxLayoutGap="30px">
+    <app-card title="基本情報">
+        <div *ngIf="loginUser" fxLayout="column" fxLayoutAlign="start start" class="user-details">
+            <div class="divide-field" fxLayout="row">
+                <span>氏名</span>
+                <div>{{ loginUser | username }}</div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="divide-field" fxLayout="row">
+                <span>メールアドレス</span>
+                <div>{{ loginUser.email }}</div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="divide-field" fxLayout="row">
+                <span>入学年度</span>
+                <div>{{ loginUser.entranceYear }}</div>
+            </div>
+        </div>
+    </app-card>
+
+    <app-card title="パスワード変更">
+        <form
+            (ngSubmit)="onSubmit()"
+            *ngIf="changePasswordForm"
+            [formGroup]="changePasswordForm"
+            fxLayout="column"
+            fxLayoutAlign="start center"
+        >
+            <div class="form-field-wrapper--half" fxLayout="row">
+                <span>現在のパスワード</span>
+                <app-shared-input
+                    type="password"
+                    formControlName="oldPassword"
+                    label="現在のパスワード"
+                ></app-shared-input>
+            </div>
+
+            <div class="form-field-wrapper--half" fxLayout="row">
+                <span>新しいパスワード</span>
+                <app-shared-input
+                    type="password"
+                    formControlName="newPassword"
+                    label="新しいパスワード"
+                ></app-shared-input>
+
+                <app-shared-input
+                    type="password"
+                    formControlName="confirmPassword"
+                    label="新しいパスワード(確認)"
+                ></app-shared-input>
+            </div>
+            <div
+                fxLayout="row"
+                fxLayoutAlign="center center"
+                fxFlexOffset="10px"
+                fxLayoutGap="10px"
+            >
+                <app-flat-button label="確認する" type="submit"></app-flat-button>
+                <app-flat-button
+                    label="キャンセル"
+                    [color]="null"
+                    (click)="onCancel()"
+                ></app-flat-button>
+            </div>
+        </form>
+    </app-card>
+</div>

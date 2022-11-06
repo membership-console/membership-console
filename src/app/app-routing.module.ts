@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "@app/components/dashboard/dashboard.component";
 import { ErrorComponent } from "@app/components/error/error.component";
 import { LoginComponent } from "@app/components/login/login.component";
+import { MypageComponent } from "@app/components/mypage/mypage.component";
 import { NotificationsComponent } from "@app/components/notifications/notifications.component";
 import { PasswordChangeComponent } from "@app/components/password-reset/password-change/password-change.component";
 import { PasswordResetComponent } from "@app/components/password-reset/password-reset.component";
@@ -47,6 +48,11 @@ const routes: Routes = [
                 component: SettingsComponent,
                 data: { breadcrumb: "アプリケーション設定", title: "アプリケーション設定" },
                 title: buildPageTitle("アプリケーション設定"),
+            },
+            {
+                path: "mypage",
+                component: MypageComponent,
+                data: { breadcrumb: "アカウント設定", title: "アカウント設定" },
             },
             {
                 path: "error/:status",

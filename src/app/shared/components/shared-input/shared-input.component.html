@@ -6,6 +6,7 @@
         [formControl]="controlDir.control"
         [placeholder]="placeholder"
         [type]="getInputType()"
+        [disabled]="disabled"
         matInput
     />
     <input
@@ -14,6 +15,7 @@
         [matDatepicker]="picker"
         [placeholder]="placeholder"
         [type]="getInputType()"
+        [disabled]="disabled"
         matInput
     />
     <mat-datepicker-toggle *ngIf="type === 'date'" [for]="picker" matSuffix></mat-datepicker-toggle>
