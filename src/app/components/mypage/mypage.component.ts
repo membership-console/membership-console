@@ -39,6 +39,13 @@ export class MypageComponent implements OnInit {
             .pipe(untilDestroyed(this))
             .subscribe((response) => (this.loginUser = response));
 
+        this.createChangePasswordForm();
+    }
+
+    /**
+     * パスワード変更のフォームを再生成する
+     */
+    createChangePasswordForm(): void {
         this.changePasswordForm = this.formBuilder.group({
             oldPassword: [
                 null,
@@ -58,7 +65,7 @@ export class MypageComponent implements OnInit {
     /**
      * パスワード変更のフォーム送信
      */
-    onSubmit() {
+    onSubmit(): void {
         if (this.changePasswordForm.valid) {
             // 新しいパスワードと確認パスワードが同じかどうか確認
             if (
@@ -70,14 +77,10 @@ export class MypageComponent implements OnInit {
                     .pipe(untilDestroyed(this))
                     .subscribe(() => {
                         this.alertService.success("パスワードを変更しました。");
-                        this.router.navigate(["/dashboard"], {
-                            queryParams: {},
-                            queryParamsHandling: "merge",
-                            relativeTo: this.activatedRoute,
-                        });
+                        this.createChangePasswordForm();
                     });
             } else {
-                this.alertService.error("新しいパスワードと確認のパスワードが違います。");
+                this.alertService.warn("新しいパスワードと確認のパスワードが違います。");
             }
         }
     }
@@ -85,11 +88,7 @@ export class MypageComponent implements OnInit {
     /**
      * パスワード変更のキャンセル
      */
-    onCancel() {
-        this.router.navigate(["/dashboard"], {
-            queryParams: {},
-            queryParamsHandling: "merge",
-            relativeTo: this.activatedRoute,
-        });
+    onCancel(): void {
+        this.createChangePasswordForm();
     }
 }
