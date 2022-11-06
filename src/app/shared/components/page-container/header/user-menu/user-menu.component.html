@@ -20,9 +20,9 @@
         style="margin: 5px 20px 5px 10px"
     >
         <mat-icon class="user-menu__icon" inline="true">account_circle</mat-icon>
-        <div fxLayout="column">
-            <span class="user-menu__name">阿部 健太朗</span>
-            <span class="user-menu__email">email@example.com</span>
+        <div fxLayout="column" *ngIf="loginUser">
+            <span class="user-menu__name">{{ loginUser | username }}</span>
+            <span class="user-menu__email">{{ loginUser.email }}</span>
             <span class="user-menu__privacy">プライバシー</span>
         </div>
     </div>
