@@ -107,7 +107,6 @@ export class UserNewComponent implements OnInit {
      * フォーム送信
      */
     onSubmit() {
-        console.log(this.form.value);
         if (this.form.valid) {
             this.userAPIService
                 .createUser({ body: this.form.value })
