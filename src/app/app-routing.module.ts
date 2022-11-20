@@ -69,13 +69,17 @@ const routes: Routes = [
                 canActivate: [RoleGuard],
             },
             {
-                path: "purchase-request",
+                path: "paymaster",
                 loadChildren: () =>
-                    import("@purchase-request/purchase-request-routing.module").then(
-                        (m) => m.PurchaseRequestRoutingModule
+                    import("@paymaster/paymaster-routing.module").then(
+                        (m) => m.PaymasterRoutingModule
                     ),
-                data: { breadcrumb: "購入申請", title: null, role: Role.PURCHASE_REQUEST_VIEWER },
-                title: buildPageTitle("購入申請"),
+                data: {
+                    breadcrumb: "会計システム",
+                    title: null,
+                    role: Role.PURCHASE_REQUEST_VIEWER,
+                },
+                title: buildPageTitle("会計システム"),
                 canActivate: [RoleGuard],
             },
         ],

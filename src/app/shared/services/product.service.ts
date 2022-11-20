@@ -68,17 +68,17 @@ export class ProductService {
             navs: [],
         },
         {
-            name: "購入申請",
-            description: "追加で備品を購入したい場合は、本プロダクトから会計局へ申請してください。",
+            name: "会計システム",
+            description: "購入申請などの会計処理を行うプロダクトです。",
             icon: "account_balance_wallet",
-            path: "/purchase-request",
+            path: "/paymaster",
             version: "開発中",
             visible: true,
             navs: [
                 {
-                    label: "申請リスト",
+                    label: "購入申請",
                     icon: "account_balance_wallet",
-                    path: "/requests",
+                    path: "/purchase-requests",
                 },
             ],
         },

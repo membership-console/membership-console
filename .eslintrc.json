@@ -40,7 +40,7 @@
               "src",
               "@app/api",
               "@app/iam",
-              "@app/purchase-request",
+              "@app/paymaster",
               "@app/shared",
               "@*/api/models/*",
               "@*/api/services/*"
@@ -95,7 +95,7 @@
                 "position": "before"
               },
               {
-                "pattern": "@purchase-request/**",
+                "pattern": "@paymaster/**",
                 "group": "parent",
                 "position": "before"
               },

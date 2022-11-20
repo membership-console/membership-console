@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+
 import { AppRoutingModule } from "@app/app-routing.module";
 import { AppComponent } from "@app/app.component";
 import { DashboardComponent } from "@app/components/dashboard/dashboard.component";
@@ -15,7 +16,7 @@ import { SettingsComponent } from "@app/components/settings/settings.component";
 
 import { IamModule } from "@iam/iam.module";
 
-import { PurchaseRequestModule } from "@purchase-request/purchase-request.module";
+import { PaymasterModule } from "@paymaster/paymaster.module";
 
 import { SharedModule } from "@shared/shared.module";
 
@@ -35,7 +36,7 @@ import { SharedModule } from "@shared/shared.module";
     imports: [
         SharedModule,
         IamModule,
-        PurchaseRequestModule,
+        PaymasterModule,
         AppRoutingModule,
         BrowserModule,
         BrowserAnimationsModule,

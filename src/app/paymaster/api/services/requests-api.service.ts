@@ -25,7 +25,7 @@ export class RequestsAPIService extends BaseService {
     /**
      * Path part for operation getApiRequest
      */
-    static readonly GetApiRequestPath = "/api/requests/{request_id}";
+    static readonly GetApiRequestPath = "/api/purchase-requests/{request_id}";
 
     /**
      * 購入申請取得API.
@@ -87,7 +87,7 @@ export class RequestsAPIService extends BaseService {
     /**
      * Path part for operation putApiRequestRequestId
      */
-    static readonly PutApiRequestRequestIdPath = "/api/requests/{request_id}";
+    static readonly PutApiRequestRequestIdPath = "/api/purchase-requests/{request_id}";
 
     /**
      * 購入申請更新API.
@@ -155,7 +155,7 @@ export class RequestsAPIService extends BaseService {
     /**
      * Path part for operation deleteApiRequestRequestId
      */
-    static readonly DeleteApiRequestRequestIdPath = "/api/requests/{request_id}";
+    static readonly DeleteApiRequestRequestIdPath = "/api/purchase-requests/{request_id}";
 
     /**
      * 購入申請削除API.
@@ -220,7 +220,7 @@ export class RequestsAPIService extends BaseService {
     /**
      * Path part for operation getApiRequests
      */
-    static readonly GetApiRequestsPath = "/api/requests";
+    static readonly GetApiRequestsPath = "/api/purchase-requests";
 
     /**
      * 購入申請リスト取得API.
@@ -277,7 +277,7 @@ export class RequestsAPIService extends BaseService {
     /**
      * Path part for operation postApiRequests
      */
-    static readonly PostApiRequestsPath = "/api/requests";
+    static readonly PostApiRequestsPath = "/api/purchase-requests";
 
     /**
      * 購入申請作成API.
@@ -338,7 +338,8 @@ export class RequestsAPIService extends BaseService {
     /**
      * Path part for operation putApiRequestsRequestIdStatus
      */
-    static readonly PutApiRequestsRequestIdStatusPath = "/api/requests/{request_id}/status";
+    static readonly PutApiRequestsRequestIdStatusPath =
+        "/api/purchase-requests/{request_id}/status";
 
     /**
      * 購入申請ステータス変更API.

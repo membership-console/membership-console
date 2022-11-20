@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
-import { Request } from "@purchase-request/models/request";
+import { Request } from "@paymaster/models/request";
 
 import { Status } from "@shared/enums/status";
 
