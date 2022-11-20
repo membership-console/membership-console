@@ -12,8 +12,8 @@ import { SettingsComponent } from "@app/components/settings/settings.component";
 
 import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
 import { Role } from "@shared/enums/role";
-import { AuthGuard } from "@shared/guards/auth.guard";
-import { LoginedGuard } from "@shared/guards/logined.guard";
+import { LoggedInGuard } from "@shared/guards/logged-in.guard";
+import { NotLoggedInGuard } from "@shared/guards/not-logged-in.guard";
 import { RoleGuard } from "@shared/guards/role.guard";
 
 /**
@@ -28,7 +28,7 @@ const routes: Routes = [
     {
         path: "",
         component: PageContainerComponent,
-        canActivate: [AuthGuard],
+        canActivate: [LoggedInGuard],
         children: [
             { path: "", redirectTo: "/dashboard", pathMatch: "full" },
             {
@@ -81,23 +81,29 @@ const routes: Routes = [
         ],
     },
     {
-        path: "login",
-        component: LoginComponent,
-        title: buildPageTitle("ログイン"),
-        canActivate: [LoginedGuard],
-    },
-    {
-        path: "password_reset",
-        title: buildPageTitle("パスワードリセット"),
-        canActivate: [LoginedGuard],
+        path: "",
+        canActivate: [NotLoggedInGuard],
         children: [
             {
-                path: "",
-                component: PasswordResetComponent,
+                path: "login",
+                component: LoginComponent,
+                title: buildPageTitle("ログイン"),
+                canActivate: [NotLoggedInGuard],
             },
             {
-                path: ":token",
-                component: PasswordChangeComponent,
+                path: "password_reset",
+                title: buildPageTitle("パスワードリセット"),
+                canActivate: [NotLoggedInGuard],
+                children: [
+                    {
+                        path: "",
+                        component: PasswordResetComponent,
+                    },
+                    {
+                        path: ":token",
+                        component: PasswordChangeComponent,
+                    },
+                ],
             },
         ],
     },

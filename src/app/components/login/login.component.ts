@@ -56,16 +56,18 @@ export class LoginComponent implements OnInit {
                 .login({ body: this.form.value })
                 .pipe(untilDestroyed(this))
                 .subscribe(() => {
+                    this.authService.setIsAuthenticated(true);
+                    this.alertService.success("ログインに成功しました。");
+
+                    // 遷移先パスが指定されていた場合はそこへ遷移する
                     this.activatedRoute.queryParams.subscribe((params) => {
-                        this.authService.setIsAuthenticated(true);
-                        // continueパラメータを保持している場合はそこに遷移する
-                        this.router.navigate([params["continue"] || "/"], {
+                        const path = params["continue"] ? params["continue"] : "/";
+                        this.router.navigate([path], {
                             queryParams: {
                                 continue: null,
                             },
                             queryParamsHandling: "merge",
                         });
-                        this.alertService.success("ログインに成功しました。");
                     });
                 });
         }

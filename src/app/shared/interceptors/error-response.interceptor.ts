@@ -11,6 +11,7 @@ import { Observable } from "rxjs";
 import { catchError } from "rxjs/operators";
 
 import { AlertService } from "@shared/services/alert.service";
+import { AuthService } from "@shared/services/auth.service";
 
 type ErrorResponse = {
     code: number;
@@ -19,7 +20,11 @@ type ErrorResponse = {
 
 @Injectable()
 export class ErrorResponseInterceptor implements HttpInterceptor {
-    constructor(private alertService: AlertService, private router: Router) {}
+    constructor(
+        private alertService: AlertService,
+        private router: Router,
+        private authService: AuthService
+    ) {}
 
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         return next.handle(request).pipe(
@@ -28,11 +33,12 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
 
                 // エラーハンドリング
                 if (error.status === 401) {
+                    this.authService.setIsAuthenticated(false);
                     this.router.navigate(["/login"], {
-                        queryParamsHandling: "merge",
                         queryParams: {
-                            continue: this.router.url,
+                            continue: this.router.url.split("?")[0],
                         },
+                        queryParamsHandling: "merge",
                     });
                 } else if (error.status === 403) {
                     this.navigateErrorPage(403);

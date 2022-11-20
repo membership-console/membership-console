@@ -7,12 +7,12 @@ import { AuthService } from "@shared/services/auth.service";
 @Injectable({
     providedIn: "root",
 })
-export class LoginedGuard implements CanActivate {
+export class NotLoggedInGuard implements CanActivate {
     constructor(private router: Router, private authService: AuthService) {}
 
     canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        if (this.authService.getIsAuthenticated()) {
-            this.router.navigate(["/dashboard"], {
+        if (this.authService.isAuthenticated()) {
+            this.router.navigate(["/"], {
                 queryParams: {},
                 queryParamsHandling: "merge",
             });
