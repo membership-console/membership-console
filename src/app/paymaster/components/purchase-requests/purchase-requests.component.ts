@@ -3,14 +3,14 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 
-import { Request } from "@purchase-request/models/request";
+import { Request } from "@paymaster/models/request";
 
 import { AlertService } from "@shared/services/alert.service";
 
 @Component({
-    selector: "app-requests",
-    templateUrl: "./requests.component.html",
-    styleUrls: ["./requests.component.scss"],
+    selector: "app-purchase-requests",
+    templateUrl: "./purchase-requests.component.html",
+    styleUrls: ["./purchase-requests.component.scss"],
     animations: [
         trigger("detailExpand", [
             state("collapsed", style({ height: "0", minHeight: "0" })),
@@ -19,7 +19,7 @@ import { AlertService } from "@shared/services/alert.service";
         ]),
     ],
 })
-export class RequestsComponent implements OnInit {
+export class PurchaseRequestsComponent implements OnInit {
     /**
      * 申請リスト
      */

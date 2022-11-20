@@ -7,11 +7,11 @@ import { urlValidator } from "@shared/validators/url.validator";
 import { whiteSpaceValidator } from "@shared/validators/white-space.validator";
 
 @Component({
-    selector: "app-request-new",
-    templateUrl: "./request-new.component.html",
-    styleUrls: ["./request-new.component.scss"],
+    selector: "app-purchase-request-new",
+    templateUrl: "./purchase-request-new.component.html",
+    styleUrls: ["./purchase-request-new.component.scss"],
 })
-export class RequestNewComponent implements OnInit {
+export class PurchaseRequestNewComponent implements OnInit {
     /**
      * フォーム
      */

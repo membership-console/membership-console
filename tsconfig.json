@@ -28,8 +28,8 @@
       "@iam/*": [
         "src/app/iam/*"
       ],
-      "@purchase-request/*": [
-        "src/app/purchase-request/*"
+      "@paymaster/*": [
+        "src/app/paymaster/*"
       ],
       "@shared/*": [
         "src/app/shared/*"
