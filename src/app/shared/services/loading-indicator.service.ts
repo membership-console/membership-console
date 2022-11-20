@@ -4,10 +4,6 @@ import { Injectable } from "@angular/core";
 
 import { ProgressSpinnerComponent } from "@shared/components/progress-spinner/progress-spinner.component";
 
-export interface LoadingIndicatorRef {
-    close(): void;
-}
-
 @Injectable({
     providedIn: "root",
 })

@@ -1,14 +1,14 @@
 module.exports = [
     {
         context: ["/iam/api"],
-        target: "http://localhost:8080",
+        target: "http://localhost:8081",
         pathRewrite: { "^/iam/api": "/api" },
         secure: false,
     },
     {
-        context: ["/purchase-request/api"],
-        target: "http://localhost:8080",
-        pathRewrite: { "^/purchase-request/api": "/api" },
+        context: ["/paymaster/api"],
+        target: "http://localhost:8082",
+        pathRewrite: { "^/paymaster/api": "/api" },
         secure: false,
     },
 ];
