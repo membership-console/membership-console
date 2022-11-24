@@ -11,6 +11,9 @@ import { UserEditComponent } from "@iam/components/users/user-edit/user-edit.com
 import { UserNewComponent } from "@iam/components/users/user-new/user-new.component";
 import { UsersComponent } from "@iam/components/users/users.component";
 
+import { Role } from "@shared/enums/role";
+import { RoleGuard } from "@shared/guards/role.guard";
+
 const routes: Routes = [
     {
         path: "",
@@ -29,12 +32,14 @@ const routes: Routes = [
             {
                 path: "new",
                 component: UserNewComponent,
-                data: { breadcrumb: "新規作成", title: "ユーザ作成" },
+                data: { breadcrumb: "新規作成", title: "ユーザ作成", role: Role.IAM_ADMIN },
+                canActivate: [RoleGuard],
             },
             {
                 path: ":userId/edit",
                 component: UserEditComponent,
-                data: { breadcrumb: "編集", title: "ユーザ編集" },
+                data: { breadcrumb: "編集", title: "ユーザ編集", role: Role.IAM_ADMIN },
+                canActivate: [RoleGuard],
             },
         ],
     },
@@ -50,12 +55,14 @@ const routes: Routes = [
             {
                 path: "new",
                 component: UserGroupNewComponent,
-                data: { breadcrumb: "新規作成", title: "ユーザグループ作成" },
+                data: { breadcrumb: "新規作成", title: "ユーザグループ作成", role: Role.IAM_ADMIN },
+                canActivate: [RoleGuard],
             },
             {
                 path: ":userGroupId/edit",
                 component: UserGroupEditComponent,
-                data: { breadcrumb: "編集", title: "ユーザグループ編集" },
+                data: { breadcrumb: "編集", title: "ユーザグループ編集", role: Role.IAM_ADMIN },
+                canActivate: [RoleGuard],
             },
         ],
     },
@@ -71,12 +78,18 @@ const routes: Routes = [
             {
                 path: "new",
                 component: ClientNewComponent,
-                data: { breadcrumb: "新規作成", title: "OAuthクライアント作成" },
+                data: {
+                    breadcrumb: "新規作成",
+                    title: "OAuthクライアント作成",
+                    role: Role.IAM_ADMIN,
+                },
+                canActivate: [RoleGuard],
             },
             {
                 path: ":id/edit",
                 component: ClientEditComponent,
-                data: { breadcrumb: "編集", title: "OAuthクライアント編集" },
+                data: { breadcrumb: "編集", title: "OAuthクライアント編集", role: Role.IAM_ADMIN },
+                canActivate: [RoleGuard],
             },
         ],
     },

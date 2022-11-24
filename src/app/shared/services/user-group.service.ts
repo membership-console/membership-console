@@ -15,20 +15,16 @@ export class UserGroupService {
     getRoleSelectOptions(): SelectOption[] {
         return [
             {
-                label: "IAMの閲覧者",
-                value: Role.IAM_VIEWER,
-            },
-            {
                 label: "IAMの管理者",
                 value: Role.IAM_ADMIN,
             },
             {
-                label: "購入申請の閲覧者",
-                value: Role.PURCHASE_REQUEST_VIEWER,
+                label: "会計システムの管理者",
+                value: Role.PAYMASTER_ADMIN,
             },
             {
-                label: "購入申請の管理者",
-                value: Role.PURCHASE_REQUEST_ADMIN,
+                label: "リマインダーの管理者",
+                value: Role.REMINDER_ADMIN,
             },
         ];
     }

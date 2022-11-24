@@ -8,12 +8,12 @@ export enum Role {
     IAM_ADMIN,
 
     /**
-     * 購入申請の閲覧者
+     * 会計システムの管理者
      */
     PAYMASTER_ADMIN,
 
     /**
-     * リマインダーの閲覧者
+     * リマインダーの管理者
      */
     REMINDER_ADMIN,
 }
