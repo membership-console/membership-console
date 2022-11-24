@@ -3,11 +3,6 @@
  */
 export enum Role {
     /**
-     * IAMの閲覧者
-     */
-    IAM_VIEWER,
-
-    /**
      * IAMの管理者
      */
     IAM_ADMIN,
@@ -15,10 +10,10 @@ export enum Role {
     /**
      * 購入申請の閲覧者
      */
-    PURCHASE_REQUEST_VIEWER,
+    PAYMASTER_ADMIN,
 
     /**
-     * 購入申請の管理者
+     * リマインダーの閲覧者
      */
-    PURCHASE_REQUEST_ADMIN,
+    REMINDER_ADMIN,
 }
