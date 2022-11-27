@@ -358,4 +358,76 @@ export class ClientAPIService extends BaseService {
             )
         );
     }
+
+    /**
+     * Path part for operation reissueCredentials
+     */
+    static readonly ReissueCredentialsPath = "/api/clients/{id}/reissue";
+
+    /**
+     * クライアント認証情報再発行API.
+     *
+     * クライアント認証情報再発行API
+     *
+     * This method provides access to the full `HttpResponse`, allowing access to response headers.
+     * To access only the response body, use `reissueCredentials()` instead.
+     *
+     * This method doesn't expect any request body.
+     */
+    reissueCredentials$Response(params: {
+        /**
+         * ID
+         */
+        id: string;
+        context?: HttpContext;
+    }): Observable<StrictHttpResponse<ClientCredentialsResponse>> {
+        const rb = new RequestBuilder(
+            this.rootUrl,
+            ClientAPIService.ReissueCredentialsPath,
+            "post"
+        );
+        if (params) {
+            rb.path("id", params.id, {});
+        }
+
+        return this.http
+            .request(
+                rb.build({
+                    responseType: "json",
+                    accept: "application/json",
+                    context: params?.context,
+                })
+            )
+            .pipe(
+                filter((r: any) => r instanceof HttpResponse),
+                map((r: HttpResponse<any>) => {
+                    return r as StrictHttpResponse<ClientCredentialsResponse>;
+                })
+            );
+    }
+
+    /**
+     * クライアント認証情報再発行API.
+     *
+     * クライアント認証情報再発行API
+     *
+     * This method provides access to only to the response body.
+     * To access the full response (for headers, for example), `reissueCredentials$Response()` instead.
+     *
+     * This method doesn't expect any request body.
+     */
+    reissueCredentials(params: {
+        /**
+         * ID
+         */
+        id: string;
+        context?: HttpContext;
+    }): Observable<ClientCredentialsResponse> {
+        return this.reissueCredentials$Response(params).pipe(
+            map(
+                (r: StrictHttpResponse<ClientCredentialsResponse>) =>
+                    r.body as ClientCredentialsResponse
+            )
+        );
+    }
 }

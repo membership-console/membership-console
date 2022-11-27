@@ -1,0 +1,6 @@
+{
+  "$schema": "node_modules/ng-openapi-gen/ng-openapi-gen-schema.json",
+  "input": "openapi/paymaster-openapi.json",
+  "output": "src/app/paymaster/api",
+  "serviceSuffix": "APIService"
+}

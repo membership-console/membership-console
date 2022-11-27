@@ -5,5 +5,5 @@ export interface PurchaseRequestsResponse {
     /**
      * 購入申請一覧
      */
-    requests: Array<PurchaseRequestResponse>;
+    purchaseApplies: Array<PurchaseRequestResponse>;
 }

@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8080",
+      "url": "http://localhost:8081",
       "description": "Generated server url"
     }
   ],
@@ -55,7 +55,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "ユーザ",
             "content": {
               "application/json": {
                 "schema": {
@@ -350,7 +350,7 @@
         "operationId": "getUsers",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "ユーザリスト",
             "content": {
               "application/json": {
                 "schema": {
@@ -566,7 +566,40 @@
         },
         "responses": {
           "201": {
-            "description": "クレデンシャル",
+            "description": "認証情報",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientCredentialsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/clients/{id}/reissue": {
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "クライアント認証情報再発行API",
+        "description": "クライアント認証情報再発行API",
+        "operationId": "reissueCredentials",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -588,7 +621,7 @@
         "operationId": "getLoginUser",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "ログインユーザ",
             "content": {
               "application/json": {
                 "schema": {
@@ -823,7 +856,7 @@
             "description": "クライアントシークレット"
           }
         },
-        "description": "クライアントクレデンシャルレスポンス"
+        "description": "クライアント認証情報レスポンス"
       },
       "UserGroupResponse": {
         "required": [

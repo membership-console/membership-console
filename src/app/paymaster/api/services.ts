@@ -1,1 +1,1 @@
-export { RequestsAPIService } from "./services/requests-api.service";
+export { PurchaseRequestAPIService } from "./services/purchase-request-api.service";

@@ -31,6 +31,9 @@
       "@paymaster/*": [
         "src/app/paymaster/*"
       ],
+      "@reminder/*": [
+        "src/app/reminder/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ],

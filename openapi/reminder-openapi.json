@@ -1,0 +1,417 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Reminder Internal API",
+    "version": "1.0.0_SNAPSHOT"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8083",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Notification",
+      "description": "お知らせ"
+    },
+    {
+      "name": "Health Check",
+      "description": "ヘルスチェック"
+    },
+    {
+      "name": "Email",
+      "description": "Eメール"
+    },
+    {
+      "name": "Notification Reminder",
+      "description": "リマインダー"
+    }
+  ],
+  "paths": {
+    "/api/notifications": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "お知らせリスト取得API",
+        "description": "お知らせリスト取得API",
+        "operationId": "getNotifications",
+        "parameters": [
+          {
+            "name": "onlyUnviewed",
+            "in": "query",
+            "description": "未読のみ取得するか",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "お知らせリスト",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationsResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "お知らせ作成API",
+        "description": "お知らせ作成API",
+        "operationId": "createNotification",
+        "requestBody": {
+          "description": "お知らせ作成リクエスト",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/notifications/{notification_id}/reminders": {
+      "post": {
+        "tags": [
+          "Notification Reminder"
+        ],
+        "summary": "リマインダー作成API",
+        "description": "リマインダー作成API",
+        "operationId": "createNotificationReminder",
+        "parameters": [
+          {
+            "name": "notification_id",
+            "in": "path",
+            "description": "お知らせID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "リマインダー作成リクエスト",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationReminderCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/email/send": {
+      "post": {
+        "tags": [
+          "Email"
+        ],
+        "summary": "メール送信API",
+        "description": "メール送信API",
+        "operationId": "sendEmail",
+        "requestBody": {
+          "description": "メール送信リクエスト",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailSendRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/health": {
+      "get": {
+        "tags": [
+          "Health Check"
+        ],
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/notifications/{notification_id}": {
+      "delete": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "お知らせ削除API",
+        "description": "お知らせ削除API",
+        "operationId": "deleteNotification",
+        "parameters": [
+          {
+            "name": "notification_id",
+            "in": "path",
+            "description": "お知らせID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/notifications/{notification_id}/reminders/{notification_reminder_id}": {
+      "delete": {
+        "tags": [
+          "Notification Reminder"
+        ],
+        "summary": "リマインダー削除API",
+        "description": "リマインダー削除API",
+        "operationId": "deleteNotificationReminder",
+        "parameters": [
+          {
+            "name": "notification_id",
+            "in": "path",
+            "description": "お知らせID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "notification_reminder_id",
+            "in": "path",
+            "description": "リマインダーID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "NotificationCreateRequest": {
+        "required": [
+          "body",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "タイトル"
+          },
+          "body": {
+            "type": "string",
+            "description": "本文"
+          }
+        },
+        "description": "お知らせ作成リクエスト"
+      },
+      "NotificationReminderCreateRequest": {
+        "required": [
+          "scheduledDate"
+        ],
+        "type": "object",
+        "properties": {
+          "scheduledDate": {
+            "type": "string",
+            "description": "リマインド予定日",
+            "format": "date"
+          }
+        },
+        "description": "リマインダー作成リクエスト"
+      },
+      "EmailSendRequest": {
+        "required": [
+          "body",
+          "subject",
+          "userIds"
+        ],
+        "type": "object",
+        "properties": {
+          "userIds": {
+            "type": "array",
+            "description": "ユーザIDリスト",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "subject": {
+            "type": "string",
+            "description": "件名"
+          },
+          "body": {
+            "type": "string",
+            "description": "本文"
+          }
+        },
+        "description": "メール送信リクエスト"
+      },
+      "NotificationReminderResponse": {
+        "required": [
+          "id",
+          "notificationId",
+          "scheduledDate"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "リマインダーID",
+            "format": "int32"
+          },
+          "notificationId": {
+            "type": "integer",
+            "description": "お知らせID",
+            "format": "int32"
+          },
+          "scheduledDate": {
+            "type": "string",
+            "description": "リマインド予定日",
+            "format": "date"
+          }
+        },
+        "description": "リマインダーレスポンス"
+      },
+      "NotificationResponse": {
+        "required": [
+          "body",
+          "contributor",
+          "id",
+          "isViewed",
+          "postedDate",
+          "reminders",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "お知らせID",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "description": "タイトル"
+          },
+          "body": {
+            "type": "string",
+            "description": "本文"
+          },
+          "isViewed": {
+            "type": "boolean",
+            "description": "既読フラグ"
+          },
+          "contributor": {
+            "$ref": "#/components/schemas/UserResponse"
+          },
+          "postedDate": {
+            "type": "string",
+            "description": "投稿日",
+            "format": "date-time"
+          },
+          "reminders": {
+            "type": "array",
+            "description": "リマインダーリスト",
+            "items": {
+              "$ref": "#/components/schemas/NotificationReminderResponse"
+            }
+          }
+        },
+        "description": "お知らせレスポンス"
+      },
+      "NotificationsResponse": {
+        "type": "object",
+        "properties": {
+          "notifications": {
+            "type": "array",
+            "description": "お知らせリスト",
+            "items": {
+              "$ref": "#/components/schemas/NotificationResponse"
+            }
+          }
+        },
+        "description": "お知らせリストレスポンス"
+      },
+      "UserResponse": {
+        "required": [
+          "email",
+          "entranceYear",
+          "firstName",
+          "id",
+          "lastName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ユーザID",
+            "format": "int32"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "ファーストネーム"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "ラストネーム"
+          },
+          "email": {
+            "type": "string",
+            "description": "メールアドレス"
+          },
+          "entranceYear": {
+            "type": "integer",
+            "description": "入学年度",
+            "format": "int32"
+          }
+        },
+        "description": "ユーザレスポンス",
+        "nullable": true
+      }
+    }
+  }
+}

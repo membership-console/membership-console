@@ -4,7 +4,7 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from "@angular/core
 import { HttpClient } from "@angular/common/http";
 import { ApiConfiguration, ApiConfigurationParams } from "./api-configuration";
 
-import { RequestsAPIService } from "./services/requests-api.service";
+import { PurchaseRequestAPIService } from "./services/purchase-request-api.service";
 
 /**
  * Module that provides all services and configuration.
@@ -13,7 +13,7 @@ import { RequestsAPIService } from "./services/requests-api.service";
     imports: [],
     exports: [],
     declarations: [],
-    providers: [RequestsAPIService, ApiConfiguration],
+    providers: [PurchaseRequestAPIService, ApiConfiguration],
 })
 export class ApiModule {
     static forRoot(params: ApiConfigurationParams): ModuleWithProviders<ApiModule> {
