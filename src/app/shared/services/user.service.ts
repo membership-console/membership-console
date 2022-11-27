@@ -62,13 +62,6 @@ export class UserService {
      */
     checkIfUserHasRole(user: UserResponse, role: Role): boolean {
         const roles = user.userGroups.map((userGroup) => userGroup.roles).flat();
-        if (roles.includes(Role.IAM_ADMIN)) {
-            roles.push(Role.IAM_VIEWER);
-        }
-        if (roles.includes(Role.PURCHASE_REQUEST_ADMIN)) {
-            roles.push(Role.PURCHASE_REQUEST_VIEWER);
-        }
-
         return roles.includes(role);
     }
 }

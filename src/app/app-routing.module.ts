@@ -64,9 +64,8 @@ const routes: Routes = [
                 path: "iam",
                 loadChildren: () =>
                     import("@iam/iam-routing.module").then((m) => m.IamRoutingModule),
-                data: { breadcrumb: "IAM", title: null, role: Role.IAM_VIEWER },
+                data: { breadcrumb: "IAM", title: null },
                 title: buildPageTitle("IAM"),
-                canActivate: [RoleGuard],
             },
             {
                 path: "paymaster",
@@ -77,10 +76,8 @@ const routes: Routes = [
                 data: {
                     breadcrumb: "会計システム",
                     title: null,
-                    role: Role.PURCHASE_REQUEST_VIEWER,
                 },
                 title: buildPageTitle("会計システム"),
-                canActivate: [RoleGuard],
             },
         ],
     },
