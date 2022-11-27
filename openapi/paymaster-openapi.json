@@ -4,29 +4,29 @@
     "id": "vqvssdjnowx3l"
   },
   "info": {
-    "title": "Purchase Request",
-    "version": "1.0_SNAPSHOT"
+    "title": "Paymaster",
+    "version": "1.0.0_SNAPSHOT"
   },
   "servers": [
     {
-      "url": "http://localhost:8080"
+      "url": "http://localhost:8082"
     }
   ],
   "paths": {
-    "/api/requests/{request_id}": {
+    "/api/purchase-requests/{purchase_request_id}": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "request_id",
+          "name": "purchase_request_id",
           "in": "path",
           "required": true
         }
       ],
       "get": {
         "summary": "購入申請取得API",
-        "operationId": "get-api-request",
+        "operationId": "getPurchaseRequest",
         "description": "",
         "responses": {
           "200": {
@@ -41,12 +41,12 @@
           }
         },
         "tags": [
-          "Requests"
+          "PurchaseRequest"
         ]
       },
       "put": {
         "summary": "購入申請更新API",
-        "operationId": "put-api-request-request_id",
+        "operationId": "updatePurchaseRequest",
         "responses": {
           "200": {
             "description": "OK"
@@ -62,23 +62,23 @@
           }
         },
         "tags": [
-          "Requests"
+          "PurchaseRequest"
         ]
       },
       "delete": {
         "summary": "購入申請削除API",
-        "operationId": "delete-api-request-request_id",
+        "operationId": "deletePurchaseRequest",
         "responses": {
           "200": {
             "description": "OK"
           }
         },
         "tags": [
-          "Requests"
+          "PurchaseRequest"
         ]
       }
     },
-    "/api/requests": {
+    "/api/purchase-requests": {
       "get": {
         "summary": "購入申請リスト取得API",
         "responses": {
@@ -93,14 +93,14 @@
             }
           }
         },
-        "operationId": "get-api-requests",
+        "operationId": "getPurchaseApplies",
         "tags": [
-          "Requests"
+          "PurchaseRequest"
         ]
       },
       "post": {
         "summary": "購入申請作成API",
-        "operationId": "post-api-requests",
+        "operationId": "createPurchaseRequest",
         "responses": {
           "201": {
             "description": "Created"
@@ -116,24 +116,24 @@
           }
         },
         "tags": [
-          "Requests"
+          "PurchaseRequest"
         ]
       }
     },
-    "/api/requests/{request_id}/status": {
+    "/api/purchase-requests/{purchase_request_id}/status": {
       "parameters": [
         {
           "schema": {
             "type": "string"
           },
-          "name": "request_id",
+          "name": "purchase_request_id",
           "in": "path",
           "required": true
         }
       ],
       "put": {
         "summary": "購入申請ステータス変更API",
-        "operationId": "put-api-requests-request_id-status",
+        "operationId": "updatePurchaseRequestStatus",
         "responses": {
           "200": {
             "description": "OK"
@@ -149,7 +149,7 @@
           }
         },
         "tags": [
-          "Requests"
+          "PurchaseRequest"
         ]
       }
     }
@@ -250,7 +250,7 @@
         "type": "object",
         "x-examples": {
           "Example": {
-            "requests": [
+            "purchaseRequests": [
               {
                 "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                 "name": "string",
@@ -271,7 +271,7 @@
         },
         "title": "PurchaseRequestsResponse",
         "properties": {
-          "requests": {
+          "purchaseApplies": {
             "description": "購入申請一覧",
             "type": "array",
             "items": {
@@ -280,7 +280,7 @@
           }
         },
         "required": [
-          "requests"
+          "purchaseApplies"
         ]
       },
       "PurchaseRequestUpsertRequest": {

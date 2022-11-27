@@ -17,15 +17,15 @@ import { PurchaseRequestsResponse } from "../models/purchase-requests-response";
 @Injectable({
     providedIn: "root",
 })
-export class RequestsAPIService extends BaseService {
+export class PurchaseRequestAPIService extends BaseService {
     constructor(config: ApiConfiguration, http: HttpClient) {
         super(config, http);
     }
 
     /**
-     * Path part for operation getApiRequest
+     * Path part for operation getPurchaseRequest
      */
-    static readonly GetApiRequestPath = "/api/purchase-requests/{request_id}";
+    static readonly GetPurchaseRequestPath = "/api/purchase-requests/{purchase_request_id}";
 
     /**
      * 購入申請取得API.
@@ -33,17 +33,21 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to the full `HttpResponse`, allowing access to response headers.
-     * To access only the response body, use `getApiRequest()` instead.
+     * To access only the response body, use `getPurchaseRequest()` instead.
      *
      * This method doesn't expect any request body.
      */
-    getApiRequest$Response(params: {
-        request_id: string;
+    getPurchaseRequest$Response(params: {
+        purchase_request_id: string;
         context?: HttpContext;
     }): Observable<StrictHttpResponse<PurchaseRequestResponse>> {
-        const rb = new RequestBuilder(this.rootUrl, RequestsAPIService.GetApiRequestPath, "get");
+        const rb = new RequestBuilder(
+            this.rootUrl,
+            PurchaseRequestAPIService.GetPurchaseRequestPath,
+            "get"
+        );
         if (params) {
-            rb.path("request_id", params.request_id, {});
+            rb.path("purchase_request_id", params.purchase_request_id, {});
         }
 
         return this.http
@@ -68,15 +72,15 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to only to the response body.
-     * To access the full response (for headers, for example), `getApiRequest$Response()` instead.
+     * To access the full response (for headers, for example), `getPurchaseRequest$Response()` instead.
      *
      * This method doesn't expect any request body.
      */
-    getApiRequest(params: {
-        request_id: string;
+    getPurchaseRequest(params: {
+        purchase_request_id: string;
         context?: HttpContext;
     }): Observable<PurchaseRequestResponse> {
-        return this.getApiRequest$Response(params).pipe(
+        return this.getPurchaseRequest$Response(params).pipe(
             map(
                 (r: StrictHttpResponse<PurchaseRequestResponse>) =>
                     r.body as PurchaseRequestResponse
@@ -85,9 +89,9 @@ export class RequestsAPIService extends BaseService {
     }
 
     /**
-     * Path part for operation putApiRequestRequestId
+     * Path part for operation updatePurchaseRequest
      */
-    static readonly PutApiRequestRequestIdPath = "/api/purchase-requests/{request_id}";
+    static readonly UpdatePurchaseRequestPath = "/api/purchase-requests/{purchase_request_id}";
 
     /**
      * 購入申請更新API.
@@ -95,22 +99,22 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to the full `HttpResponse`, allowing access to response headers.
-     * To access only the response body, use `putApiRequestRequestId()` instead.
+     * To access only the response body, use `updatePurchaseRequest()` instead.
      *
      * This method sends `application/json` and handles request body of type `application/json`.
      */
-    putApiRequestRequestId$Response(params: {
-        request_id: string;
+    updatePurchaseRequest$Response(params: {
+        purchase_request_id: string;
         context?: HttpContext;
         body?: PurchaseRequestUpsertRequest;
     }): Observable<StrictHttpResponse<void>> {
         const rb = new RequestBuilder(
             this.rootUrl,
-            RequestsAPIService.PutApiRequestRequestIdPath,
+            PurchaseRequestAPIService.UpdatePurchaseRequestPath,
             "put"
         );
         if (params) {
-            rb.path("request_id", params.request_id, {});
+            rb.path("purchase_request_id", params.purchase_request_id, {});
             rb.body(params.body, "application/json");
         }
 
@@ -138,24 +142,24 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to only to the response body.
-     * To access the full response (for headers, for example), `putApiRequestRequestId$Response()` instead.
+     * To access the full response (for headers, for example), `updatePurchaseRequest$Response()` instead.
      *
      * This method sends `application/json` and handles request body of type `application/json`.
      */
-    putApiRequestRequestId(params: {
-        request_id: string;
+    updatePurchaseRequest(params: {
+        purchase_request_id: string;
         context?: HttpContext;
         body?: PurchaseRequestUpsertRequest;
     }): Observable<void> {
-        return this.putApiRequestRequestId$Response(params).pipe(
+        return this.updatePurchaseRequest$Response(params).pipe(
             map((r: StrictHttpResponse<void>) => r.body as void)
         );
     }
 
     /**
-     * Path part for operation deleteApiRequestRequestId
+     * Path part for operation deletePurchaseRequest
      */
-    static readonly DeleteApiRequestRequestIdPath = "/api/purchase-requests/{request_id}";
+    static readonly DeletePurchaseRequestPath = "/api/purchase-requests/{purchase_request_id}";
 
     /**
      * 購入申請削除API.
@@ -163,21 +167,21 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to the full `HttpResponse`, allowing access to response headers.
-     * To access only the response body, use `deleteApiRequestRequestId()` instead.
+     * To access only the response body, use `deletePurchaseRequest()` instead.
      *
      * This method doesn't expect any request body.
      */
-    deleteApiRequestRequestId$Response(params: {
-        request_id: string;
+    deletePurchaseRequest$Response(params: {
+        purchase_request_id: string;
         context?: HttpContext;
     }): Observable<StrictHttpResponse<void>> {
         const rb = new RequestBuilder(
             this.rootUrl,
-            RequestsAPIService.DeleteApiRequestRequestIdPath,
+            PurchaseRequestAPIService.DeletePurchaseRequestPath,
             "delete"
         );
         if (params) {
-            rb.path("request_id", params.request_id, {});
+            rb.path("purchase_request_id", params.purchase_request_id, {});
         }
 
         return this.http
@@ -204,23 +208,23 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to only to the response body.
-     * To access the full response (for headers, for example), `deleteApiRequestRequestId$Response()` instead.
+     * To access the full response (for headers, for example), `deletePurchaseRequest$Response()` instead.
      *
      * This method doesn't expect any request body.
      */
-    deleteApiRequestRequestId(params: {
-        request_id: string;
+    deletePurchaseRequest(params: {
+        purchase_request_id: string;
         context?: HttpContext;
     }): Observable<void> {
-        return this.deleteApiRequestRequestId$Response(params).pipe(
+        return this.deletePurchaseRequest$Response(params).pipe(
             map((r: StrictHttpResponse<void>) => r.body as void)
         );
     }
 
     /**
-     * Path part for operation getApiRequests
+     * Path part for operation getPurchaseApplies
      */
-    static readonly GetApiRequestsPath = "/api/purchase-requests";
+    static readonly GetPurchaseAppliesPath = "/api/purchase-requests";
 
     /**
      * 購入申請リスト取得API.
@@ -228,14 +232,18 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to the full `HttpResponse`, allowing access to response headers.
-     * To access only the response body, use `getApiRequests()` instead.
+     * To access only the response body, use `getPurchaseApplies()` instead.
      *
      * This method doesn't expect any request body.
      */
-    getApiRequests$Response(params?: {
+    getPurchaseApplies$Response(params?: {
         context?: HttpContext;
     }): Observable<StrictHttpResponse<PurchaseRequestsResponse>> {
-        const rb = new RequestBuilder(this.rootUrl, RequestsAPIService.GetApiRequestsPath, "get");
+        const rb = new RequestBuilder(
+            this.rootUrl,
+            PurchaseRequestAPIService.GetPurchaseAppliesPath,
+            "get"
+        );
         if (params) {
         }
 
@@ -261,12 +269,12 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to only to the response body.
-     * To access the full response (for headers, for example), `getApiRequests$Response()` instead.
+     * To access the full response (for headers, for example), `getPurchaseApplies$Response()` instead.
      *
      * This method doesn't expect any request body.
      */
-    getApiRequests(params?: { context?: HttpContext }): Observable<PurchaseRequestsResponse> {
-        return this.getApiRequests$Response(params).pipe(
+    getPurchaseApplies(params?: { context?: HttpContext }): Observable<PurchaseRequestsResponse> {
+        return this.getPurchaseApplies$Response(params).pipe(
             map(
                 (r: StrictHttpResponse<PurchaseRequestsResponse>) =>
                     r.body as PurchaseRequestsResponse
@@ -275,9 +283,9 @@ export class RequestsAPIService extends BaseService {
     }
 
     /**
-     * Path part for operation postApiRequests
+     * Path part for operation createPurchaseRequest
      */
-    static readonly PostApiRequestsPath = "/api/purchase-requests";
+    static readonly CreatePurchaseRequestPath = "/api/purchase-requests";
 
     /**
      * 購入申請作成API.
@@ -285,15 +293,19 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to the full `HttpResponse`, allowing access to response headers.
-     * To access only the response body, use `postApiRequests()` instead.
+     * To access only the response body, use `createPurchaseRequest()` instead.
      *
      * This method sends `application/json` and handles request body of type `application/json`.
      */
-    postApiRequests$Response(params?: {
+    createPurchaseRequest$Response(params?: {
         context?: HttpContext;
         body?: PurchaseRequestUpsertRequest;
     }): Observable<StrictHttpResponse<void>> {
-        const rb = new RequestBuilder(this.rootUrl, RequestsAPIService.PostApiRequestsPath, "post");
+        const rb = new RequestBuilder(
+            this.rootUrl,
+            PurchaseRequestAPIService.CreatePurchaseRequestPath,
+            "post"
+        );
         if (params) {
             rb.body(params.body, "application/json");
         }
@@ -322,24 +334,24 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to only to the response body.
-     * To access the full response (for headers, for example), `postApiRequests$Response()` instead.
+     * To access the full response (for headers, for example), `createPurchaseRequest$Response()` instead.
      *
      * This method sends `application/json` and handles request body of type `application/json`.
      */
-    postApiRequests(params?: {
+    createPurchaseRequest(params?: {
         context?: HttpContext;
         body?: PurchaseRequestUpsertRequest;
     }): Observable<void> {
-        return this.postApiRequests$Response(params).pipe(
+        return this.createPurchaseRequest$Response(params).pipe(
             map((r: StrictHttpResponse<void>) => r.body as void)
         );
     }
 
     /**
-     * Path part for operation putApiRequestsRequestIdStatus
+     * Path part for operation updatePurchaseRequestStatus
      */
-    static readonly PutApiRequestsRequestIdStatusPath =
-        "/api/purchase-requests/{request_id}/status";
+    static readonly UpdatePurchaseRequestStatusPath =
+        "/api/purchase-requests/{purchase_request_id}/status";
 
     /**
      * 購入申請ステータス変更API.
@@ -347,22 +359,22 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to the full `HttpResponse`, allowing access to response headers.
-     * To access only the response body, use `putApiRequestsRequestIdStatus()` instead.
+     * To access only the response body, use `updatePurchaseRequestStatus()` instead.
      *
      * This method sends `application/json` and handles request body of type `application/json`.
      */
-    putApiRequestsRequestIdStatus$Response(params: {
-        request_id: string;
+    updatePurchaseRequestStatus$Response(params: {
+        purchase_request_id: string;
         context?: HttpContext;
         body?: PurchaseRequestStatusUpdateRequest;
     }): Observable<StrictHttpResponse<void>> {
         const rb = new RequestBuilder(
             this.rootUrl,
-            RequestsAPIService.PutApiRequestsRequestIdStatusPath,
+            PurchaseRequestAPIService.UpdatePurchaseRequestStatusPath,
             "put"
         );
         if (params) {
-            rb.path("request_id", params.request_id, {});
+            rb.path("purchase_request_id", params.purchase_request_id, {});
             rb.body(params.body, "application/json");
         }
 
@@ -390,16 +402,16 @@ export class RequestsAPIService extends BaseService {
      *
      *
      * This method provides access to only to the response body.
-     * To access the full response (for headers, for example), `putApiRequestsRequestIdStatus$Response()` instead.
+     * To access the full response (for headers, for example), `updatePurchaseRequestStatus$Response()` instead.
      *
      * This method sends `application/json` and handles request body of type `application/json`.
      */
-    putApiRequestsRequestIdStatus(params: {
-        request_id: string;
+    updatePurchaseRequestStatus(params: {
+        purchase_request_id: string;
         context?: HttpContext;
         body?: PurchaseRequestStatusUpdateRequest;
     }): Observable<void> {
-        return this.putApiRequestsRequestIdStatus$Response(params).pipe(
+        return this.updatePurchaseRequestStatus$Response(params).pipe(
             map((r: StrictHttpResponse<void>) => r.body as void)
         );
     }

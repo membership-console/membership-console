@@ -11,4 +11,10 @@ module.exports = [
         pathRewrite: { "^/paymaster/api": "/api" },
         secure: false,
     },
+    {
+        context: ["/reminder/api"],
+        target: "http://localhost:8083",
+        pathRewrite: { "^/reminder/api": "/api" },
+        secure: false,
+    },
 ];

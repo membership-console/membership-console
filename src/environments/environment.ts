@@ -6,4 +6,5 @@ export const environment = {
     // proxy.conf.jsで各APIへのforward設定を定義する
     IAM_API_ROOT_URL: "/iam",
     PURCHASE_REQUEST_API_ROOT_URL: "/paymaster",
+    REMINDER_API_ROOT_URL: "/reminder",
 };

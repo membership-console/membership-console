@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 /**
- * クライアントクレデンシャルレスポンス
+ * クライアント認証情報レスポンス
  */
 export interface ClientCredentialsResponse {
     /**

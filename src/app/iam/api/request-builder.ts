@@ -232,7 +232,7 @@ class HeaderParameter extends Parameter {
 }
 
 /**
- * Helper to build http purchase-requests from parameters
+ * Helper to build http requests from parameters
  */
 export class RequestBuilder {
     private _path = new Map<string, PathParameter>();

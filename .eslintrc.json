@@ -41,6 +41,7 @@
               "@app/api",
               "@app/iam",
               "@app/paymaster",
+              "@app/reminder",
               "@app/shared",
               "@*/api/models/*",
               "@*/api/services/*"
@@ -96,6 +97,11 @@
               },
               {
                 "pattern": "@paymaster/**",
+                "group": "parent",
+                "position": "before"
+              },
+              {
+                "pattern": "@reminder/**",
                 "group": "parent",
                 "position": "before"
               },

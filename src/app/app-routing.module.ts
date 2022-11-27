@@ -5,16 +5,13 @@ import { DashboardComponent } from "@app/components/dashboard/dashboard.componen
 import { ErrorComponent } from "@app/components/error/error.component";
 import { LoginComponent } from "@app/components/login/login.component";
 import { MypageComponent } from "@app/components/mypage/mypage.component";
-import { NotificationsComponent } from "@app/components/notifications/notifications.component";
 import { PasswordChangeComponent } from "@app/components/password-reset/password-change/password-change.component";
 import { PasswordResetComponent } from "@app/components/password-reset/password-reset.component";
 import { SettingsComponent } from "@app/components/settings/settings.component";
 
 import { PageContainerComponent } from "@shared/components/page-container/page-container.component";
-import { Role } from "@shared/enums/role";
 import { LoggedInGuard } from "@shared/guards/logged-in.guard";
 import { NotLoggedInGuard } from "@shared/guards/not-logged-in.guard";
-import { RoleGuard } from "@shared/guards/role.guard";
 
 /**
  * ページタイトルをビルド
@@ -36,12 +33,6 @@ const routes: Routes = [
                 component: DashboardComponent,
                 data: { breadcrumb: "ダッシュボード", title: "連携プロダクト" },
                 title: buildPageTitle("ダッシュボード"),
-            },
-            {
-                path: "notifications",
-                component: NotificationsComponent,
-                data: { breadcrumb: "運営のお知らせ", title: "運営のお知らせ" },
-                title: buildPageTitle("運営のお知らせ"),
             },
             {
                 path: "settings",
@@ -78,6 +69,18 @@ const routes: Routes = [
                     title: null,
                 },
                 title: buildPageTitle("会計システム"),
+            },
+            {
+                path: "reminder",
+                loadChildren: () =>
+                    import("@reminder/reminder-routing.module").then(
+                        (m) => m.ReminderRoutingModule
+                    ),
+                data: {
+                    breadcrumb: "リマインダー",
+                    title: null,
+                },
+                title: buildPageTitle("リマインダー"),
             },
         ],
     },

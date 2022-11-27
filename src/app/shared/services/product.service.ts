@@ -56,16 +56,18 @@ export class ProductService {
             path: "/reminder",
             version: "開発中",
             visible: true,
-            navs: [],
-        },
-        {
-            name: "フォーム",
-            description: "会員向けフォームを作成できます。回答状況のビューアも提供されます。",
-            icon: "article",
-            path: "/form",
-            version: "開発中",
-            visible: true,
-            navs: [],
+            navs: [
+                {
+                    label: "運営のお知らせ",
+                    icon: "notifications",
+                    path: "/notifications",
+                },
+                {
+                    label: "メール配信",
+                    icon: "mail",
+                    path: "/send_email",
+                },
+            ],
         },
         {
             name: "会計システム",
@@ -81,6 +83,15 @@ export class ProductService {
                     path: "/purchase-requests",
                 },
             ],
+        },
+        {
+            name: "フォーム",
+            description: "会員向けフォームを作成できます。回答状況のビューアも提供されます。",
+            icon: "article",
+            path: "/form",
+            version: "開発中",
+            visible: true,
+            navs: [],
         },
         {
             name: "総会文書ジェネレータ",

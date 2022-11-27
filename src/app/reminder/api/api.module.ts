@@ -4,7 +4,10 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from "@angular/core
 import { HttpClient } from "@angular/common/http";
 import { ApiConfiguration, ApiConfigurationParams } from "./api-configuration";
 
-import { RequestsAPIService } from "./services/requests-api.service";
+import { NotificationAPIService } from "./services/notification-api.service";
+import { NotificationReminderAPIService } from "./services/notification-reminder-api.service";
+import { EmailAPIService } from "./services/email-api.service";
+import { HealthCheckAPIService } from "./services/health-check-api.service";
 
 /**
  * Module that provides all services and configuration.
@@ -13,7 +16,13 @@ import { RequestsAPIService } from "./services/requests-api.service";
     imports: [],
     exports: [],
     declarations: [],
-    providers: [RequestsAPIService, ApiConfiguration],
+    providers: [
+        NotificationAPIService,
+        NotificationReminderAPIService,
+        EmailAPIService,
+        HealthCheckAPIService,
+        ApiConfiguration,
+    ],
 })
 export class ApiModule {
     static forRoot(params: ApiConfigurationParams): ModuleWithProviders<ApiModule> {
