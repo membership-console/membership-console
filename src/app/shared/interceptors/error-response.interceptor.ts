@@ -49,7 +49,7 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
                 }
 
                 // アラートメッセージを表示
-                this.alertService.error(response.message);
+                this.alertService.error(`${response.code}: ${response.message}`);
 
                 throw response.message;
             })
@@ -76,14 +76,14 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
         try {
             const responseBody =
                 typeof error.error === "string" ? JSON.parse(error.error) : error.error;
-            responseBody.code = responseBody.code ? responseBody.code : 500;
+            responseBody.code = responseBody.code ? responseBody.code : 0;
             responseBody.message = responseBody.message
                 ? responseBody.message
                 : "予期しないエラーが発生しました。問題が解決しない場合は、管理者までお問い合わせください。";
             return responseBody;
         } catch (_) {
             return {
-                code: 500,
+                code: 0,
                 message:
                     "予期しないエラーが発生しました。問題が解決しない場合は、管理者までお問い合わせください。",
             };
