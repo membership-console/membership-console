@@ -1,7 +1,7 @@
 # Membership Console
 
 ![CI](https://github.com/membership-console/membership-console/workflows/CI/badge.svg)
-![deploy](https://github.com/membership-console/membership-console/workflows/deploy/badge.svg)
+![Build](https://github.com/membership-console/membership-console/workflows/Build/badge.svg)
 ![version](https://img.shields.io/badge/version-1.0.0__SNAPSHOT-blue.svg)
 
 ## 概要
