@@ -2,7 +2,8 @@ export const environment = {
     production: true,
     IS_AUTHENTICATED_KEY: "Authenticated",
 
-    // 各種APIのルートURLを指定
-    IAM_API_ROOT_URL: "https://api.abelab.dev/membership-console/iam",
-    PURCHASE_REQUEST_API_ROOT_URL: "https://api.abelab.dev/membership-console/purchase-request",
+    // 各プロダクトAPIのルートURLを指定
+    IAM_API_ROOT_URL: "/iam",
+    PURCHASE_REQUEST_API_ROOT_URL: "/paymaster",
+    REMINDER_API_ROOT_URL: "/reminder",
 };
