@@ -85,9 +85,10 @@ export class ProductService {
             ],
         },
         {
-            name: "フォーム",
-            description: "会員向けフォームを作成できます。回答状況のビューアも提供されます。",
-            icon: "article",
+            name: "リポジトリ統計",
+            description:
+                "GitHubリポジトリの統計情報を解析できます。プロジェクトの健康診断に役立ててください。",
+            icon: "query_stats",
             path: "/form",
             version: "開発中",
             visible: true,
