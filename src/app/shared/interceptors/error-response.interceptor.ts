@@ -14,7 +14,7 @@ import { AlertService } from "@shared/services/alert.service";
 import { AuthService } from "@shared/services/auth.service";
 
 type ErrorResponse = {
-    code: number;
+    code: number | undefined;
     message: string;
 };
 
@@ -49,7 +49,9 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
                 }
 
                 // アラートメッセージを表示
-                this.alertService.error(`${response.code}: ${response.message}`);
+                this.alertService.error(
+                    response.code ? `${response.code}: ${response.message}` : `${response.message}`
+                );
 
                 throw response.message;
             })
@@ -76,14 +78,14 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
         try {
             const responseBody =
                 typeof error.error === "string" ? JSON.parse(error.error) : error.error;
-            responseBody.code = responseBody.code ? responseBody.code : 0;
+            responseBody.code = responseBody.code ? responseBody.code : undefined;
             responseBody.message = responseBody.message
                 ? responseBody.message
                 : "予期しないエラーが発生しました。問題が解決しない場合は、管理者までお問い合わせください。";
             return responseBody;
         } catch (_) {
             return {
-                code: 0,
+                code: undefined,
                 message:
                     "予期しないエラーが発生しました。問題が解決しない場合は、管理者までお問い合わせください。",
             };
